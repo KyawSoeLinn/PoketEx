@@ -1,0 +1,173 @@
+package digitalfusion.poketexpence.Activity;
+
+import android.app.DatePickerDialog;
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import org.w3c.dom.Text;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+import belka.us.androidtoggleswitch.widgets.ToggleSwitch;
+import digitalfusion.poketexpence.Data.DataBaseHelper;
+import digitalfusion.poketexpence.Fragment.HomeFragment;
+import digitalfusion.poketexpence.Fragment.QuickSummaryFragment;
+import digitalfusion.poketexpence.R;
+
+public class AddTransactionActivity extends AppCompatActivity implements com.wdullaer.materialdatetimepicker.date.DatePickerDialog.OnDateSetListener {
+     DataBaseHelper DBHelper;
+     ToggleSwitch toggleSwitch;
+     Button btnCancel,btnSave;
+     String transactionType="Income";
+     TextView txtDate,txtCategory,txtdatepicker;
+     EditText edtamount,edtpayee,edtnote;
+
+    Double amount =null ;
+    Integer CID ;
+    String txtPayee,txtNote;
+    Calendar calendar ;
+    com.wdullaer.materialdatetimepicker.date.DatePickerDialog datePickerDialog ;
+    int Year, Month, Day ;
+
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.add_transaction);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        DBHelper =new DataBaseHelper(AddTransactionActivity.this);
+
+        toggleSwitch=(ToggleSwitch) findViewById(R.id.toggleSwitch);
+        txtDate=(TextView) findViewById(R.id.txt_date);
+        txtCategory=(TextView)findViewById(R.id.txt_category);
+        txtdatepicker=(TextView)findViewById(R.id.txt_datepicker);
+        edtamount=(EditText)findViewById(R.id.edt_amount);
+        edtpayee=(EditText)findViewById(R.id.edt_payee);
+        edtnote=(EditText) findViewById(R.id.edt_note);
+
+        btnSave=(Button) findViewById(R.id.btn_save);
+        btnCancel=(Button) findViewById(R.id.btn_cancel);
+
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat mdformat = new SimpleDateFormat("yyyy / MM / dd ");
+        txtDate.setText(mdformat.format(calendar.getTime()));
+
+        Year = calendar.get(Calendar.YEAR) ;
+        Month = calendar.get(Calendar.MONTH);
+        Day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        toggleSwitch.setOnToggleSwitchChangeListener(new ToggleSwitch.OnToggleSwitchChangeListener(){
+
+            @Override
+            public void onToggleSwitchChangeListener(int pos, boolean isChecked) {
+                if (pos == 0) {
+                    transactionType = "Income";
+                } else {
+                    transactionType = "Expense";
+                }
+
+
+            }}  );
+
+        txtdatepicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                datePickerDialog = com.wdullaer.materialdatetimepicker.date.DatePickerDialog.newInstance(AddTransactionActivity.this, Year, Month, Day);
+
+                datePickerDialog.setThemeDark(false);
+
+                datePickerDialog.showYearPickerFirst(false);
+
+                datePickerDialog.setAccentColor(Color.parseColor("#009688"));
+
+                datePickerDialog.setTitle("Select Date From DatePickerDialog");
+
+                datePickerDialog.show(getFragmentManager(), "DatePickerDialog");
+            }
+        });
+
+
+
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                amount =Double.parseDouble(edtamount.getText().toString());
+                CID=001;
+                txtNote=edtnote.getText().toString();
+                txtPayee=edtpayee.getText().toString();
+                DBHelper.insertcontat( transactionType, amount, CID, txtPayee, txtNote, txtdatepicker.getText().toString() );
+
+                String addTransaction = transactionType + " "+ amount +" "+ CID +" " +txtNote+" "+txtPayee;
+                Toast.makeText(AddTransactionActivity.this,"Transaction : "+ addTransaction ,Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(AddTransactionActivity.this, MainActivity.class);
+
+                finish();
+                startActivity(intent);
+            }
+        });
+
+      /*  button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DBHelper.getAllData();
+            }
+        });*/
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    @Override
+    public void onDateSet(com.wdullaer.materialdatetimepicker.date.DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
+        String date = dayOfMonth + "/" + monthOfYear + "/" + year;
+        txtdatepicker.setText(date);
+
+    }
+}
