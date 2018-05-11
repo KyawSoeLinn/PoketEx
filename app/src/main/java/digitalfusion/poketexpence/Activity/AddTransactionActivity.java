@@ -139,15 +139,11 @@ public class AddTransactionActivity extends AppCompatActivity implements com.wdu
         txtCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SelectCategory selectdialog = new SelectCategory(AddTransactionActivity.this);
-                selectdialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
-                selectdialog.show();
-
-
-
+                Intent intent = new Intent(AddTransactionActivity.this, SelectCategory.class);
+                startActivity(intent);
             }
         });
-
+        txtCategory.setText(CatId);
 
 
 
@@ -198,4 +194,7 @@ public class AddTransactionActivity extends AppCompatActivity implements com.wdu
         txtdatepicker.setText(date);
 
     }
+
+
+
 }

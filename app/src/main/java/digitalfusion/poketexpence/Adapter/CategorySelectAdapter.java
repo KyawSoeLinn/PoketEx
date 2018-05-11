@@ -1,6 +1,7 @@
 package digitalfusion.poketexpence.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,9 +11,11 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import digitalfusion.poketexpence.Activity.AddTransactionActivity;
 import digitalfusion.poketexpence.Data.DataBaseHelper;
 import digitalfusion.poketexpence.Model.ExpenceCategories;
 import digitalfusion.poketexpence.R;
+import digitalfusion.poketexpence.Util.AddCategory;
 import digitalfusion.poketexpence.Util.RecyclerViewHolders;
 
 public class CategorySelectAdapter extends RecyclerView.Adapter<CategorySelectAdapter.CategorySelectViewHolder>{
@@ -57,6 +60,12 @@ public class CategorySelectAdapter extends RecyclerView.Adapter<CategorySelectAd
             @Override
             public void onClick(View v) {
                 CatId = expenceCategories1.getCategoriesName();
+
+                Intent intent = new Intent(sContext, AddTransactionActivity.class);
+
+                intent.putExtra("key", CatId);
+                sContext.startActivity(intent);
+                Toast.makeText(sContext, CatId +"edit edit", Toast.LENGTH_SHORT).show();
 
             }
         });

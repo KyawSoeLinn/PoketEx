@@ -47,14 +47,12 @@ public class Category extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AddCategory adddialog = new AddCategory(Category.this);
-                adddialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
-                adddialog.show();
 
-                /*Intent intent = new Intent(Category.this, AddCategory.class);
+
+                Intent intent = new Intent(Category.this, AddCategory.class);
                 String key = null;
                 intent.putExtra("key", key);
-                startActivity(intent);*/
+                startActivity(intent);
 
             }
         });

@@ -19,7 +19,7 @@ import digitalfusion.poketexpence.Data.DataBaseHelper;
 import digitalfusion.poketexpence.Model.ExpenceCategories;
 import digitalfusion.poketexpence.R;
 
-public class SelectCategory extends Dialog implements android.view.View.OnClickListener{
+public class SelectCategory extends Activity{
 
     private RecyclerView recyclerView;
     public Activity activity;
@@ -27,12 +27,8 @@ public class SelectCategory extends Dialog implements android.view.View.OnClickL
     List<ExpenceCategories> getCatdata;
     private CategorySelectAdapter CatSelectAdapter;
     Button yes;
-    AddTransactionActivity addTransactionActivity;
 
-    public SelectCategory (Activity a){
-        super(a);
-        this.activity = a;
-    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +50,7 @@ public class SelectCategory extends Dialog implements android.view.View.OnClickL
         yes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dismiss();
+
 
             }
         });
@@ -62,9 +58,5 @@ public class SelectCategory extends Dialog implements android.view.View.OnClickL
 
     }
 
-    @Override
-    public void onClick(View v) {
 
-        dismiss();
-    }
 }

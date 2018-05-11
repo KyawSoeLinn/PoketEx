@@ -19,7 +19,7 @@ import digitalfusion.poketexpence.Activity.Category;
 import digitalfusion.poketexpence.Data.DataBaseHelper;
 import digitalfusion.poketexpence.R;
 
-public class AddCategory extends Dialog implements android.view.View.OnClickListener {
+public class AddCategory extends Activity {
 
     EditText CatEdittxt;
     Button btncatAdd, btncatCancel;
@@ -29,10 +29,7 @@ public class AddCategory extends Dialog implements android.view.View.OnClickList
     String Cattxt;
     public Activity activity;
 
-    public AddCategory(Activity a){
-        super  (a);
-        this.activity = a;
-    }
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,8 +44,10 @@ public class AddCategory extends Dialog implements android.view.View.OnClickList
 
         dbhelper = new DataBaseHelper(activity);
 
+        final Bundle bundle = getIntent().getExtras();
 
-        /*btncatAdd.setOnClickListener(new View.OnClickListener() {
+
+        btncatAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -69,7 +68,8 @@ public class AddCategory extends Dialog implements android.view.View.OnClickList
 
 
                     Cattxt = CatEdittxt.getText().toString();
-                    dbhelper.insertCategory((dbhelper.getAllCategories().size() + 1), Cattxt, "grrr");
+                    Integer idddd = dbhelper.getAllCategories().size() + 1;
+                    dbhelper.insertCategory(idddd, Cattxt, "grrr");
 
                     Toast.makeText(AddCategory.this, Cattxt, Toast.LENGTH_SHORT).show();
 
@@ -85,14 +85,14 @@ public class AddCategory extends Dialog implements android.view.View.OnClickList
                 Intent intent = new Intent(AddCategory.this, Category.class);
                 startActivity(intent);
             }
-        });*/
+        });
 
 
     }
 
 
 
-    @Override
+    /*@Override
     public void onClick(View v) {
 
         final Bundle bundle = activity.getIntent().getExtras();
@@ -125,7 +125,7 @@ public class AddCategory extends Dialog implements android.view.View.OnClickList
                 }
                 break;
             case R.id.catCancel:
-                dismiss();
+
 
         }
 
@@ -168,5 +168,5 @@ public class AddCategory extends Dialog implements android.view.View.OnClickList
             }
         });
 
-    }
+    }*/
 }
