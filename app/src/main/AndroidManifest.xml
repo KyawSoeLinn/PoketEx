@@ -26,8 +26,15 @@
             <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".Activity.MainActivity"></meta-data>
         </activity>
 
+        <activity
+            android:name=".Activity.UpdateRecordActivity"
+            android:theme="@style/AppTheme" >
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".Activity.MainActivity"></meta-data>
+        </activity>
+
         <activity android:name=".Activity.Category"/>
         <activity android:name=".Util.AddCategory"/>
+
     </application>
 
 </manifest>

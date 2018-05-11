@@ -13,6 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.jaredrummler.materialspinner.MaterialSpinner;
+
 import java.util.List;
 
 import digitalfusion.poketexpence.Activity.AddTransactionActivity;
@@ -25,10 +27,12 @@ import digitalfusion.poketexpence.Util.OnLoadMoreListener;
 public class HomeFragment extends Fragment {
     private FloatingActionButton fab;
     RecyclerView mRecyclerView;
-  LinearLayoutManager mLayoutManager;
-  DataBaseHelper dbHelper;
-  AddTransactionAdapter addTransactionAdapter;
- List<ExpenceTransation> transactionList;
+    LinearLayoutManager mLayoutManager;
+    DataBaseHelper dbHelper;
+    AddTransactionAdapter addTransactionAdapter;
+    List<ExpenceTransation> transactionList;
+    MaterialSpinner transactionSpinner;
+    String transactionFilter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -45,13 +49,27 @@ public class HomeFragment extends Fragment {
         getActivity().setTitle(R.string.home_fragment);
 
         dbHelper = new DataBaseHelper(getContext());
-        transactionList = dbHelper.getAllData();
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_show_transaction);
         mRecyclerView.setHasFixedSize(true);
-        mLayoutManager=new LinearLayoutManager(getActivity());
+        mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
-        addTransactionAdapter = new AddTransactionAdapter(dbHelper.getAllData(), getContext());
-        mRecyclerView.setAdapter(addTransactionAdapter);
+
+        transactionSpinner = (MaterialSpinner) view.findViewById(R.id.transaction_spinner);
+        transactionSpinner.setItems("All", "Income", "Expense");
+        transactionFilter="All";
+
+        loadRecyclerView(transactionFilter);
+        transactionSpinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
+
+            @Override
+            public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
+                transactionFilter=item.toString();
+
+                loadRecyclerView(transactionFilter);
+
+            }
+        });
+
 
         fab = (FloatingActionButton) view.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -96,6 +114,12 @@ public class HomeFragment extends Fragment {
         });*/
     }
 
+    private void loadRecyclerView(String transactionFilter) {
+
+        addTransactionAdapter = new AddTransactionAdapter(dbHelper.getAllData(transactionFilter), getContext());
+        mRecyclerView.setAdapter(addTransactionAdapter);
     }
+
+}
 
 

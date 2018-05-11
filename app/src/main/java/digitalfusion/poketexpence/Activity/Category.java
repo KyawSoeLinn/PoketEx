@@ -45,6 +45,7 @@ public class Category extends AppCompatActivity {
                 Intent intent = new Intent(Category.this, AddCategory.class);
                 String key = null;
                 intent.putExtra("key", key);
+                startActivity(intent);
 
             }
         });

@@ -6,11 +6,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.view.View;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import digitalfusion.poketexpence.Activity.UpdateRecordActivity;
 import digitalfusion.poketexpence.Model.ExpenceCategories;
 import digitalfusion.poketexpence.Model.ExpenceTransation;
 
@@ -48,7 +50,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     //Create Table
 
     private static final String CREATE_TABLE_expence = "CREATE TABLE "
-            + ETTableName + "(" + ETId + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + ETTableName + "(" + ETId + " INTEGER PRIMARY KEY,"
             + ETtype + " TEXT,"
             + ETamount + " REAL,"
             + ETcategoriesId + " INTEGER,"
@@ -57,7 +59,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             + ETcreated_at + " TEXT" + ")";
 
     private static final String CREATE_TABLE_categories = "CREATE TABLE "
-            + CTableName + "(" + CId + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + CTableName + "(" + CId + " INTEGER PRIMARY KEY,"
             + CName + " TEXT,"
             + CIcon + " TEXT" + ")";
 
@@ -75,9 +77,16 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return true;
     }
 
-    public List getAllData() {
+    public List getAllData(String transactionFilter) {
+        String getQuery;
+        if(transactionFilter.equals("All"))
+        {
+            getQuery="SELECT * FROM Expence";
+        }
+        else
+        { getQuery = "SELECT  * FROM " + ETTableName + " where  type='"+ transactionFilter+"'";
+        }
         List detailist = new ArrayList();
-        String getQuery = "SELECT * FROM Expence";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(getQuery, null);
 
@@ -100,7 +109,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         return detailist;
     }
-
 
     //Category CRUD
 
@@ -184,5 +192,35 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         db.execSQL("DELETE FROM "+ ETTableName + " WHERE id='"+id+"'");
         Toast.makeText(mcontext, "Deleted Successfully", Toast.LENGTH_SHORT).show();
+    }
+
+    public ExpenceTransation getAllDataById(long receivedRecordId) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT  * FROM " + ETTableName + " WHERE id="+ receivedRecordId;
+        Cursor cursor = db.rawQuery(query, null);
+        ExpenceTransation expenceTransation = new ExpenceTransation();
+
+        if(cursor.getCount() > 0) {
+            cursor.moveToFirst();
+
+            expenceTransation.setId(cursor.getLong(cursor.getColumnIndex("id")));
+            expenceTransation.setExpencetype(cursor.getString(cursor.getColumnIndex("type")));
+            expenceTransation.setAmount(cursor.getDouble(cursor.getColumnIndex("amount")));
+            expenceTransation.setCategoriesID(cursor.getLong(cursor.getColumnIndex("categoryId")));
+            expenceTransation.setPayee(cursor.getString(cursor.getColumnIndex("payee")));
+            expenceTransation.setDescription(cursor.getString(cursor.getColumnIndex("description")));
+            expenceTransation.setCreated_at(cursor.getString(cursor.getColumnIndex("created_at")));
+        }
+        return expenceTransation;
+
+    }
+
+
+    public void updateTransactionRecord(long receiveRecordId, UpdateRecordActivity updateRecordActivity, ExpenceTransation updateTransaction) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        //you can use the constants above instead of typing the column names
+        db.execSQL("UPDATE  "+ETTableName+" SET type ='"+ updateTransaction.getExpencetype() + "', amount ='" + updateTransaction.getAmount()+ "', categoryId ='"+ updateTransaction.getCategoriesID() + "', payee ='"+ updateTransaction.getPayee() + "', description ='"+ updateTransaction.getDescription() + "', created_at ='"+ updateTransaction.getCreated_at() +"'  WHERE id='" + receiveRecordId + "'");
+
     }
 }

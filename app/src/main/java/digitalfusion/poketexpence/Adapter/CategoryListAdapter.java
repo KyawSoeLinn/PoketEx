@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 import java.util.List;
 
-import digitalfusion.poketexpence.Activity.Category;
 import digitalfusion.poketexpence.Data.DataBaseHelper;
 import digitalfusion.poketexpence.Model.ExpenceCategories;
 import digitalfusion.poketexpence.R;

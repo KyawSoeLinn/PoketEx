@@ -17,6 +17,22 @@ public class ExpenceTransation {
     private String Description;
     private String Created_at;
 
+
+    public ExpenceTransation()
+    {
+
+    }
+
+
+    public ExpenceTransation(String ExpenseType, Double amount,Long CategoriesID, String Payee, String Description, String Created_at)
+    {
+        this.Expencetype=ExpenseType;
+        this.Amount=amount;
+        this.Payee=Payee;
+        this.Description=Description;
+        this.Created_at=Created_at;
+    }
+
     public Long getId() {
         return Id;
     }

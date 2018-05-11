@@ -120,9 +120,9 @@ public class AddTransactionActivity extends AppCompatActivity implements com.wdu
                 String addTransaction = transactionType + " "+ amount +" "+ CID +" " +txtNote+" "+txtPayee;
                 Toast.makeText(AddTransactionActivity.this,"Transaction : "+ addTransaction ,Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(AddTransactionActivity.this, MainActivity.class);
-
-                finish();
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
+                AddTransactionActivity.this.finish();
             }
         });
 
