@@ -1,8 +1,10 @@
 package digitalfusion.poketexpence.Activity;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -26,12 +28,18 @@ import org.w3c.dom.Text;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import belka.us.androidtoggleswitch.widgets.ToggleSwitch;
 import digitalfusion.poketexpence.Data.DataBaseHelper;
 import digitalfusion.poketexpence.Fragment.HomeFragment;
 import digitalfusion.poketexpence.Fragment.QuickSummaryFragment;
+import digitalfusion.poketexpence.Model.ExpenceCategories;
 import digitalfusion.poketexpence.R;
+import digitalfusion.poketexpence.Util.AddCategory;
+import digitalfusion.poketexpence.Util.SelectCategory;
+
+import static digitalfusion.poketexpence.Adapter.CategorySelectAdapter.CatId;
 
 public class AddTransactionActivity extends AppCompatActivity implements com.wdullaer.materialdatetimepicker.date.DatePickerDialog.OnDateSetListener {
      DataBaseHelper DBHelper;
@@ -40,6 +48,8 @@ public class AddTransactionActivity extends AppCompatActivity implements com.wdu
      String transactionType="Income";
      TextView txtDate,txtCategory,txtdatepicker;
      EditText edtamount,edtpayee,edtnote;
+
+    List<ExpenceCategories>  expenceCategoriesList;
 
     Double amount =null ;
     Integer CID ;
@@ -125,6 +135,24 @@ public class AddTransactionActivity extends AppCompatActivity implements com.wdu
                 AddTransactionActivity.this.finish();
             }
         });
+
+        txtCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SelectCategory selectdialog = new SelectCategory(AddTransactionActivity.this);
+                selectdialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+                selectdialog.show();
+
+
+
+            }
+        });
+
+
+
+
+
+
 
       /*  button2.setOnClickListener(new View.OnClickListener() {
             @Override

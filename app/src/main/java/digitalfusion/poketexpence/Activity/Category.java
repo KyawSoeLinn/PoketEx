@@ -2,6 +2,8 @@ package digitalfusion.poketexpence.Activity;
 
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -40,14 +42,19 @@ public class Category extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.category_fragment);
 
+
         btnAdd = (Button) findViewById(R.id.addcategory);
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Category.this, AddCategory.class);
+                AddCategory adddialog = new AddCategory(Category.this);
+                adddialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+                adddialog.show();
+
+                /*Intent intent = new Intent(Category.this, AddCategory.class);
                 String key = null;
                 intent.putExtra("key", key);
-                startActivity(intent);
+                startActivity(intent);*/
 
             }
         });
