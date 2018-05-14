@@ -23,7 +23,9 @@ public class CategorySelectAdapter extends RecyclerView.Adapter<CategorySelectAd
     public List<ExpenceCategories> expenceCategories;
     private Context sContext;
     DataBaseHelper dataBaseHelper;
-    public static String CatId = "";
+    public static Integer CatId ;
+    public static String CatName = "";
+
 
     public class CategorySelectViewHolder extends RecyclerView.ViewHolder{
 
@@ -59,13 +61,14 @@ public class CategorySelectAdapter extends RecyclerView.Adapter<CategorySelectAd
         holder.selectname.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CatId = expenceCategories1.getCategoriesName();
+                CatName = expenceCategories1.getCategoriesName();
+                CatId = Integer.valueOf(expenceCategories1.getCategoriesID());
 
                 Intent intent = new Intent(sContext, AddTransactionActivity.class);
 
-                intent.putExtra("key", CatId);
+                intent.putExtra("key", CatName);
                 sContext.startActivity(intent);
-                Toast.makeText(sContext, CatId +"edit edit", Toast.LENGTH_SHORT).show();
+                Toast.makeText(sContext, CatName +"edit edit" + CatId, Toast.LENGTH_SHORT).show();
 
             }
         });

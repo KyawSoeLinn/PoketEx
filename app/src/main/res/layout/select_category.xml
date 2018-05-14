@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_width="230dp"
+        android:layout_width="match_parent"
         android:layout_height="450dp"
         android:orientation="vertical">
 
@@ -14,13 +14,13 @@
         android:id="@+id/selectCatRV">
     </android.support.v7.widget.RecyclerView>
 
-    <Button
+   <!-- <Button
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:text="OK"
         android:id="@+id/selectOK"
         android:layout_gravity="center"
-        />
+        />-->
 
     </LinearLayout>
 

@@ -40,6 +40,7 @@ import digitalfusion.poketexpence.Util.AddCategory;
 import digitalfusion.poketexpence.Util.SelectCategory;
 
 import static digitalfusion.poketexpence.Adapter.CategorySelectAdapter.CatId;
+import static digitalfusion.poketexpence.Adapter.CategorySelectAdapter.CatName;
 
 public class AddTransactionActivity extends AppCompatActivity implements com.wdullaer.materialdatetimepicker.date.DatePickerDialog.OnDateSetListener {
      DataBaseHelper DBHelper;
@@ -53,6 +54,7 @@ public class AddTransactionActivity extends AppCompatActivity implements com.wdu
 
     Double amount =null ;
     Integer CID ;
+    String CName;
     String txtPayee,txtNote;
     Calendar calendar ;
     com.wdullaer.materialdatetimepicker.date.DatePickerDialog datePickerDialog ;
@@ -118,11 +120,23 @@ public class AddTransactionActivity extends AppCompatActivity implements com.wdu
 
 
 
+
+
+        txtCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AddTransactionActivity.this, SelectCategory.class);
+                startActivity(intent);
+            }
+        });
+        txtCategory.setText(CatName);
+
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 amount =Double.parseDouble(edtamount.getText().toString());
-                CID=001;
+                CName = (String) txtCategory.getText();
+                CID = CatId;
                 txtNote=edtnote.getText().toString();
                 txtPayee=edtpayee.getText().toString();
                 DBHelper.insertcontat( transactionType, amount, CID, txtPayee, txtNote, txtdatepicker.getText().toString() );
@@ -135,17 +149,6 @@ public class AddTransactionActivity extends AppCompatActivity implements com.wdu
                 AddTransactionActivity.this.finish();
             }
         });
-
-        txtCategory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(AddTransactionActivity.this, SelectCategory.class);
-                startActivity(intent);
-            }
-        });
-        txtCategory.setText(CatId);
-
-
 
 
 

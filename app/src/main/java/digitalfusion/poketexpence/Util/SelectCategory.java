@@ -22,11 +22,11 @@ import digitalfusion.poketexpence.R;
 public class SelectCategory extends Activity{
 
     private RecyclerView recyclerView;
-    public Activity activity;
+
     DataBaseHelper dataBaseHelper;
     List<ExpenceCategories> getCatdata;
     private CategorySelectAdapter CatSelectAdapter;
-    Button yes;
+    /*Button yes;*/
 
 
 
@@ -36,24 +36,24 @@ public class SelectCategory extends Activity{
         setContentView(R.layout.select_category);
 
         recyclerView = (RecyclerView) findViewById(R.id.selectCatRV);
-        yes = (Button) findViewById(R.id.selectOK);
+        /*yes = (Button) findViewById(R.id.selectOK);*/
 
-        dataBaseHelper = new DataBaseHelper(activity);
+        dataBaseHelper = new DataBaseHelper(this);
 
         getCatdata = dataBaseHelper.getAllCategories();
 
-        CatSelectAdapter = new CategorySelectAdapter(dataBaseHelper.getAllCategories(), activity.getBaseContext());
-        RecyclerView.LayoutManager catLayoutManger = new LinearLayoutManager(activity.getApplicationContext());
+        CatSelectAdapter = new CategorySelectAdapter(dataBaseHelper.getAllCategories(), this.getBaseContext());
+        RecyclerView.LayoutManager catLayoutManger = new LinearLayoutManager(this.getApplicationContext());
         recyclerView.setLayoutManager(catLayoutManger);
         recyclerView.setAdapter(CatSelectAdapter);
 
-        yes.setOnClickListener(new View.OnClickListener() {
+        /*yes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
             }
-        });
+        });*/
 
 
     }
