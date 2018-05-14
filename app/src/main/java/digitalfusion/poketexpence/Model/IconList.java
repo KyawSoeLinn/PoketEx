@@ -4,7 +4,7 @@ import android.graphics.drawable.Icon;
 
 public class IconList {
 
-    private int icon;
+    private Integer icon;
 
 
     public IconList(){
