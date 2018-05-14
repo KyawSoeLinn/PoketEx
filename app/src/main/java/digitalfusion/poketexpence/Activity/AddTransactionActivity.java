@@ -37,7 +37,9 @@ import java.util.Date;
 import java.util.List;
 
 import belka.us.androidtoggleswitch.widgets.ToggleSwitch;
+
 import digitalfusion.poketexpence.Adapter.AddTransactionAdapter;
+import digitalfusion.poketexpence.R;
 import digitalfusion.poketexpence.Adapter.CategoryListAdapter;
 import digitalfusion.poketexpence.Data.DataBaseHelper;
 import digitalfusion.poketexpence.Fragment.HomeFragment;

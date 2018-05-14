@@ -6,16 +6,12 @@
    >
       <LinearLayout
           android:id="@+id/filter_layout"
-<<<<<<< HEAD
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:orientation="horizontal">
-=======
+
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:orientation="horizontal"
           android:layout_margin="2dp">
->>>>>>> khinthuzin
+
 
             <TextView
                 android:id="@+id/textViewTransaction"
@@ -65,13 +61,11 @@
 
     </LinearLayout>
 
-<<<<<<< HEAD
-      <android.support.v7.widget.RecyclerView
-=======
+
 
 
     <android.support.v7.widget.RecyclerView
->>>>>>> khinthuzin
+
           android:id="@+id/recycler_show_transaction"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
