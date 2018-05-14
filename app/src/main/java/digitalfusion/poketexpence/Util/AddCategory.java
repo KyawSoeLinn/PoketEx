@@ -3,10 +3,15 @@ package digitalfusion.poketexpence.Util;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,8 +20,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import digitalfusion.poketexpence.Activity.Category;
+import digitalfusion.poketexpence.Adapter.CategoryIconSelectAdapter;
 import digitalfusion.poketexpence.Data.DataBaseHelper;
+import digitalfusion.poketexpence.Model.IconList;
 import digitalfusion.poketexpence.R;
 
 public class AddCategory extends Activity {
@@ -27,6 +37,8 @@ public class AddCategory extends Activity {
     private RecyclerView recyclerView;
     DataBaseHelper dbhelper;
     String Cattxt;
+    private CategoryIconSelectAdapter iconadapter;
+    private List<IconList> iconlist;
 
 
 
@@ -42,9 +54,20 @@ public class AddCategory extends Activity {
         iconview = (ImageView) findViewById(R.id.catimgview);
         recyclerView = (RecyclerView) findViewById(R.id.catIconRV);
 
+        iconlist = new ArrayList<>();
+        iconadapter = new CategoryIconSelectAdapter(iconlist, this);
+
+        RecyclerView.LayoutManager iconLayoutmanger = new GridLayoutManager(this, 2);
+        recyclerView.setLayoutManager(iconLayoutmanger);
+        recyclerView.setAdapter(iconadapter);
+
+        prepareIcon();
+
         dbhelper = new DataBaseHelper(this);
 
         final Bundle bundle = getIntent().getExtras();
+
+
 
 
         btncatAdd.setOnClickListener(new View.OnClickListener() {
@@ -93,7 +116,39 @@ public class AddCategory extends Activity {
         });
 
 
+
+
     }
+
+    private void prepareIcon() {
+
+        int[] icons = new int[]{
+                R.drawable.ic_menu_camera,
+                R.drawable.ic_menu_gallery,
+                R.drawable.ic_menu_manage,
+                R.drawable.ic_menu_send,
+                R.drawable.ic_menu_share,
+                R.drawable.ic_img_bus};
+
+        IconList icon = new IconList(icons[0]);
+        iconlist.add(icon);
+        icon = new IconList(icons[1]);
+        iconlist.add(icon);
+        icon = new IconList(icons[2]);
+        iconlist.add(icon);
+        icon = new IconList(icons[3]);
+        iconlist.add(icon);
+        icon = new IconList(icons[4]);
+        iconlist.add(icon);
+        icon = new IconList(icons[5]);
+        iconlist.add(icon);
+
+        iconadapter.notifyDataSetChanged();
+
+    }
+
+
+}
 
 
 
@@ -174,4 +229,4 @@ public class AddCategory extends Activity {
         });
 
     }*/
-}
+

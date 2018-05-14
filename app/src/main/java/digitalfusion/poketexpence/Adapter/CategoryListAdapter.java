@@ -72,14 +72,14 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
         holder.name.setText(expenceCategories.getCategoriesName());
         Integer icon= R.drawable.ic_img_bus;
         Integer secIcon=expenceCategories.getCategoriesIcon();
-        Picasso.with(cContext)
+        /*Picasso.with(cContext)
                 .load(expenceCategories.getCategoriesIcon())  //name of the image to load.
-                .into(holder.icon);
+                .into(holder.icon);*/
 
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dbhelper = new DataBaseHelper();
+                dbhelper = new DataBaseHelper(cContext);
                 dbhelper.deleteCategory(expenceCategories.getCategoriesID(), cContext);
                 expenceCategoriesList.remove(position);
                 notifyDataSetChanged();
@@ -89,8 +89,6 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
         holder.edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 Intent intent = new Intent(cContext, AddCategory.class);
                 String key = expenceCategories.getCategoriesID();
                intent.putExtra("key", key);

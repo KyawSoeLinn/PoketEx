@@ -26,6 +26,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,6 +48,7 @@ import digitalfusion.poketexpence.Fragment.QuickSummaryFragment;
 import digitalfusion.poketexpence.Model.ExpenceCategories;
 import digitalfusion.poketexpence.Model.ExpenceTransation;
 
+import digitalfusion.poketexpence.Util.AddCategory;
 import digitalfusion.poketexpence.Util.SelectCategory;
 import digitalfusion.poketexpence.ViewModel.AddTransactionModel;
 
@@ -76,6 +78,8 @@ public class AddTransactionActivity extends AppCompatActivity implements com.wdu
     int Year, Month, Day;
     AddTransactionModel viewModel;
 
+    ImageView btncatAdd;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,6 +98,7 @@ public class AddTransactionActivity extends AppCompatActivity implements com.wdu
 
         btnSave = (Button) findViewById(R.id.btn_save);
         btnCancel = (Button) findViewById(R.id.btn_cancel);
+        btncatAdd = (ImageView) findViewById(R.id.img_add);
 
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat mdformat = new SimpleDateFormat("yyyy / MM / dd ");
@@ -128,6 +133,14 @@ public class AddTransactionActivity extends AppCompatActivity implements com.wdu
             @Override
             public void onClick(View view) {
 
+            }
+        });
+
+        btncatAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AddTransactionActivity.this, AddCategory.class);
+                startActivity(intent);
             }
         });
 
