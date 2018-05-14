@@ -8,7 +8,18 @@ public class ExpenceCategories {
 
     private String CategoriesID;
     private String CategoriesName;
-    private String CategoriesIcon;
+
+    public Integer getCategoriesIcon() {
+        return CategoriesIcon;
+    }
+
+    public void setCategoriesIcon(Integer categoriesIcon) {
+        CategoriesIcon = categoriesIcon;
+    }
+
+    private Integer CategoriesIcon;
+
+
 
     public String getCategoriesID() {
         return CategoriesID;
@@ -22,15 +33,10 @@ public class ExpenceCategories {
         return CategoriesName;
     }
 
+
     public void setCategoriesName(String categoriesName) {
         CategoriesName = categoriesName;
     }
 
-    public String getCategoriesIcon() {
-        return CategoriesIcon;
-    }
 
-    public void setCategoriesIcon(String categoriesIcon) {
-        CategoriesIcon = categoriesIcon;
-    }
 }

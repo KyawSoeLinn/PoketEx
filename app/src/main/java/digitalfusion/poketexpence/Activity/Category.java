@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -32,25 +33,16 @@ public class Category extends AppCompatActivity {
     private RecyclerView recyclerView;
     Button btnAdd;
     List<ExpenceCategories> getCatdata;
+    FloatingActionButton fab;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.category_fragment);
 
-        btnAdd = (Button) findViewById(R.id.addcategory);
-        btnAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Category.this, AddCategory.class);
-                String key = null;
-                intent.putExtra("key", key);
-
-            }
-        });
 
 
-        recyclerView = (RecyclerView) findViewById(R.id.catListView);
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_show_category);
         dbHelper = new DataBaseHelper(this);
         getCatdata = dbHelper.getAllCategories();
 
@@ -59,6 +51,22 @@ public class Category extends AppCompatActivity {
         recyclerView.setLayoutManager(catLayoutManger);
         recyclerView.setAdapter(CatlistAdapter);
 
+
+
+
+        fab = (FloatingActionButton) findViewById(R.id.add_category);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               Intent intent = new Intent(Category.this, AddCategory.class);
+                String key = null;
+                intent.putExtra("key", key);
+                startActivity(intent);
+
+
+
+            }
+        });
     }
 
 

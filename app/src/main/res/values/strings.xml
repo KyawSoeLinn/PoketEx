@@ -27,4 +27,7 @@
     <string name="input_datepicker">Date</string>
     <string name="txt_delete">Delete</string>
     <string name="txt_edit">Edit</string>
+    <string name="textViewTransaction">Transaction:</string>
+    <string name="selectCategories">Select  Categories</string>
+    <string name="textViewFilterDate">Date</string>
 </resources>

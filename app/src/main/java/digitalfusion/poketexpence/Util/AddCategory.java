@@ -52,7 +52,7 @@ public class AddCategory extends Activity {
 
 
                     Cattxt = CatEdittxt.getText().toString();
-                    dbhelper.insertCategory((dbhelper.getAllCategories().size() + 1), Cattxt, "grrr");
+                    dbhelper.insertCategory((dbhelper.getAllCategories().size() + 1), Cattxt,R.drawable.ic_img_bus);
 
                     Toast.makeText(AddCategory.this, Cattxt, Toast.LENGTH_SHORT).show();
 
