@@ -17,6 +17,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import digitalfusion.poketexpence.Activity.UpdateRecordActivity;
+import digitalfusion.poketexpence.Business.ShowTransactionByFilter;
 import digitalfusion.poketexpence.Model.ExpenceCategories;
 import digitalfusion.poketexpence.Model.ExpenceTransation;
 import digitalfusion.poketexpence.R;
@@ -82,16 +83,14 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return true;
     }
 
-    public LiveData<List<ExpenceTransation>> getAllData(String transactionFilter) {
-        String getQuery;
+    public LiveData<List<ExpenceTransation>> getAllData(String transactionFilter,String dateFilter) {
+
         final MutableLiveData<List<ExpenceTransation>> allData = new MutableLiveData<>();
-        if(transactionFilter.equals("All"))
-        {
-            getQuery="SELECT * FROM Expence";
-        }
-        else {
-            getQuery = "SELECT  * FROM " + ETTableName + " where  type='" + transactionFilter + "'";
-        }
+
+        ShowTransactionByFilter filter=new ShowTransactionByFilter();
+
+        String getQuery=filter.getAllDataByFilter(transactionFilter,dateFilter);
+
         List detailist = new ArrayList();
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(getQuery, null);
@@ -104,6 +103,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 expenceTransation.setAmount(cursor.getDouble(cursor.getColumnIndex("amount")));
                 expenceTransation.setCategoriesID(cursor.getInt(cursor.getColumnIndex("categoryId")));
                 expenceTransation.setPayee(cursor.getString(cursor.getColumnIndex("payee")));
+                expenceTransation.setCategoriesImg(cursor.getInt(cursor.getColumnIndex("icon")));
                 expenceTransation.setDescription(cursor.getString(cursor.getColumnIndex("description")));
                 expenceTransation.setCreated_at(cursor.getString(cursor.getColumnIndex("created_at")));
 
@@ -123,7 +123,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put(CId, id );
         contentValues.put(CName, name );
-        contentValues.put(CIcon, R.drawable.ic_img_bus);
+        contentValues.put(CIcon, icon);
         db.insert(CTableName, null, contentValues);
         return true;
     }

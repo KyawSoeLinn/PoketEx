@@ -146,7 +146,7 @@ public class AddTransactionActivity extends AppCompatActivity implements com.wdu
             @Override
             public void onClick(View view) {
                 amount = Double.parseDouble(edtamount.getText().toString());
-                CID = 001;
+                CID = 1;
                 txtNote = edtnote.getText().toString();
                 txtPayee = edtpayee.getText().toString();
                 ExpenceTransation expenceTransation = new ExpenceTransation(transactionType, amount, CID, txtPayee, txtNote, txtdatepicker.getText().toString());
@@ -202,7 +202,15 @@ public class AddTransactionActivity extends AppCompatActivity implements com.wdu
     @Override
     public void onDateSet(com.wdullaer.materialdatetimepicker.date.DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
         Integer month = monthOfYear + 1;
-        String date = dayOfMonth + "/" + month + "/" + year;
+        String date = null;
+        if(month < 10)
+        {
+            date = year + "-" + "0"+ month + "-" + dayOfMonth;
+        }
+        else
+        {
+            date = year + "-" +month + "-" + dayOfMonth;
+        }
         txtdatepicker.setText(date);
 
     }
