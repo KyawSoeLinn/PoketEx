@@ -12,7 +12,7 @@ public class ExpenceTransation {
     private Long Id;
     private String Expencetype;
     private Double Amount;
-    private Long CategoriesID;
+    private Integer CategoriesID;
     private String Payee;
     private String Description;
     private String Created_at;
@@ -24,14 +24,21 @@ public class ExpenceTransation {
     }
 
 
-    public ExpenceTransation(String ExpenseType, Double amount,Long CategoriesID, String Payee, String Description, String Created_at)
+
+    public ExpenceTransation(String ExpenseType, Double amount,Integer CategoriesID, String Payee, String Description, String Created_at)
+
     {
         this.Expencetype=ExpenseType;
         this.Amount=amount;
         this.Payee=Payee;
         this.Description=Description;
         this.Created_at=Created_at;
+
+        this.CategoriesID=CategoriesID;
     }
+
+
+
 
     public Long getId() {
         return Id;
@@ -65,11 +72,11 @@ public class ExpenceTransation {
         Expencetype = expencetype;
     }
 
-    public Long getCategoriesID() {
+    public Integer getCategoriesID() {
         return CategoriesID;
     }
 
-    public void setCategoriesID(Long categoriesID) {
+    public void setCategoriesID(Integer categoriesID) {
         CategoriesID = categoriesID;
     }
 

@@ -1,5 +1,7 @@
 package digitalfusion.poketexpence.Fragment;
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -23,16 +25,20 @@ import digitalfusion.poketexpence.Data.DataBaseHelper;
 import digitalfusion.poketexpence.Model.ExpenceTransation;
 import digitalfusion.poketexpence.R;
 import digitalfusion.poketexpence.Util.OnLoadMoreListener;
+import digitalfusion.poketexpence.ViewModel.AddTransactionModel;
 
 public class HomeFragment extends Fragment {
     private FloatingActionButton fab;
     RecyclerView mRecyclerView;
     LinearLayoutManager mLayoutManager;
+
     DataBaseHelper dbHelper;
     AddTransactionAdapter addTransactionAdapter;
     List<ExpenceTransation> transactionList;
-    MaterialSpinner transactionSpinner;
-    String transactionFilter;
+    MaterialSpinner transactionSpinner, dateFilterSpinner;
+    String transactionFilter, dateFilter;
+    AddTransactionModel viewModel;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -48,24 +54,46 @@ public class HomeFragment extends Fragment {
         //you can set the title for your toolbar here for different fragments different titles
         getActivity().setTitle(R.string.home_fragment);
 
-        dbHelper = new DataBaseHelper(getContext());
+
+        viewModel = ViewModelProviders.of(this).get(AddTransactionModel.class);
+
+
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_show_transaction);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
 
+        dateFilterSpinner = (MaterialSpinner) view.findViewById(R.id.transaction_date_spinner);
+        dateFilterSpinner.setItems("Today", "Yesterday", "This Week", "Last Week");
+        dateFilter = "Today";
+
+
         transactionSpinner = (MaterialSpinner) view.findViewById(R.id.transaction_spinner);
         transactionSpinner.setItems("All", "Income", "Expense");
-        transactionFilter="All";
+        transactionFilter = "All";
 
-        loadRecyclerView(transactionFilter);
+        loadRecyclerView(transactionFilter, dateFilter);
+
+        dateFilterSpinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
+                dateFilter = item.toString();
+                loadRecyclerView(transactionFilter, dateFilter);
+
+            }
+        });
+
         transactionSpinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
 
             @Override
             public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
-                transactionFilter=item.toString();
 
-                loadRecyclerView(transactionFilter);
+                transactionFilter = item.toString();
+               /* DataBaseHelper dbHelper = new DataBaseHelper(getActivity());
+                addTransactionAdapter = new AddTransactionAdapter(dbHelper.getAllDataByTransaction(transactionFilter), getContext());
+                mRecyclerView.setAdapter(addTransactionAdapter);*/
+
+                loadRecyclerView(transactionFilter, dateFilter);
 
             }
         });
@@ -114,10 +142,24 @@ public class HomeFragment extends Fragment {
         });*/
     }
 
-    private void loadRecyclerView(String transactionFilter) {
 
-        addTransactionAdapter = new AddTransactionAdapter(dbHelper.getAllData(transactionFilter), getContext());
-        mRecyclerView.setAdapter(addTransactionAdapter);
+    private void loadRecyclerView(String transactionFilter, String dateFilter) {
+
+        viewModel.getAllTransaction(transactionFilter);
+
+        // Update the list when the data changes
+        viewModel.getTransactionListObservable().observe(this, new Observer<List<ExpenceTransation>>() {
+            @Override
+            public void onChanged(@Nullable List<ExpenceTransation> expenceTransations) {
+                if (expenceTransations != null) {
+                    //…
+                    addTransactionAdapter = new AddTransactionAdapter(expenceTransations, getContext());
+                    mRecyclerView.setAdapter(addTransactionAdapter);
+                }
+            }
+        });
+
+
     }
 
 }

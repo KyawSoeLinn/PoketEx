@@ -1,5 +1,9 @@
 package digitalfusion.poketexpence.Activity;
 
+
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
+
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -20,6 +24,9 @@ import digitalfusion.poketexpence.Data.DataBaseHelper;
 import digitalfusion.poketexpence.Model.ExpenceTransation;
 import digitalfusion.poketexpence.R;
 
+import digitalfusion.poketexpence.ViewModel.AddTransactionModel;
+
+
 public class UpdateRecordActivity extends AppCompatActivity implements com.wdullaer.materialdatetimepicker.date.DatePickerDialog.OnDateSetListener {
      DataBaseHelper DBHelper;
      ToggleSwitch toggleSwitch;
@@ -30,8 +37,10 @@ public class UpdateRecordActivity extends AppCompatActivity implements com.wdull
 
      private long receiveRecordId;
 
+    AddTransactionModel viewModel ;
     Double amount =null ;
-    Long CID ;
+    Integer CID ;
+
     String txtPayee,txtNote;
     Calendar calendar ;
     com.wdullaer.materialdatetimepicker.date.DatePickerDialog datePickerDialog ;
@@ -70,14 +79,28 @@ public class UpdateRecordActivity extends AppCompatActivity implements com.wdull
         {
             e.printStackTrace();
         }
-        //transaction data before update
-        ExpenceTransation transaction=DBHelper.getAllDataById(receiveRecordId);
 
-        edtamount.setText(transaction.getAmount().toString());
-        txtdatepicker.setText(transaction.getCreated_at().toString());
-        edtpayee.setText(transaction.getPayee().toString());
-        edtnote.setText(transaction.getDescription().toString());
-        transactionType=transaction.getExpencetype().toString();
+
+
+        viewModel = ViewModelProviders.of(this).get(AddTransactionModel.class);
+        //transaction data before update
+        viewModel.getTransactionById(receiveRecordId);
+        viewModel.getTransactionListByIdObservable().observe(this, new Observer<ExpenceTransation>() {
+            @Override
+            public void onChanged(ExpenceTransation transaction) {
+                if (transaction != null) {
+                    edtamount.setText(transaction.getAmount().toString());
+                    txtdatepicker.setText(transaction.getCreated_at().toString());
+                    edtpayee.setText(transaction.getPayee().toString());
+                    edtnote.setText(transaction.getDescription().toString());
+                    transactionType=transaction.getExpencetype().toString();
+
+                }
+            }
+
+        });
+
+
         if(transactionType.equals("Income"))
         {
             toggleSwitch.setCheckedTogglePosition(0);
@@ -131,11 +154,14 @@ public class UpdateRecordActivity extends AppCompatActivity implements com.wdull
             @Override
             public void onClick(View view) {
                 amount =Double.parseDouble(edtamount.getText().toString().trim());
-                CID = Long.valueOf(0);
+
+                CID = 001;
                 txtNote=edtnote.getText().toString().trim();
                 txtPayee=edtpayee.getText().toString().trim();
                 ExpenceTransation updateTransaction= new ExpenceTransation(transactionType,amount,CID,txtPayee,txtNote,txtdatepicker.getText().toString());
-                DBHelper.updateTransactionRecord(receiveRecordId,UpdateRecordActivity.this,updateTransaction);
+
+                viewModel.updateTransaction(receiveRecordId,updateTransaction);
+
 
                 String addTransaction = transactionType + " "+ amount +" "+ CID +" " +txtNote+" "+txtPayee;
                 Toast.makeText(UpdateRecordActivity.this,"Transaction : "+ addTransaction ,Toast.LENGTH_LONG).show();

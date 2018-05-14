@@ -14,9 +14,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
-import digitalfusion.poketexpence.Activity.Category;
 import digitalfusion.poketexpence.Data.DataBaseHelper;
 import digitalfusion.poketexpence.Model.ExpenceCategories;
 import digitalfusion.poketexpence.R;
@@ -69,11 +70,16 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
     public void onBindViewHolder(CategoriesViewHolder holder, final int position) {
         final ExpenceCategories expenceCategories = expenceCategoriesList.get(position);
         holder.name.setText(expenceCategories.getCategoriesName());
-        /*holder.icon.setImageURI(expenceCategories.getCategoriesIcon());*/
+        Integer icon= R.drawable.ic_img_bus;
+        Integer secIcon=expenceCategories.getCategoriesIcon();
+        Picasso.with(cContext)
+                .load(expenceCategories.getCategoriesIcon())  //name of the image to load.
+                .into(holder.icon);
+
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dbhelper = new DataBaseHelper(cContext);
+                dbhelper = new DataBaseHelper();
                 dbhelper.deleteCategory(expenceCategories.getCategoriesID(), cContext);
                 expenceCategoriesList.remove(position);
                 notifyDataSetChanged();

@@ -1,6 +1,8 @@
 package digitalfusion.poketexpence.Data;
 
 
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.MutableLiveData;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -9,12 +11,15 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.view.View;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import digitalfusion.poketexpence.Activity.UpdateRecordActivity;
 import digitalfusion.poketexpence.Model.ExpenceCategories;
 import digitalfusion.poketexpence.Model.ExpenceTransation;
+import digitalfusion.poketexpence.R;
 
 /**
  * Created by MD003 on 5/7/18.
@@ -61,30 +66,35 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private static final String CREATE_TABLE_categories = "CREATE TABLE "
             + CTableName + "(" + CId + " INTEGER PRIMARY KEY,"
             + CName + " TEXT,"
-            + CIcon + " TEXT" + ")";
+            + CIcon + " INTEGER" + ")";
 
-    public boolean insertcontat ( String type, Double amount, Integer categoriesId, String payee, String description, String date){
+    public boolean insertcontat ( ExpenceTransation expenceTransation){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         //contentValues.put(ETId, id );
-        contentValues.put(ETtype, type );
-        contentValues.put(ETamount, amount);
-        contentValues.put(ETcategoriesId, categoriesId);
-        contentValues.put(ETpayee, payee);
-        contentValues.put(ETdescription, description);
-        contentValues.put(ETcreated_at, date);
+        contentValues.put(ETtype, expenceTransation.getExpencetype() );
+        contentValues.put(ETamount, expenceTransation.getAmount());
+        contentValues.put(ETcategoriesId, expenceTransation.getCategoriesID());
+        contentValues.put(ETpayee, expenceTransation.getPayee());
+        contentValues.put(ETdescription, expenceTransation.getDescription());
+        contentValues.put(ETcreated_at, expenceTransation.getCreated_at());
         db.insert(ETTableName, null, contentValues);
         return true;
     }
 
-    public List getAllData(String transactionFilter) {
+
+    public LiveData<List<ExpenceTransation>> getAllData(String transactionFilter) {
         String getQuery;
+        final MutableLiveData<List<ExpenceTransation>> allData = new MutableLiveData<>();
+
         if(transactionFilter.equals("All"))
         {
             getQuery="SELECT * FROM Expence";
         }
-        else
-        { getQuery = "SELECT  * FROM " + ETTableName + " where  type='"+ transactionFilter+"'";
+
+        else {
+            getQuery = "SELECT  * FROM " + ETTableName + " where  type='" + transactionFilter + "'";
+
         }
         List detailist = new ArrayList();
         SQLiteDatabase db = this.getReadableDatabase();
@@ -96,28 +106,28 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 expenceTransation.setId(cursor.getLong(cursor.getColumnIndex("id")));
                 expenceTransation.setExpencetype(cursor.getString(cursor.getColumnIndex("type")));
                 expenceTransation.setAmount(cursor.getDouble(cursor.getColumnIndex("amount")));
-                expenceTransation.setCategoriesID(cursor.getLong(cursor.getColumnIndex("categoryId")));
+                expenceTransation.setCategoriesID(cursor.getInt(cursor.getColumnIndex("categoryId")));
                 expenceTransation.setPayee(cursor.getString(cursor.getColumnIndex("payee")));
                 expenceTransation.setDescription(cursor.getString(cursor.getColumnIndex("description")));
                 expenceTransation.setCreated_at(cursor.getString(cursor.getColumnIndex("created_at")));
 
-
                 detailist.add(expenceTransation);
+                allData.setValue(detailist);
             } while (cursor.moveToNext());
         }
         db.close();
 
-        return detailist;
+        return allData;
     }
 
     //Category CRUD
 
-    public boolean insertCategory (Integer id, String name, String icon){
+    public boolean insertCategory (Integer id, String name, Integer icon){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(CId, id );
         contentValues.put(CName, name );
-        contentValues.put(CIcon, icon);
+        contentValues.put(CIcon, R.drawable.ic_img_bus);
         db.insert(CTableName, null, contentValues);
         return true;
     }
@@ -150,7 +160,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 ExpenceCategories expenceCategories = new ExpenceCategories();
                 expenceCategories.setCategoriesID(cursor.getString(cursor.getColumnIndex("id")));
                 expenceCategories.setCategoriesName(cursor.getString(cursor.getColumnIndex(CName)));
-                expenceCategories.setCategoriesIcon(cursor.getString(cursor.getColumnIndex(CIcon)));
+                expenceCategories.setCategoriesIcon(cursor.getInt(cursor.getColumnIndex(CIcon)));
 
 
                 CategoryList.add(expenceCategories);
@@ -194,9 +204,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         Toast.makeText(mcontext, "Deleted Successfully", Toast.LENGTH_SHORT).show();
     }
 
-    public ExpenceTransation getAllDataById(long receivedRecordId) {
+
+    public LiveData<ExpenceTransation> getAllDataById(long receivedRecordId) {
 
         SQLiteDatabase db = this.getWritableDatabase();
+        final MutableLiveData<ExpenceTransation> allDataById = new MutableLiveData<>();
         String query = "SELECT  * FROM " + ETTableName + " WHERE id="+ receivedRecordId;
         Cursor cursor = db.rawQuery(query, null);
         ExpenceTransation expenceTransation = new ExpenceTransation();
@@ -207,20 +219,63 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             expenceTransation.setId(cursor.getLong(cursor.getColumnIndex("id")));
             expenceTransation.setExpencetype(cursor.getString(cursor.getColumnIndex("type")));
             expenceTransation.setAmount(cursor.getDouble(cursor.getColumnIndex("amount")));
-            expenceTransation.setCategoriesID(cursor.getLong(cursor.getColumnIndex("categoryId")));
+
+            expenceTransation.setCategoriesID(cursor.getInt(cursor.getColumnIndex("categoryId")));
             expenceTransation.setPayee(cursor.getString(cursor.getColumnIndex("payee")));
             expenceTransation.setDescription(cursor.getString(cursor.getColumnIndex("description")));
             expenceTransation.setCreated_at(cursor.getString(cursor.getColumnIndex("created_at")));
+
+            allDataById.setValue(expenceTransation);
         }
-        return expenceTransation;
+
+        return allDataById;
+
 
     }
 
 
-    public void updateTransactionRecord(long receiveRecordId, UpdateRecordActivity updateRecordActivity, ExpenceTransation updateTransaction) {
+
+    public void updateTransactionRecord(long receiveRecordId, ExpenceTransation updateTransaction) {
+
         SQLiteDatabase db = this.getWritableDatabase();
         //you can use the constants above instead of typing the column names
         db.execSQL("UPDATE  "+ETTableName+" SET type ='"+ updateTransaction.getExpencetype() + "', amount ='" + updateTransaction.getAmount()+ "', categoryId ='"+ updateTransaction.getCategoriesID() + "', payee ='"+ updateTransaction.getPayee() + "', description ='"+ updateTransaction.getDescription() + "', created_at ='"+ updateTransaction.getCreated_at() +"'  WHERE id='" + receiveRecordId + "'");
 
     }
+
+
+
+    public List getAllDataByTransaction(String transactionFilter) {
+        String getQuery;
+        if(transactionFilter.equals("All"))
+        {
+            getQuery="SELECT * FROM Expence";
+        }
+        else
+        { getQuery = "SELECT  * FROM " + ETTableName + " where  type='"+ transactionFilter+"'";
+        }
+        List detailist = new ArrayList();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(getQuery, null);
+
+        if (cursor.moveToFirst()) {
+            do{
+                ExpenceTransation expenceTransation = new ExpenceTransation();
+                expenceTransation.setId(cursor.getLong(cursor.getColumnIndex("id")));
+                expenceTransation.setExpencetype(cursor.getString(cursor.getColumnIndex("type")));
+                expenceTransation.setAmount(cursor.getDouble(cursor.getColumnIndex("amount")));
+                expenceTransation.setCategoriesID(cursor.getInt(cursor.getColumnIndex("categoryId")));
+                expenceTransation.setPayee(cursor.getString(cursor.getColumnIndex("payee")));
+                expenceTransation.setDescription(cursor.getString(cursor.getColumnIndex("description")));
+                expenceTransation.setCreated_at(cursor.getString(cursor.getColumnIndex("created_at")));
+
+
+                detailist.add(expenceTransation);
+            } while (cursor.moveToNext());
+        }
+        db.close();
+
+        return detailist;
+    }
+
 }

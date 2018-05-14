@@ -2,15 +2,23 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="5dp"
    >
       <LinearLayout
           android:id="@+id/filter_layout"
+<<<<<<< HEAD
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:orientation="horizontal">
+=======
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal"
+          android:layout_margin="2dp">
+>>>>>>> khinthuzin
 
             <TextView
-                android:id="@+id/textViewDate"
+                android:id="@+id/textViewTransaction"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -29,8 +37,41 @@
 
       </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/filter_day_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="2dp"
+        android:layout_toRightOf="@+id/filter_layout">
 
+        <TextView
+            android:id="@+id/textViewDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="10dp"
+            android:text="@string/textViewFilterDate"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+
+        <com.jaredrummler.materialspinner.MaterialSpinner
+            android:id="@+id/transaction_date_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            />
+
+    </LinearLayout>
+
+<<<<<<< HEAD
       <android.support.v7.widget.RecyclerView
+=======
+
+
+    <android.support.v7.widget.RecyclerView
+>>>>>>> khinthuzin
           android:id="@+id/recycler_show_transaction"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"

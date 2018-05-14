@@ -32,6 +32,7 @@
             <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".Activity.MainActivity"></meta-data>
         </activity>
 
+
         <activity android:name=".Activity.Category">
             <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".Activity.MainActivity"></meta-data>
         </activity>
@@ -43,6 +44,10 @@
         <activity android:name=".Util.SelectCategory">
             <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".Activity.AddTransactionActivity"></meta-data>
         </activity>
+
+
+
+
     </application>
 
 </manifest>
