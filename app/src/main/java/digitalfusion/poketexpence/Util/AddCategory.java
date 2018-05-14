@@ -27,7 +27,7 @@ public class AddCategory extends Activity {
     private RecyclerView recyclerView;
     DataBaseHelper dbhelper;
     String Cattxt;
-    public Activity activity;
+
 
 
 
@@ -42,7 +42,7 @@ public class AddCategory extends Activity {
         iconview = (ImageView) findViewById(R.id.catimgview);
         recyclerView = (RecyclerView) findViewById(R.id.catIconRV);
 
-        dbhelper = new DataBaseHelper(activity);
+        dbhelper = new DataBaseHelper(this);
 
         final Bundle bundle = getIntent().getExtras();
 
@@ -68,7 +68,8 @@ public class AddCategory extends Activity {
 
 
                     Cattxt = CatEdittxt.getText().toString();
-                    Integer idddd = dbhelper.getAllCategories().size() + 1;
+                    Integer idddd = 0;
+                    idddd= dbhelper.getAllCategories().size() + 1;
                     dbhelper.insertCategory(idddd, Cattxt, "grrr");
 
                     Toast.makeText(AddCategory.this, Cattxt, Toast.LENGTH_SHORT).show();
