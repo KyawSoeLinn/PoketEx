@@ -144,11 +144,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     public Integer gettodayexpence (String InEx) {
         Integer amount;
-        String getquery = "SELECT SUM(amount) FROM Expence WHERE type = '"+InEx+ "'";
+        String getquery = "SELECT SUM(amount) FROM Expence WHERE type = '"+InEx+ "' AND created_at = date ('now')";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = db.rawQuery(getquery, null);
-        amount = c.getColumnIndex(ETamount);
-
+        c.moveToFirst();
+        amount = c.getInt(0);
+        c.close();
         return amount;
     }
 

@@ -23,8 +23,8 @@ public class QuickSummaryFragment extends Fragment {
 
     AddTransactionModel viewmodel;
     DataBaseHelper dataBaseHelper;
-    Integer expence = 0;
-    Integer income = 0;
+    Integer expence ;
+    Integer income ;
 
     TextView expencetxtview;
     TextView incometxtview;
