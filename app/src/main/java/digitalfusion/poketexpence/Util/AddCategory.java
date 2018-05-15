@@ -128,10 +128,11 @@ public class AddCategory extends Activity {
 
         int[] icons = new int[]{
                 R.drawable.ic_shopping_cart,
-                R.drawable.ic_menu_gallery,
-                R.drawable.ic_menu_manage,
-                R.drawable.ic_menu_send,
-                R.drawable.ic_menu_share,
+                R.drawable.ic_cloth,
+                R.drawable.ic_food,
+                R.drawable.ic_fun,
+                R.drawable.ic_gift,
+                R.drawable.ic_house,
                 R.drawable.ic_img_bus};
 
         IconList icon = new IconList(icons[0]);
@@ -145,6 +146,8 @@ public class AddCategory extends Activity {
         icon = new IconList(icons[4]);
         iconlist.add(icon);
         icon = new IconList(icons[5]);
+        iconlist.add(icon);
+        icon = new IconList(icons[6]);
         iconlist.add(icon);
 
         iconadapter.notifyDataSetChanged();

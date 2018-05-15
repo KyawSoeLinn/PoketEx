@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,10 +31,12 @@ public class CategorySelectAdapter extends RecyclerView.Adapter<CategorySelectAd
     public class CategorySelectViewHolder extends RecyclerView.ViewHolder{
 
         public TextView selectname;
+        public ImageView selecticon;
 
         public CategorySelectViewHolder (View view){
             super(view);
             selectname = view.findViewById(R.id.catSelecttxtview);
+            selecticon = view.findViewById(R.id.imgCatSelect);
         }
 
     }
@@ -58,6 +61,7 @@ public class CategorySelectAdapter extends RecyclerView.Adapter<CategorySelectAd
     public void onBindViewHolder(CategorySelectAdapter.CategorySelectViewHolder holder, int position) {
         final ExpenceCategories expenceCategories1 = expenceCategories.get(position);
         holder.selectname.setText(expenceCategories1.getCategoriesName());
+        holder.selecticon.setImageResource(expenceCategories1.getCategoriesIcon());
         holder.selectname.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
