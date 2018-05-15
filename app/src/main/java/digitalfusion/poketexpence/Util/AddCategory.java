@@ -29,6 +29,8 @@ import digitalfusion.poketexpence.Data.DataBaseHelper;
 import digitalfusion.poketexpence.Model.IconList;
 import digitalfusion.poketexpence.R;
 
+import static digitalfusion.poketexpence.Adapter.CategoryIconSelectAdapter.iconID;
+
 public class AddCategory extends Activity {
 
     EditText CatEdittxt;
@@ -39,6 +41,7 @@ public class AddCategory extends Activity {
     String Cattxt;
     private CategoryIconSelectAdapter iconadapter;
     private List<IconList> iconlist;
+
 
 
 
@@ -80,7 +83,7 @@ public class AddCategory extends Activity {
                     int id;
                     id = Integer.parseInt(bundle.getString("key"));
                     Cattxt = CatEdittxt.getText().toString();
-                    dbhelper.updateCategory(id, Cattxt, "grr");
+                    dbhelper.updateCategory(id, Cattxt, iconID);
 
                     Toast.makeText(AddCategory.this, Cattxt + "edited", Toast.LENGTH_SHORT).show();
 
@@ -97,7 +100,7 @@ public class AddCategory extends Activity {
                     idddd= dbhelper.getAllCategories().size() + 1;
 
 
-                    dbhelper.insertCategory((dbhelper.getAllCategories().size() + 1), Cattxt,R.drawable.ic_img_bus);
+                    dbhelper.insertCategory((dbhelper.getAllCategories().size() + 1), Cattxt,iconID);
 
 
                     Toast.makeText(AddCategory.this, Cattxt, Toast.LENGTH_SHORT).show();

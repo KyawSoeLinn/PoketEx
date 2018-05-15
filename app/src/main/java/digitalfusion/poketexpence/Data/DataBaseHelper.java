@@ -134,7 +134,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO Categories (id, name, icon) VALUES ("+getAllCategories().size()+" +1, "+name +" , "+icon+")");
     }*/
 
-    public boolean updateCategory (Integer id, String name, String icon){
+    public boolean updateCategory (Integer id, String name, int icon){
         SQLiteDatabase db = this.getWritableDatabase();
 
 

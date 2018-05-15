@@ -22,6 +22,7 @@ public class CategoryIconSelectAdapter extends RecyclerView.Adapter<CategoryIcon
 
     public List<IconList> IconList;
     private Context iContext;
+    public static int iconID;
 
 
 
@@ -56,13 +57,19 @@ public class CategoryIconSelectAdapter extends RecyclerView.Adapter<CategoryIcon
                 .load(iconlist.getIcon())
                 .into(holder.selectIcon);*/
 
-        Glide.with(iContext).load(iconlist.getIcon()).into(holder.selectIcon);
+
+
+        holder.selectIcon.setImageResource(iconlist.getIcon());
 
         holder.selectIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                iconID  = iconlist.getIcon();
                 Toast.makeText(iContext, "??" + iconlist.getIcon()  , Toast.LENGTH_SHORT).show();
+
+
+
+
             }
         });
 

@@ -93,6 +93,7 @@ public class AddTransactionAdapter extends RecyclerView.Adapter<AddTransactionAd
         holder.txtDate.setText(transaction.getCreated_at().toString());
         holder.txtPayee.setText(transaction.getPayee().toString());
         transactionType = transaction.getExpencetype().toString();
+
         holder.txtTransactionType.setText(transactionType);
         if (transactionType.equals("Income")) {
           holder.txtTransactionType.setTextColor(Color.GREEN);
