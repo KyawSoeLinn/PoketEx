@@ -1,20 +1,15 @@
 package digitalfusion.poketexpence.Fragment;
 
+import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import digitalfusion.poketexpence.R;
 
-/**
- * Created by MD003 on 5/7/18.
- */
-
-public class QuickSummaryFragment extends Fragment {
-
+public class AddCategoriesFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -29,14 +24,5 @@ public class QuickSummaryFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         //you can set the title for your toolbar here for different fragments different titles
         getActivity().setTitle(R.string.quicksummary_fragment);
-
-        displaySelectedScreen(R.id.home_fragment);
-    }
-
-    private void displaySelectedScreen(int home_fragment) {
-
-
-
-
     }
 }

@@ -136,13 +136,13 @@ public class AddTransactionActivity extends AppCompatActivity implements com.wdu
             }
         });
 
-        btncatAdd.setOnClickListener(new View.OnClickListener() {
+      /*  btncatAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AddTransactionActivity.this, AddCategory.class);
                 startActivity(intent);
             }
-        });
+        });*/
 
 
         txtdatepicker.setOnClickListener(new View.OnClickListener() {

@@ -69,7 +69,6 @@ public class CategorySelectAdapter extends RecyclerView.Adapter<CategorySelectAd
                 CatId = Integer.valueOf(expenceCategories1.getCategoriesID());
 
                 Intent intent = new Intent(sContext, AddTransactionActivity.class);
-
                 intent.putExtra("key", CatName);
                 sContext.startActivity(intent);
                 Toast.makeText(sContext, CatName +"edit edit" + CatId, Toast.LENGTH_SHORT).show();

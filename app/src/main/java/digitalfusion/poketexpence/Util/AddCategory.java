@@ -2,6 +2,7 @@ package digitalfusion.poketexpence.Util;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
@@ -15,6 +16,7 @@ import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -23,15 +25,17 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import digitalfusion.poketexpence.Activity.Category;
+
+import digitalfusion.poketexpence.Activity.MainActivity;
 import digitalfusion.poketexpence.Adapter.CategoryIconSelectAdapter;
 import digitalfusion.poketexpence.Data.DataBaseHelper;
 import digitalfusion.poketexpence.Model.IconList;
 import digitalfusion.poketexpence.R;
+import digitalfusion.poketexpence.ViewModel.AddCategoriesModel;
+import digitalfusion.poketexpence.ViewModel.AddTransactionModel;
 
-import static digitalfusion.poketexpence.Adapter.CategoryIconSelectAdapter.iconID;
 
-public class AddCategory extends Activity {
+public class AddCategory extends AppCompatActivity {
 
     EditText CatEdittxt;
     Button btncatAdd, btncatCancel;
@@ -41,8 +45,8 @@ public class AddCategory extends Activity {
     String Cattxt;
     private CategoryIconSelectAdapter iconadapter;
     private List<IconList> iconlist;
-
-
+    private  Integer iconID;
+     AddCategoriesModel viewModel;
 
 
 
@@ -58,12 +62,25 @@ public class AddCategory extends Activity {
         recyclerView = (RecyclerView) findViewById(R.id.catIconRV);
 
         iconlist = new ArrayList<>();
-        iconadapter = new CategoryIconSelectAdapter(iconlist, this);
+
+        viewModel = ViewModelProviders.of(AddCategory.this).get(AddCategoriesModel.class);
 
         RecyclerView.LayoutManager iconLayoutmanger = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(iconLayoutmanger);
+
+       RecyclerViewClickListener listerner= new RecyclerViewClickListener() {
+           @Override
+           public void onClick(View view, int adapterPosition) {
+               iconview.setImageResource(adapterPosition);
+               iconID=adapterPosition;
+
+           }
+       };
         recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
+        iconadapter = new CategoryIconSelectAdapter(iconlist, listerner,this);
         recyclerView.setAdapter(iconadapter);
+
+
 
         prepareIcon();
 
@@ -74,7 +91,7 @@ public class AddCategory extends Activity {
 
 
 
-        btncatAdd.setOnClickListener(new View.OnClickListener() {
+        btncatAdd.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -87,7 +104,7 @@ public class AddCategory extends Activity {
 
                     Toast.makeText(AddCategory.this, Cattxt + "edited", Toast.LENGTH_SHORT).show();
 
-                    Intent intent = new Intent(AddCategory.this, Category.class);
+                    Intent intent = new Intent(AddCategory.this, MainActivity.class);
                     startActivity(intent);
 
                 }
@@ -96,25 +113,19 @@ public class AddCategory extends Activity {
 
                     Cattxt = CatEdittxt.getText().toString();
 
-                    Integer idddd = 0;
-                    idddd= dbhelper.getAllCategories().size() + 1;
-
-
-                    dbhelper.insertCategory((dbhelper.getAllCategories().size() + 1), Cattxt,iconID);
-
-
+                    viewModel.insertCategory(Cattxt,iconID);
+                    //dbhelper.insertCategory(Cattxt,iconID);
                     Toast.makeText(AddCategory.this, Cattxt, Toast.LENGTH_SHORT).show();
-
-                    Intent intent = new Intent(AddCategory.this, Category.class);
+                    Intent intent = new Intent(AddCategory.this, MainActivity.class);
                     startActivity(intent);
                 }
             }
         });
 
-        btncatCancel.setOnClickListener(new View.OnClickListener() {
+        btncatCancel.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AddCategory.this, Category.class);
+                Intent intent = new Intent(AddCategory.this, MainActivity.class);
                 startActivity(intent);
             }
         });

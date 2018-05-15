@@ -17,16 +17,17 @@ import digitalfusion.poketexpence.Model.ExpenceCategories;
 import digitalfusion.poketexpence.Model.IconList;
 import digitalfusion.poketexpence.R;
 import digitalfusion.poketexpence.Util.AddCategory;
+import digitalfusion.poketexpence.Util.RecyclerViewClickListener;
 
 public class CategoryIconSelectAdapter extends RecyclerView.Adapter<CategoryIconSelectAdapter.CategoriesIconViewHolder>{
 
     public List<IconList> IconList;
     private Context iContext;
-    public static int iconID;
 
 
+ private RecyclerViewClickListener mListener;
 
-    public class CategoriesIconViewHolder extends RecyclerView.ViewHolder{
+    public class CategoriesIconViewHolder extends RecyclerView.ViewHolder {
 
         public ImageView selectIcon;
 
@@ -34,11 +35,14 @@ public class CategoryIconSelectAdapter extends RecyclerView.Adapter<CategoryIcon
             super(itemView);
             selectIcon = itemView.findViewById(R.id.catIconSingle);
         }
+
+
     }
 
-    public CategoryIconSelectAdapter (List<IconList> IconList, Context context){
+    public CategoryIconSelectAdapter(List<IconList> IconList, RecyclerViewClickListener listener, Context context){
         this.IconList = IconList;
         this.iContext = context;
+        this.mListener=listener;
     }
 
     @Override
@@ -64,8 +68,8 @@ public class CategoryIconSelectAdapter extends RecyclerView.Adapter<CategoryIcon
         holder.selectIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                iconID  = iconlist.getIcon();
-                Toast.makeText(iContext, "??" + iconlist.getIcon()  , Toast.LENGTH_SHORT).show();
+                mListener.onClick(v,iconlist.getIcon());
+                //Toast.makeText(iContext, "??" + iconlist.getIcon()  , Toast.LENGTH_SHORT).show();
 
 
 

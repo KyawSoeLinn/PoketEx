@@ -33,12 +33,13 @@
         </activity>
 
 
-        <activity android:name=".Activity.Category">
+       <!-- <activity android:name=".Activity.Category">
             <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".Activity.MainActivity"></meta-data>
-        </activity>
+        </activity>-->
 
-        <activity android:name=".Util.AddCategory">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".Activity.Category"></meta-data>
+        <activity android:name=".Util.AddCategory"
+           >
+
         </activity>
 
         <activity android:name=".Util.SelectCategory">

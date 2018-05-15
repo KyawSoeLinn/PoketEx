@@ -21,12 +21,12 @@ import digitalfusion.poketexpence.R;
 
 public class SelectCategory extends Activity{
 
-    private RecyclerView recyclerView;
+ /*   private RecyclerView recyclerView;
 
     DataBaseHelper dataBaseHelper;
     List<ExpenceCategories> getCatdata;
     private CategorySelectAdapter CatSelectAdapter;
-    /*Button yes;*/
+    *//*Button yes;*//*
 
 
 
@@ -36,7 +36,7 @@ public class SelectCategory extends Activity{
         setContentView(R.layout.select_category);
 
         recyclerView = (RecyclerView) findViewById(R.id.selectCatRV);
-        /*yes = (Button) findViewById(R.id.selectOK);*/
+        *//*yes = (Button) findViewById(R.id.selectOK);*//*
 
         dataBaseHelper = new DataBaseHelper(this);
 
@@ -47,16 +47,16 @@ public class SelectCategory extends Activity{
         recyclerView.setLayoutManager(catLayoutManger);
         recyclerView.setAdapter(CatSelectAdapter);
 
-        /*yes.setOnClickListener(new View.OnClickListener() {
+        *//*yes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
             }
-        });*/
+        });*//*
 
 
-    }
+    }*/
 
 
 }
