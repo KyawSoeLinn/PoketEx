@@ -8,19 +8,14 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.view.View;
 import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
-import digitalfusion.poketexpence.Activity.UpdateRecordActivity;
 import digitalfusion.poketexpence.Business.ShowTransactionByFilter;
 import digitalfusion.poketexpence.Model.ExpenceCategories;
 import digitalfusion.poketexpence.Model.ExpenceTransation;
-import digitalfusion.poketexpence.R;
 
 /**
  * Created by MD003 on 5/7/18.
@@ -104,12 +99,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 expenceTransation.setAmount(cursor.getDouble(cursor.getColumnIndex("amount")));
                 expenceTransation.setCategoriesID(cursor.getInt(cursor.getColumnIndex("categoryId")));
                 expenceTransation.setPayee(cursor.getString(cursor.getColumnIndex("payee")));
-                expenceTransation.setCategoriesImg(cursor.getInt(cursor.getColumnIndex("icon")));
+                //expenceTransation.setCategoriesImg(cursor.getInt(cursor.getColumnIndex("icon")));
                 expenceTransation.setDescription(cursor.getString(cursor.getColumnIndex("description")));
                 expenceTransation.setCreated_at(cursor.getString(cursor.getColumnIndex("created_at")));
 
                 detailist.add(expenceTransation);
                 allData.setValue(detailist);
+
             } while (cursor.moveToNext());
         }
         db.close();
@@ -144,6 +140,19 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         contentValues.put(CIcon, icon);
         db.update(CTableName, contentValues, "id ="+id , null);
         return true;
+    }
+
+    public Integer gettodayexpence (String InEx) {
+
+        Integer amount;
+        String getquery = "SELECT SUM(amount) FROM Expence WHERE type = '"+InEx+ "'";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(getquery, null);
+        amount = Integer.parseInt(String.valueOf(c)) ;
+
+        return amount;
+
     }
 
     public List getAllCategories() {
@@ -239,6 +248,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL("UPDATE  "+ETTableName+" SET type ='"+ updateTransaction.getExpencetype() + "', amount ='" + updateTransaction.getAmount()+ "', categoryId ='"+ updateTransaction.getCategoriesID() + "', payee ='"+ updateTransaction.getPayee() + "', description ='"+ updateTransaction.getDescription() + "', created_at ='"+ updateTransaction.getCreated_at() +"'  WHERE id='" + receiveRecordId + "'");
 
     }
+
 
 
 

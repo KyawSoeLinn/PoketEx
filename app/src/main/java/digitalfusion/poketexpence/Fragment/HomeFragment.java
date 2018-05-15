@@ -104,8 +104,36 @@ public class HomeFragment extends Fragment {
             public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
 
                 transactionFilter = item.toString();
-                loadRecyclerView(transactionFilter,dateFilter);
+                viewModel.getTransactionByType(transactionFilter,dateFilter);
+                //loadRecyclerView(transactionFilter,dateFilter);
+                // Update the list when the data changes
 
+                if(viewModel.getTransactionListObservable().getValue() == null)
+                {
+                    addTransactionAdapter = new AddTransactionAdapter(transactionList, getContext());
+                    mRecyclerView.setAdapter(addTransactionAdapter);
+                    addTransactionAdapter.notifyDataSetChanged();
+                }
+                viewModel.getTransactionListObservable().observe(getActivity(), new Observer<List<ExpenceTransation>>() {
+                    @Override
+                    public void onChanged(@Nullable List<ExpenceTransation> expenceTransations) {
+                        if(expenceTransations == null || expenceTransations.size() ==0)
+                        {
+
+                        }
+                        else
+                        {
+                            addTransactionAdapter = new AddTransactionAdapter(expenceTransations, getContext());
+                            mRecyclerView.setAdapter(addTransactionAdapter);
+                            addTransactionAdapter.notifyDataSetChanged();
+
+
+                        }
+
+
+
+                    }
+                });
 
             }
         });
