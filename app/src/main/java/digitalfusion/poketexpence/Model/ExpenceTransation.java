@@ -34,15 +34,19 @@ public class ExpenceTransation {
     }
 
 
+
     public ExpenceTransation(String ExpenseType, Double amount,Integer CategoriesID, String Payee, String Description, String Created_at)
+
     {
         this.Expencetype=ExpenseType;
         this.Amount=amount;
         this.Payee=Payee;
         this.Description=Description;
         this.Created_at=Created_at;
+
         this.CategoriesID=CategoriesID;
     }
+
 
 
 

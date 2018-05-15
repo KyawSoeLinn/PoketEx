@@ -91,6 +91,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         String getQuery=filter.getAllDataByFilter(transactionFilter,dateFilter);
 
+
         List detailist = new ArrayList();
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(getQuery, null);
@@ -134,7 +135,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO Categories (id, name, icon) VALUES ("+getAllCategories().size()+" +1, "+name +" , "+icon+")");
     }*/
 
-    public boolean updateCategory (Integer id, String name, String icon){
+    public boolean updateCategory (Integer id, String name, int icon){
         SQLiteDatabase db = this.getWritableDatabase();
 
 
@@ -201,6 +202,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         Toast.makeText(mcontext, "Deleted Successfully", Toast.LENGTH_SHORT).show();
     }
 
+
     public LiveData<ExpenceTransation> getAllDataById(long receivedRecordId) {
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -208,12 +210,14 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         String query = "SELECT  * FROM " + ETTableName + " WHERE id="+ receivedRecordId;
         Cursor cursor = db.rawQuery(query, null);
         ExpenceTransation expenceTransation = new ExpenceTransation();
+
         if(cursor.getCount() > 0) {
             cursor.moveToFirst();
 
             expenceTransation.setId(cursor.getLong(cursor.getColumnIndex("id")));
             expenceTransation.setExpencetype(cursor.getString(cursor.getColumnIndex("type")));
             expenceTransation.setAmount(cursor.getDouble(cursor.getColumnIndex("amount")));
+
             expenceTransation.setCategoriesID(cursor.getInt(cursor.getColumnIndex("categoryId")));
             expenceTransation.setPayee(cursor.getString(cursor.getColumnIndex("payee")));
             expenceTransation.setDescription(cursor.getString(cursor.getColumnIndex("description")));
@@ -224,10 +228,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         return allDataById;
 
+
     }
 
 
+
     public void updateTransactionRecord(long receiveRecordId, ExpenceTransation updateTransaction) {
+
         SQLiteDatabase db = this.getWritableDatabase();
         //you can use the constants above instead of typing the column names
         db.execSQL("UPDATE  "+ETTableName+" SET type ='"+ updateTransaction.getExpencetype() + "', amount ='" + updateTransaction.getAmount()+ "', categoryId ='"+ updateTransaction.getCategoriesID() + "', payee ='"+ updateTransaction.getPayee() + "', description ='"+ updateTransaction.getDescription() + "', created_at ='"+ updateTransaction.getCreated_at() +"'  WHERE id='" + receiveRecordId + "'");
@@ -268,4 +275,5 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         return detailist;
     }
+
 }

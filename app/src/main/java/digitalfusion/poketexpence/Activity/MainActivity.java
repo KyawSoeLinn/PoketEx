@@ -115,9 +115,18 @@ public class MainActivity extends AppCompatActivity
             case R.id.quicksummary_fragment:
                 fragment = new QuickSummaryFragment();
                 break;
+
+   /*case R.id.reports_fragment:
+                Intent intent = new Intent(MainActivity.this, BarChartForExpence.class);
+                startActivity(intent);
+                break;*/
             case R.id.settings_fragment:
-                fragment=new BlankFragment();
+                 Intent intent = new Intent(MainActivity.this, Category.class);
+                startActivity(intent);
+
                 break;
+
+
         }
 
         //replacing the fragment

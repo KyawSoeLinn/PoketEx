@@ -1,7 +1,9 @@
 package digitalfusion.poketexpence.Activity;
 
+
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -21,7 +23,9 @@ import belka.us.androidtoggleswitch.widgets.ToggleSwitch;
 import digitalfusion.poketexpence.Data.DataBaseHelper;
 import digitalfusion.poketexpence.Model.ExpenceTransation;
 import digitalfusion.poketexpence.R;
+
 import digitalfusion.poketexpence.ViewModel.AddTransactionModel;
+
 
 public class UpdateRecordActivity extends AppCompatActivity implements com.wdullaer.materialdatetimepicker.date.DatePickerDialog.OnDateSetListener {
      DataBaseHelper DBHelper;
@@ -32,9 +36,11 @@ public class UpdateRecordActivity extends AppCompatActivity implements com.wdull
      EditText edtamount,edtpayee,edtnote;
 
      private long receiveRecordId;
+
     AddTransactionModel viewModel ;
     Double amount =null ;
     Integer CID ;
+
     String txtPayee,txtNote;
     Calendar calendar ;
     com.wdullaer.materialdatetimepicker.date.DatePickerDialog datePickerDialog ;
@@ -75,6 +81,7 @@ public class UpdateRecordActivity extends AppCompatActivity implements com.wdull
         }
 
 
+
         viewModel = ViewModelProviders.of(this).get(AddTransactionModel.class);
         //transaction data before update
         viewModel.getTransactionById(receiveRecordId);
@@ -92,6 +99,7 @@ public class UpdateRecordActivity extends AppCompatActivity implements com.wdull
             }
 
         });
+
 
         if(transactionType.equals("Income"))
         {
@@ -146,12 +154,14 @@ public class UpdateRecordActivity extends AppCompatActivity implements com.wdull
             @Override
             public void onClick(View view) {
                 amount =Double.parseDouble(edtamount.getText().toString().trim());
+
                 CID = 001;
                 txtNote=edtnote.getText().toString().trim();
                 txtPayee=edtpayee.getText().toString().trim();
                 ExpenceTransation updateTransaction= new ExpenceTransation(transactionType,amount,CID,txtPayee,txtNote,txtdatepicker.getText().toString());
 
                 viewModel.updateTransaction(receiveRecordId,updateTransaction);
+
 
                 String addTransaction = transactionType + " "+ amount +" "+ CID +" " +txtNote+" "+txtPayee;
                 Toast.makeText(UpdateRecordActivity.this,"Transaction : "+ addTransaction ,Toast.LENGTH_LONG).show();

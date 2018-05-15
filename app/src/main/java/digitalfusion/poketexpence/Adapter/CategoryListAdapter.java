@@ -1,7 +1,10 @@
 package digitalfusion.poketexpence.Adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +29,10 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
     public List<ExpenceCategories> expenceCategoriesList;
     private Context cContext;
     DataBaseHelper dbhelper;
+
+    public Activity activity;
+
+
 
     public class CategoriesViewHolder extends RecyclerView.ViewHolder{
 
@@ -63,11 +70,12 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
     public void onBindViewHolder(CategoriesViewHolder holder, final int position) {
         final ExpenceCategories expenceCategories = expenceCategoriesList.get(position);
         holder.name.setText(expenceCategories.getCategoriesName());
-        Integer icon= R.drawable.ic_img_bus;
-        Integer secIcon=expenceCategories.getCategoriesIcon();
-        Picasso.with(cContext)
+        /*Integer icon= R.drawable.ic_img_bus;
+        Integer secIcon=expenceCategories.getCategoriesIcon();*/
+        /*Picasso.with(cContext)
                 .load(expenceCategories.getCategoriesIcon())  //name of the image to load.
-                .into(holder.icon);
+                .into(holder.icon);*/
+        holder.icon.setImageResource(expenceCategories.getCategoriesIcon());
 
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,7 +92,7 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
             public void onClick(View v) {
                 Intent intent = new Intent(cContext, AddCategory.class);
                 String key = expenceCategories.getCategoriesID();
-                intent.putExtra("key", key);
+               intent.putExtra("key", key);
                 cContext.startActivity(intent);
                 Toast.makeText(cContext, key +"edit edit", Toast.LENGTH_SHORT).show();
             }

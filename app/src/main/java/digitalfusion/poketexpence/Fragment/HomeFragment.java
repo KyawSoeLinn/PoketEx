@@ -32,11 +32,14 @@ public class HomeFragment extends Fragment {
     private FloatingActionButton fab;
     RecyclerView mRecyclerView;
     LinearLayoutManager mLayoutManager;
+
+    DataBaseHelper dbHelper;
     AddTransactionAdapter addTransactionAdapter;
     List<ExpenceTransation> transactionList=new ArrayList<>();
     MaterialSpinner transactionSpinner, dateFilterSpinner;
     String transactionFilter, dateFilter;
     AddTransactionModel viewModel;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -52,13 +55,16 @@ public class HomeFragment extends Fragment {
         //you can set the title for your toolbar here for different fragments different titles
         getActivity().setTitle(R.string.home_fragment);
 
+
         viewModel = ViewModelProviders.of(this).get(AddTransactionModel.class);
+
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_show_transaction);
         fab = (FloatingActionButton) view.findViewById(R.id.fab);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
+
 
         mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -71,6 +77,7 @@ public class HomeFragment extends Fragment {
                     fab.show();
                 }
             }
+
 
         });
         dateFilterSpinner = (MaterialSpinner) view.findViewById(R.id.transaction_date_spinner);
@@ -90,10 +97,12 @@ public class HomeFragment extends Fragment {
 
             }
         });
+
         transactionSpinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
 
             @Override
             public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
+
                 transactionFilter = item.toString();
                 viewModel.getTransactionByType(transactionFilter,dateFilter);
                 //loadRecyclerView(transactionFilter,dateFilter);
@@ -121,9 +130,9 @@ public class HomeFragment extends Fragment {
 
                         }
 
-
                     }
                 });
+
             }
         });
 
@@ -173,6 +182,7 @@ public class HomeFragment extends Fragment {
         });*/
     }
 
+
     private void loadRecyclerView(String transactionFilter, String dateFilter) {
 
         viewModel.getAllTransaction(transactionFilter,dateFilter);
@@ -197,6 +207,7 @@ public class HomeFragment extends Fragment {
 
             }
         });
+
 
     }
 
