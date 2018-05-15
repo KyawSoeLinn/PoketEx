@@ -1,6 +1,7 @@
 package digitalfusion.poketexpence.Fragment;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -34,14 +35,7 @@ public class QuickSummaryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //returning our layout file
         //change R.layout.yourlayoutfilename for each of your fragments
-
-
-
-
-
         return inflater.inflate(R.layout.quick_summary, container, false);
-
-
 
     }
 
@@ -53,17 +47,16 @@ public class QuickSummaryFragment extends Fragment {
         expencetxtview = (TextView) view.findViewById(R.id.totalExpence);
         incometxtview = (TextView) view.findViewById(R.id.totalIncome);
 
+        context = getActivity();
         dataBaseHelper = new DataBaseHelper(context);
+
+        SQLiteDatabase collect = dataBaseHelper.getReadableDatabase();
 
         expence =  dataBaseHelper.gettodayexpence("Expence") ;
         income = dataBaseHelper.gettodayexpence("Inocme");
 
         expencetxtview.setText(expence + " MMK");
         incometxtview.setText(income + " MMK");
-
-
-
-
 
         getActivity().setTitle(R.string.quicksummary_fragment);
     }

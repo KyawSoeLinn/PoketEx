@@ -143,16 +143,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     public Integer gettodayexpence (String InEx) {
-
         Integer amount;
         String getquery = "SELECT SUM(amount) FROM Expence WHERE type = '"+InEx+ "'";
-
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = db.rawQuery(getquery, null);
-        amount = Integer.parseInt(String.valueOf(c)) ;
+        amount = c.getColumnIndex(ETamount);
 
         return amount;
-
     }
 
     public List getAllCategories() {
