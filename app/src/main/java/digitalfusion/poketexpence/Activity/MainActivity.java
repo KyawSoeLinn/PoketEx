@@ -16,6 +16,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import digitalfusion.poketexpence.Fragment.BlankFragment;
 import digitalfusion.poketexpence.Fragment.HomeFragment;
 import digitalfusion.poketexpence.Fragment.QuickSummaryFragment;
 import digitalfusion.poketexpence.Fragment.ReportsFragment;
@@ -74,7 +75,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        //getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
@@ -114,9 +115,8 @@ public class MainActivity extends AppCompatActivity
             case R.id.quicksummary_fragment:
                 fragment = new QuickSummaryFragment();
                 break;
-            case R.id.category_activity:
-                Intent intent = new Intent(MainActivity.this, Category.class);
-                startActivity(intent);
+            case R.id.settings_fragment:
+                fragment=new BlankFragment();
                 break;
         }
 

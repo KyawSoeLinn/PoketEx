@@ -103,12 +103,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 expenceTransation.setAmount(cursor.getDouble(cursor.getColumnIndex("amount")));
                 expenceTransation.setCategoriesID(cursor.getInt(cursor.getColumnIndex("categoryId")));
                 expenceTransation.setPayee(cursor.getString(cursor.getColumnIndex("payee")));
-                expenceTransation.setCategoriesImg(cursor.getInt(cursor.getColumnIndex("icon")));
+                //expenceTransation.setCategoriesImg(cursor.getInt(cursor.getColumnIndex("icon")));
                 expenceTransation.setDescription(cursor.getString(cursor.getColumnIndex("description")));
                 expenceTransation.setCreated_at(cursor.getString(cursor.getColumnIndex("created_at")));
 
                 detailist.add(expenceTransation);
                 allData.setValue(detailist);
+
             } while (cursor.moveToNext());
         }
         db.close();

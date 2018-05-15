@@ -17,22 +17,11 @@
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/nav_report" />
         <item
-            android:id="@+id/category_activity"
+            android:id="@+id/settings_fragment"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Category" />
+            android:title="@string/nav_settings" />
     </group>
 
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
-        </menu>
-    </item>
+
 
 </menu>

@@ -1,91 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    >
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="5dp"
-   >
-      <LinearLayout
-          android:id="@+id/filter_layout"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:orientation="horizontal"
-          android:layout_margin="2dp">
-
-            <TextView
-                android:id="@+id/textViewTransaction"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:padding="10dp"
-                android:text="@string/textViewTransaction"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-
-
-          <com.jaredrummler.materialspinner.MaterialSpinner
-              android:id="@+id/transaction_spinner"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:padding="5dp"
-              android:layout_marginLeft="@dimen/activity_horizontal_margin"
-              />
-
-      </LinearLayout>
+    android:layout_margin="@dimen/layout_margin">
 
     <LinearLayout
-        android:id="@+id/filter_day_layout"
+        android:id="@+id/filter_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="2dp"
-        android:layout_toRightOf="@+id/filter_layout">
+        android:layout_margin="@dimen/layout_margin"
+        android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textViewDate"
+            android:id="@+id/textViewTransaction"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:padding="10dp"
-            android:text="@string/textViewFilterDate"
+            android:padding="@dimen/textview_padding"
+            android:text="@string/textViewTransaction"
+            android:textStyle="bold"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
-
-        <com.jaredrummler.materialspinner.MaterialSpinner
-            android:id="@+id/transaction_date_spinner"
+        <android.support.v7.widget.CardView
+            android:id="@+id/spinnercard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            />
+            android:elevation="1dp"
+            android:innerRadius="0dp"
+            android:shape="ring"
+            android:thicknessRatio="1.9"
+            app:cardCornerRadius="@dimen/spinner_card_radius">
+
+            <com.jaredrummler.materialspinner.MaterialSpinner
+                android:id="@+id/transaction_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textSize="12sp"
+                android:paddingLeft="@dimen/dimen_10dp"
+                app:ms_arrow_tint="@color/colorPrimaryDark"
+                android:textStyle="bold"/>
+        </android.support.v7.widget.CardView>
+
+        <LinearLayout
+            android:id="@+id/date_filter_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/layout_margin"
+            android:orientation="horizontal"
+
+           >
+
+            <TextView
+                android:id="@+id/textViewDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:padding="@dimen/textview_padding"
+                android:text="@string/textViewFilterDate"
+                android:textStyle="bold"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/spinnerdatecard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="1dp"
+                android:innerRadius="0dp"
+                android:shape="ring"
+                android:thicknessRatio="1.9"
+                app:cardCornerRadius="@dimen/spinner_card_radius">
+
+                <com.jaredrummler.materialspinner.MaterialSpinner
+                    android:id="@+id/transaction_date_spinner"
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="12sp"
+                    android:layout_gravity="right|end"
+                    android:paddingLeft="@dimen/dimen_10dp"
+                    app:ms_arrow_tint="@color/colorPrimaryDark"
+                    android:textStyle="bold"/>
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
 
     </LinearLayout>
 
-
-
     <android.support.v7.widget.RecyclerView
-          android:id="@+id/recycler_show_transaction"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:layout_below="@+id/filter_layout"
-          android:layout_marginTop="10dp"
-          />
+        android:id="@+id/recycler_show_transaction"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/filter_layout"
+        android:orientation="horizontal"
+        android:clipToPadding="false"
+        android:overScrollMode="never"/>
 
 
-   <android.support.design.widget.FloatingActionButton
-       android:id="@+id/fab"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:layout_gravity="bottom|end"
-       android:layout_alignParentBottom="true"
-       android:layout_alignParentEnd="true"
-       android:layout_margin="@dimen/fab_margin"
-       android:src="@android:drawable/ic_input_add" />
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@android:drawable/ic_input_add"
+        app:backgroundTint="@color/colorPrimary" />
 </RelativeLayout>
-</android.support.design.widget.CoordinatorLayout>

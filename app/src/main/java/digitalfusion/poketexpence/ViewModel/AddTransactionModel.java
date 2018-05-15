@@ -61,4 +61,10 @@ public class AddTransactionModel extends AndroidViewModel {
         dbHelper.updateTransactionRecord(receiveRecordId,updateTransaction);
     }
 
+    public void getTransactionByType(String transactionFilter, String dateFilter) {
+
+        dbHelper=new DataBaseHelper(this.getApplication());
+
+        transactionListObservable = dbHelper.getAllData(transactionFilter,dateFilter);
+    }
 }
