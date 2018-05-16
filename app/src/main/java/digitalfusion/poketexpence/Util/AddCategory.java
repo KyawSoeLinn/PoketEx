@@ -29,6 +29,8 @@ import digitalfusion.poketexpence.Data.DataBaseHelper;
 import digitalfusion.poketexpence.Model.IconList;
 import digitalfusion.poketexpence.R;
 
+import static digitalfusion.poketexpence.Adapter.CategoryIconSelectAdapter.iconID;
+
 public class AddCategory extends Activity {
 
     EditText CatEdittxt;
@@ -39,6 +41,7 @@ public class AddCategory extends Activity {
     String Cattxt;
     private CategoryIconSelectAdapter iconadapter;
     private List<IconList> iconlist;
+
 
 
 
@@ -59,6 +62,7 @@ public class AddCategory extends Activity {
 
         RecyclerView.LayoutManager iconLayoutmanger = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(iconLayoutmanger);
+        recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
         recyclerView.setAdapter(iconadapter);
 
         prepareIcon();
@@ -79,7 +83,7 @@ public class AddCategory extends Activity {
                     int id;
                     id = Integer.parseInt(bundle.getString("key"));
                     Cattxt = CatEdittxt.getText().toString();
-                    dbhelper.updateCategory(id, Cattxt, "grr");
+                    dbhelper.updateCategory(id, Cattxt, iconID);
 
                     Toast.makeText(AddCategory.this, Cattxt + "edited", Toast.LENGTH_SHORT).show();
 
@@ -96,7 +100,7 @@ public class AddCategory extends Activity {
                     idddd= dbhelper.getAllCategories().size() + 1;
 
 
-                    dbhelper.insertCategory((dbhelper.getAllCategories().size() + 1), Cattxt,R.drawable.ic_img_bus);
+                    dbhelper.insertCategory((dbhelper.getAllCategories().size() + 1), Cattxt,iconID);
 
 
                     Toast.makeText(AddCategory.this, Cattxt, Toast.LENGTH_SHORT).show();
@@ -123,11 +127,12 @@ public class AddCategory extends Activity {
     private void prepareIcon() {
 
         int[] icons = new int[]{
-                R.drawable.ic_menu_camera,
-                R.drawable.ic_menu_gallery,
-                R.drawable.ic_menu_manage,
-                R.drawable.ic_menu_send,
-                R.drawable.ic_menu_share,
+                R.drawable.ic_shopping_cart,
+                R.drawable.ic_cloth,
+                R.drawable.ic_food,
+                R.drawable.ic_fun,
+                R.drawable.ic_gift,
+                R.drawable.ic_house,
                 R.drawable.ic_img_bus};
 
         IconList icon = new IconList(icons[0]);
@@ -142,9 +147,57 @@ public class AddCategory extends Activity {
         iconlist.add(icon);
         icon = new IconList(icons[5]);
         iconlist.add(icon);
+        icon = new IconList(icons[6]);
+        iconlist.add(icon);
 
         iconadapter.notifyDataSetChanged();
 
+    }
+
+    /**
+     * RecyclerView item decoration - give equal margin around grid item
+     */
+    public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration {
+
+        private int spanCount;
+        private int spacing;
+        private boolean includeEdge;
+
+        public GridSpacingItemDecoration(int spanCount, int spacing, boolean includeEdge) {
+            this.spanCount = spanCount;
+            this.spacing = spacing;
+            this.includeEdge = includeEdge;
+        }
+
+        @Override
+        public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+            int position = parent.getChildAdapterPosition(view); // item position
+            int column = position % spanCount; // item column
+
+            if (includeEdge) {
+                outRect.left = spacing - column * spacing / spanCount; // spacing - column * ((1f / spanCount) * spacing)
+                outRect.right = (column + 1) * spacing / spanCount; // (column + 1) * ((1f / spanCount) * spacing)
+
+                if (position < spanCount) { // top edge
+                    outRect.top = spacing;
+                }
+                outRect.bottom = spacing; // item bottom
+            } else {
+                outRect.left = column * spacing / spanCount; // column * ((1f / spanCount) * spacing)
+                outRect.right = spacing - (column + 1) * spacing / spanCount; // spacing - (column + 1) * ((1f /    spanCount) * spacing)
+                if (position >= spanCount) {
+                    outRect.top = spacing; // item top
+                }
+            }
+        }
+    }
+
+    /**
+     * Converting dp to pixel
+     */
+    private int dpToPx(int dp) {
+        Resources r = getResources();
+        return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
     }
 
 

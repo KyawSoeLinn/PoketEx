@@ -3,6 +3,7 @@ package digitalfusion.poketexpence.ViewModel;
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
+import android.util.Log;
 
 import java.util.List;
 
@@ -29,7 +30,9 @@ public class AddTransactionModel extends AndroidViewModel {
      * Expose the LiveData Projects query so the UI can observe it.
      */
    public LiveData<List<ExpenceTransation>> getTransactionListObservable() {
-        return transactionListObservable;
+
+       return transactionListObservable;
+
     }
     public LiveData<ExpenceTransation> getTransactionListByIdObservable() {
         return transactionListByIdObservable;
@@ -40,21 +43,28 @@ public class AddTransactionModel extends AndroidViewModel {
         dbHelper.insertcontat(expenceTransation);
     }
 
-    public void getAllTransaction(String transactionFilter) {
+    public void getAllTransaction(String transactionFilter,String dateFilter) {
         dbHelper=new DataBaseHelper(this.getApplication());
 
-        transactionListObservable = dbHelper.getAllData(transactionFilter);
-
+            transactionListObservable = dbHelper.getAllData(transactionFilter,dateFilter);
     }
 
     public void getTransactionById(long receiveRecordId) {
         dbHelper=new DataBaseHelper(this.getApplication());
 
         transactionListByIdObservable = dbHelper.getAllDataById(receiveRecordId);
+
     }
 
     public void updateTransaction(long receiveRecordId, ExpenceTransation updateTransaction) {
         dbHelper=new DataBaseHelper(this.getApplication());
         dbHelper.updateTransactionRecord(receiveRecordId,updateTransaction);
+    }
+
+    public void getTransactionByType(String transactionFilter, String dateFilter) {
+
+        dbHelper=new DataBaseHelper(this.getApplication());
+
+        transactionListObservable = dbHelper.getAllData(transactionFilter,dateFilter);
     }
 }

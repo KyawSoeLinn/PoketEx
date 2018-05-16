@@ -10,12 +10,22 @@ import java.util.SimpleTimeZone;
 public class ExpenceTransation {
 
     private Long Id;
+
+    public Integer getCategoriesImg() {
+        return CategoriesImg;
+    }
+
+    public void setCategoriesImg(Integer categoriesImg) {
+        CategoriesImg = categoriesImg;
+    }
+
     private String Expencetype;
     private Double Amount;
     private Integer CategoriesID;
     private String Payee;
     private String Description;
     private String Created_at;
+    private Integer CategoriesImg;
 
 
     public ExpenceTransation()

@@ -51,7 +51,7 @@ public class AddTransactionAdapter extends RecyclerView.Adapter<AddTransactionAd
         public View frontLayout;
         private SwipeRevealLayout swipeLayout;
         private View editlayout;
-        private TextView txtEdit, txtDelete;
+        private ImageView txtEdit, txtDelete;
 
         public ViewHolder(View v) {
             super(v);
@@ -64,8 +64,8 @@ public class AddTransactionAdapter extends RecyclerView.Adapter<AddTransactionAd
             txtDate = (TextView) v.findViewById(R.id.txt_date);
             txtTransactionType = (TextView) v.findViewById(R.id.txt_transactionType);
 
-            txtEdit = (TextView) v.findViewById(R.id.txt_edit);
-            txtDelete = (TextView) v.findViewById(R.id.txt_delete);
+            txtEdit = (ImageView) v.findViewById(R.id.img_edit);
+            txtDelete = (ImageView) v.findViewById(R.id.img_delete);
         }
 
     }
@@ -93,6 +93,7 @@ public class AddTransactionAdapter extends RecyclerView.Adapter<AddTransactionAd
         holder.txtDate.setText(transaction.getCreated_at().toString());
         holder.txtPayee.setText(transaction.getPayee().toString());
         transactionType = transaction.getExpencetype().toString();
+
         holder.txtTransactionType.setText(transactionType);
         if (transactionType.equals("Income")) {
           holder.txtTransactionType.setTextColor(Color.GREEN);

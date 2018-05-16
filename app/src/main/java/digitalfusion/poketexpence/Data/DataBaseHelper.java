@@ -8,18 +8,14 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.view.View;
 import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
-import digitalfusion.poketexpence.Activity.UpdateRecordActivity;
+import digitalfusion.poketexpence.Business.ShowTransactionByFilter;
 import digitalfusion.poketexpence.Model.ExpenceCategories;
 import digitalfusion.poketexpence.Model.ExpenceTransation;
-import digitalfusion.poketexpence.R;
 
 /**
  * Created by MD003 on 5/7/18.
@@ -82,20 +78,15 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return true;
     }
 
+    public LiveData<List<ExpenceTransation>> getAllData(String transactionFilter,String dateFilter) {
 
-    public LiveData<List<ExpenceTransation>> getAllData(String transactionFilter) {
-        String getQuery;
         final MutableLiveData<List<ExpenceTransation>> allData = new MutableLiveData<>();
 
-        if(transactionFilter.equals("All"))
-        {
-            getQuery="SELECT * FROM Expence";
-        }
+        ShowTransactionByFilter filter=new ShowTransactionByFilter();
 
-        else {
-            getQuery = "SELECT  * FROM " + ETTableName + " where  type='" + transactionFilter + "'";
+        String getQuery=filter.getAllDataByFilter(transactionFilter,dateFilter);
 
-        }
+
         List detailist = new ArrayList();
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(getQuery, null);
@@ -108,11 +99,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 expenceTransation.setAmount(cursor.getDouble(cursor.getColumnIndex("amount")));
                 expenceTransation.setCategoriesID(cursor.getInt(cursor.getColumnIndex("categoryId")));
                 expenceTransation.setPayee(cursor.getString(cursor.getColumnIndex("payee")));
+                //expenceTransation.setCategoriesImg(cursor.getInt(cursor.getColumnIndex("icon")));
                 expenceTransation.setDescription(cursor.getString(cursor.getColumnIndex("description")));
                 expenceTransation.setCreated_at(cursor.getString(cursor.getColumnIndex("created_at")));
 
                 detailist.add(expenceTransation);
                 allData.setValue(detailist);
+
             } while (cursor.moveToNext());
         }
         db.close();
@@ -127,7 +120,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put(CId, id );
         contentValues.put(CName, name );
-        contentValues.put(CIcon, R.drawable.ic_img_bus);
+        contentValues.put(CIcon, icon);
         db.insert(CTableName, null, contentValues);
         return true;
     }
@@ -137,7 +130,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO Categories (id, name, icon) VALUES ("+getAllCategories().size()+" +1, "+name +" , "+icon+")");
     }*/
 
-    public boolean updateCategory (Integer id, String name, String icon){
+    public boolean updateCategory (Integer id, String name, int icon){
         SQLiteDatabase db = this.getWritableDatabase();
 
 
@@ -147,6 +140,73 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         contentValues.put(CIcon, icon);
         db.update(CTableName, contentValues, "id ="+id , null);
         return true;
+    }
+
+    public Integer gettodayexpence (String InEx) {
+        Integer amount;
+        String getquery = "SELECT SUM(amount) FROM Expence WHERE  type='" + InEx +"'"+ " AND created_at = date ('now')";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(getquery, null);
+        c.moveToFirst();
+        amount = c.getInt(0);
+        c.close();
+        return amount;
+    }
+
+    public Integer getthisweek (String InEx) {
+        Integer amount;
+        String getquery = "SELECT SUM(amount) FROM Expence WHERE  type='" + InEx +"'"+ " AND created_at >= date ('now' , 'weekday 0', '-7 days')";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(getquery, null);
+        c.moveToFirst();
+        amount = c.getInt(0);
+        c.close();
+        return amount;
+    }
+
+    public Integer getthismonth (String InEx) {
+        Integer amount;
+        String getquery = "SELECT SUM(amount) FROM Expence WHERE  type='" + InEx +"'"+ " AND created_at >= date ('now' ,'start of month')";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(getquery, null);
+        c.moveToFirst();
+        amount = c.getInt(0);
+        c.close();
+        return amount;
+    }
+
+    public Integer getselectmonth (String InEx, String selectmonth) {
+        Integer amount;
+        String getquery = "SELECT SUM(amount) FROM Expence WHERE  type='" + InEx +"'"+ " AND strftime('%m', created_at) = '" + selectmonth +"'";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(getquery, null);
+        c.moveToFirst();
+        amount = c.getInt(0);
+        c.close();
+        return amount;
+    }
+
+    public Integer getthisyear (String InEx) {
+        Integer amount;
+        String getquery = "SELECT SUM(amount) FROM Expence WHERE  type='" + InEx +"'"+ " AND created_at >= date ('now' ,'start of year')";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(getquery, null);
+        c.moveToFirst();
+        amount = c.getInt(0);
+        c.close();
+        return amount;
+    }
+
+    public Integer getTotalCategory (int Catid) {
+        Integer amount;
+        String getquery = "SELECT SUM(amount) FROM Expence WHERE type = 'Expense' AND  categoryId='" + Catid +"'"+ " AND created_at >= date ('now' ,'start of month')";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(getquery, null);
+        c.moveToFirst();
+        amount = c.getInt(0);
+        c.close();
+        return amount;
     }
 
     public List getAllCategories() {
@@ -170,6 +230,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         return CategoryList;
     }
+
+
 
     public void deleteCategory (String id, Context context){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -242,6 +304,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL("UPDATE  "+ETTableName+" SET type ='"+ updateTransaction.getExpencetype() + "', amount ='" + updateTransaction.getAmount()+ "', categoryId ='"+ updateTransaction.getCategoriesID() + "', payee ='"+ updateTransaction.getPayee() + "', description ='"+ updateTransaction.getDescription() + "', created_at ='"+ updateTransaction.getCreated_at() +"'  WHERE id='" + receiveRecordId + "'");
 
     }
+
 
 
 

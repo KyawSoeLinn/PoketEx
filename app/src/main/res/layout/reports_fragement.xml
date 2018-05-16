@@ -12,8 +12,8 @@
 
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/chart"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
         />
 
     <TextView
@@ -26,7 +26,7 @@
         android:id="@+id/lbl_reportbycategory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/reportByCategory"
+        android:text="@string/reportByMonth"
         android:layout_marginTop="8dp"/>
 
 </LinearLayout>

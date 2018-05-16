@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -21,6 +22,7 @@ public class CategoryIconSelectAdapter extends RecyclerView.Adapter<CategoryIcon
 
     public List<IconList> IconList;
     private Context iContext;
+    public static int iconID;
 
 
 
@@ -51,15 +53,23 @@ public class CategoryIconSelectAdapter extends RecyclerView.Adapter<CategoryIcon
     public void onBindViewHolder(CategoryIconSelectAdapter.CategoriesIconViewHolder holder, int position) {
 
         final IconList iconlist = IconList.get(position);
-        Picasso.with(iContext)
+        /*Picasso.with(iContext)
                 .load(iconlist.getIcon())
-                .into(holder.selectIcon);
+                .into(holder.selectIcon);*/
+
+
+
+        holder.selectIcon.setImageResource(iconlist.getIcon());
 
         holder.selectIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                iconID  = iconlist.getIcon();
                 Toast.makeText(iContext, "??" + iconlist.getIcon()  , Toast.LENGTH_SHORT).show();
+
+
+
+
             }
         });
 
@@ -67,6 +77,6 @@ public class CategoryIconSelectAdapter extends RecyclerView.Adapter<CategoryIcon
 
     @Override
     public int getItemCount() {
-        return IconList == null ? 0 : IconList.size();
+        return  IconList.size();
     }
 }

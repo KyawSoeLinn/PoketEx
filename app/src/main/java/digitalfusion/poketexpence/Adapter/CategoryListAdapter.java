@@ -70,11 +70,12 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
     public void onBindViewHolder(CategoriesViewHolder holder, final int position) {
         final ExpenceCategories expenceCategories = expenceCategoriesList.get(position);
         holder.name.setText(expenceCategories.getCategoriesName());
-        Integer icon= R.drawable.ic_img_bus;
-        Integer secIcon=expenceCategories.getCategoriesIcon();
+        /*Integer icon= R.drawable.ic_img_bus;
+        Integer secIcon=expenceCategories.getCategoriesIcon();*/
         /*Picasso.with(cContext)
                 .load(expenceCategories.getCategoriesIcon())  //name of the image to load.
                 .into(holder.icon);*/
+        holder.icon.setImageResource(expenceCategories.getCategoriesIcon());
 
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
