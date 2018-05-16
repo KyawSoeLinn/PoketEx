@@ -87,7 +87,8 @@
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:text="MMK"
-                    android:background="#32CD32"/>
+                    android:background="#32CD32"
+                    android:id="@+id/totalweek"/>
 
                 </LinearLayout>
 
@@ -114,6 +115,7 @@
                         android:layout_height="100dp"
                         android:layout_gravity="center"
                         android:gravity="center"
+                        android:id="@+id/totalmonth"
                         android:text="MMK"
                         android:background="#32CD32"/>
 
@@ -150,6 +152,7 @@
                         android:layout_height="100dp"
                         android:layout_gravity="center"
                         android:gravity="center"
+                        android:id="@+id/totalyear"
                         android:text="MMK"
                         android:background="#32CD32"/>
 

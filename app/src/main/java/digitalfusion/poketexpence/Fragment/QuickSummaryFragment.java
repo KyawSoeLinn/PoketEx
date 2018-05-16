@@ -24,10 +24,10 @@ public class QuickSummaryFragment extends Fragment {
     AddTransactionModel viewmodel;
     DataBaseHelper dataBaseHelper;
     Integer expence ;
-    Integer income ;
+    Integer income , totalIweek, totalImonth, totalIyear ;
 
     TextView expencetxtview;
-    TextView incometxtview;
+    TextView incometxtview, totalweek, totalyear, totalmonth;
     Context context;
 
     @Nullable
@@ -46,17 +46,27 @@ public class QuickSummaryFragment extends Fragment {
         //you can set the title for your toolbar here for different fragments different titles
         expencetxtview = (TextView) view.findViewById(R.id.totalExpence);
         incometxtview = (TextView) view.findViewById(R.id.totalIncome);
+        totalweek = (TextView) view.findViewById(R.id.totalweek);
+        totalmonth = (TextView) view.findViewById(R.id.totalmonth);
+        totalyear = (TextView) view.findViewById(R.id.totalyear);
 
         context = getActivity();
         dataBaseHelper = new DataBaseHelper(context);
 
         SQLiteDatabase collect = dataBaseHelper.getReadableDatabase();
 
-        expence =  dataBaseHelper.gettodayexpence("Expence") ;
-        income = dataBaseHelper.gettodayexpence("Inocme");
+        expence =  dataBaseHelper.gettodayexpence("Expense") ;
+        income = dataBaseHelper.gettodayexpence("Income");
+
+        totalIweek = dataBaseHelper.getthisweek("Income") - dataBaseHelper.getthisweek("Expense");
+        totalImonth = dataBaseHelper.getthismonth("Income") - dataBaseHelper.getthismonth("Expense");
+        totalIyear = dataBaseHelper.getthisyear("Income") - dataBaseHelper.getthisyear("Expense");
 
         expencetxtview.setText(expence + " MMK");
         incometxtview.setText(income + " MMK");
+        totalweek.setText(totalIweek + "MMK");
+        totalmonth.setText(totalImonth + "MMK");
+        totalyear.setText(totalIyear + "MMK");
 
         getActivity().setTitle(R.string.quicksummary_fragment);
     }

@@ -1,6 +1,8 @@
 package digitalfusion.poketexpence.Fragment;
 
 
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -17,6 +19,7 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
 
+import digitalfusion.poketexpence.Data.DataBaseHelper;
 import digitalfusion.poketexpence.R;
 
 /**
@@ -26,6 +29,12 @@ import digitalfusion.poketexpence.R;
 public class ReportsFragment  extends Fragment{
 
     BarChart chart;
+    DataBaseHelper dataBaseHelper;
+    Context context;
+    int income, expense;
+    Integer ivalues, evalues;
+
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -43,6 +52,18 @@ public class ReportsFragment  extends Fragment{
 
         BarChart chart=(BarChart) view.findViewById(R.id.chart);
 
+
+        context = getActivity();
+        dataBaseHelper = new DataBaseHelper(context);
+
+        SQLiteDatabase collect = dataBaseHelper.getReadableDatabase();
+
+        income = dataBaseHelper.getthismonth("Income");
+        expense =  dataBaseHelper.getthismonth("Expense");
+
+        ivalues =  income / 1000;
+        evalues = expense / 1000;
+
         BarData data = new BarData(getXAxisValues(), getDataSet());
         chart.setData(data);
         chart.setDescription("My Chart");
@@ -56,7 +77,7 @@ public class ReportsFragment  extends Fragment{
         ArrayList<BarDataSet> dataSets=null;
 
         ArrayList<BarEntry> valueSet1 = new ArrayList<>();
-        BarEntry vle1= new BarEntry(110.00f,0); //Jan
+        BarEntry vle1= new BarEntry(ivalues ,0); //Jan
         valueSet1.add(vle1);
         BarEntry v1e2 = new BarEntry(40.000f, 1); // Feb
         valueSet1.add(v1e2);
@@ -70,7 +91,7 @@ public class ReportsFragment  extends Fragment{
         valueSet1.add(v1e6);
 
         ArrayList<BarEntry> valueSet2 = new ArrayList<>();
-        BarEntry v2e1 = new BarEntry(150.000f, 0); // Jan
+        BarEntry v2e1 = new BarEntry(evalues, 0); // Jan
         valueSet2.add(v2e1);
         BarEntry v2e2 = new BarEntry(90.000f, 1); // Feb
         valueSet2.add(v2e2);
@@ -83,11 +104,11 @@ public class ReportsFragment  extends Fragment{
         BarEntry v2e6 = new BarEntry(80.000f, 5); // Jun
         valueSet2.add(v2e6);
 
-        BarDataSet barDataSet1 = new BarDataSet(valueSet1, "Brand 1");
+        BarDataSet barDataSet1 = new BarDataSet(valueSet1, "Income");
         barDataSet1.setColor(Color.rgb(0, 155, 0));
-        BarDataSet barDataSet2 = new BarDataSet(valueSet2, "Brand 2");
+        BarDataSet barDataSet2 = new BarDataSet(valueSet2, "Expense");
         //barDataSet2.setColors(ColorTemplate.COLORFUL_COLORS);
-        barDataSet2.setColor(Color.rgb(0, 125, 0));
+        barDataSet2.setColor(Color.rgb(150, 0, 0));
         dataSets = new ArrayList<>();
         dataSets.add(barDataSet1);
         dataSets.add(barDataSet2);

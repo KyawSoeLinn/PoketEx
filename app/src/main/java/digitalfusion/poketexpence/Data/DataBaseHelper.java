@@ -144,7 +144,40 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     public Integer gettodayexpence (String InEx) {
         Integer amount;
-        String getquery = "SELECT SUM(amount) FROM Expence WHERE type = '"+InEx+ "' AND created_at = date ('now')";
+        String getquery = "SELECT SUM(amount) FROM Expence WHERE  type='" + InEx +"'"+ " AND created_at = date ('now')";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(getquery, null);
+        c.moveToFirst();
+        amount = c.getInt(0);
+        c.close();
+        return amount;
+    }
+
+    public Integer getthisweek (String InEx) {
+        Integer amount;
+        String getquery = "SELECT SUM(amount) FROM Expence WHERE  type='" + InEx +"'"+ " AND created_at >= date ('now' , 'weekday 0', '-7 days')";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(getquery, null);
+        c.moveToFirst();
+        amount = c.getInt(0);
+        c.close();
+        return amount;
+    }
+
+    public Integer getthismonth (String InEx) {
+        Integer amount;
+        String getquery = "SELECT SUM(amount) FROM Expence WHERE  type='" + InEx +"'"+ " AND created_at >= date ('now' ,'start of month')";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(getquery, null);
+        c.moveToFirst();
+        amount = c.getInt(0);
+        c.close();
+        return amount;
+    }
+
+    public Integer getthisyear (String InEx) {
+        Integer amount;
+        String getquery = "SELECT SUM(amount) FROM Expence WHERE  type='" + InEx +"'"+ " AND created_at >= date ('now' ,'start of year')";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = db.rawQuery(getquery, null);
         c.moveToFirst();
