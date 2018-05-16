@@ -38,7 +38,7 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
 
         public TextView name;
         public ImageView icon;
-        public Button delete, edit;
+        public ImageView delete, edit;
 
         public CategoriesViewHolder(View view){
             super(view);

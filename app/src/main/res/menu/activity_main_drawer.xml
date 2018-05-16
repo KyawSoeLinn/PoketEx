@@ -19,7 +19,17 @@
         <item
             android:id="@+id/settings_fragment"
             android:icon="@drawable/ic_menu_manage"
+<<<<<<< HEAD
             android:title="Category" />
+=======
+            android:title="@string/nav_settings" />
+
+        <item
+            android:id="@+id/add_category_fragment"
+            android:visible="false" />
+
+
+>>>>>>> khinthuzin
     </group>
 
 

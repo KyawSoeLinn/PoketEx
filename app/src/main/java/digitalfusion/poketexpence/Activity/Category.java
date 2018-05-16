@@ -1,3 +1,4 @@
+/*
 package digitalfusion.poketexpence.Activity;
 
 import android.content.Intent;
@@ -101,3 +102,4 @@ public class Category extends AppCompatActivity {
     }
 
 }
+*/

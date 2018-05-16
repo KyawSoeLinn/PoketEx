@@ -27,6 +27,7 @@
   <component name="ChangeListManager">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <list default="true" id="7c56fc99-f6e6-4081-8ffd-28bc16fc0a4b" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterPath="" />
 =======
@@ -78,6 +79,9 @@
       <change beforePath="" afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
 =======
+=======
+<<<<<<< HEAD
+>>>>>>> khinthuzin
     <list default="true" id="1869aef5-cafd-46f0-a0b1-411088be7adb" name="Default" comment="">
       <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/Fragment/BlankFragment.java" />
       <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_blank.xml" />
@@ -144,6 +148,62 @@
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
       <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterPath="" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
+<<<<<<< HEAD
+>>>>>>> khinthuzin
+=======
+=======
+<<<<<<< HEAD
+    <list default="true" id="7c56fc99-f6e6-4081-8ffd-28bc16fc0a4b" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterPath="" />
+=======
+    <list default="true" id="0d0b7727-5e1b-4de4-83d0-abf8669b4f77" name="Default" comment="">
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+=======
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_android_26.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_core_common_1_0_0_jar.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_core_runtime_1_0_0.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_common_1_0_3_jar.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_extensions_1_0_0.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_runtime_1_0_3.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_animated_vector_drawable_26_1_0.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_appcompat_v7_26_1_0.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_cardview_v7_26_1_0.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_constraint_constraint_layout_1_1_0.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_constraint_constraint_layout_solver_1_1_0_jar.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_design_26_1_0.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_recyclerview_v7_26_1_0.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_annotations_27_1_1_jar.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_compat_26_1_0.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_ui_26_1_0.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_utils_26_1_0.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_fragment_26_1_0.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_media_compat_26_1_0.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_v4_26_1_0.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_vector_drawable_26_1_0.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_espresso_espresso_core_3_0_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_espresso_espresso_idling_resource_3_0_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_monitor_1_0_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_runner_1_0_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_transition_26_1_0.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_chauthai_swipereveallayout_swipe_reveal_layout_1_4_1.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_PhilJay_MPAndroidChart_v2_0_9_jar.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_code_findbugs_jsr305_2_0_1_jar.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_javawriter_2_1_1_jar.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_picasso_picasso_2_5_2_jar.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_wdullaer_materialdatetimepicker_2_3_0.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__javax_inject_javax_inject_1_jar.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__junit_junit_4_12_jar.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__net_sf_kxml_kxml2_2_3_0_jar.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_1_3_jar.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_integration_1_3_jar.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_library_1_3_jar.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__us_belka_androidtoggleswitch_1_2_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+>>>>>>> origin/KyawSoeLin
 >>>>>>> khinthuzin
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/PoketEx.iml" afterPath="$PROJECT_DIR$/PoketEx.iml" />
@@ -167,11 +227,19 @@
       <change beforePath="$PROJECT_DIR$/local.properties" afterPath="$PROJECT_DIR$/local.properties" />
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+=======
+>>>>>>> khinthuzin
+<<<<<<< HEAD
 >>>>>>> khinthuzin
 =======
 >>>>>>> 21d413d27d53203779b2080733ad459e470af583
 >>>>>>> khinthuzin
+<<<<<<< HEAD
 =======
+>>>>>>> khinthuzin
+=======
+>>>>>>> origin/KyawSoeLin
 >>>>>>> khinthuzin
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -182,6 +250,10 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> khinthuzin
 <<<<<<< HEAD
 =======
   <component name="DockManager">
@@ -293,7 +365,11 @@
     </window>
   </component>
 >>>>>>> 21d413d27d53203779b2080733ad459e470af583
+<<<<<<< HEAD
 =======
+>>>>>>> khinthuzin
+=======
+>>>>>>> origin/KyawSoeLin
 >>>>>>> khinthuzin
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
@@ -314,6 +390,12 @@
           <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+            <state relative-caret-position="135">
+              <caret line="25" column="13" lean-forward="false" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+=======
+>>>>>>> khinthuzin
+<<<<<<< HEAD
             <state relative-caret-position="975">
               <caret line="65" column="19" lean-forward="false" selection-start-line="65" selection-start-column="19" selection-end-line="65" selection-end-column="19" />
               <folding>
@@ -323,9 +405,13 @@
             <state relative-caret-position="780">
               <caret line="70" column="19" lean-forward="false" selection-start-line="70" selection-start-column="19" selection-end-line="70" selection-end-column="19" />
 >>>>>>> 21d413d27d53203779b2080733ad459e470af583
+<<<<<<< HEAD
 =======
             <state relative-caret-position="135">
               <caret line="25" column="13" lean-forward="false" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+>>>>>>> khinthuzin
+=======
+>>>>>>> origin/KyawSoeLin
 >>>>>>> khinthuzin
               <folding />
 >>>>>>> khinthuzin
@@ -357,6 +443,14 @@
             <state />
           </provider>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        </entry>
+      </file>
+      <file leaf-file-name="fragment_blank.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_blank.xml">
+=======
+>>>>>>> khinthuzin
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="210">
 <<<<<<< HEAD
@@ -393,11 +487,15 @@
 =======
       <file leaf-file-name="AddTransactionActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/Activity/AddTransactionActivity.java">
+<<<<<<< HEAD
 =======
         </entry>
       </file>
       <file leaf-file-name="fragment_blank.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_blank.xml">
+>>>>>>> khinthuzin
+=======
+>>>>>>> origin/KyawSoeLin
 >>>>>>> khinthuzin
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
@@ -406,6 +504,12 @@
             </state>
           </provider>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+          <provider editor-type-id="android-designer2">
+            <state />
+=======
+>>>>>>> khinthuzin
         </entry>
       </file>
 <<<<<<< HEAD
@@ -417,9 +521,13 @@
               <folding />
 >>>>>>> khinthuzin
             </state>
+<<<<<<< HEAD
 =======
           <provider editor-type-id="android-designer2">
             <state />
+>>>>>>> khinthuzin
+=======
+>>>>>>> origin/KyawSoeLin
 >>>>>>> khinthuzin
           </provider>
         </entry>
@@ -428,6 +536,12 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/Fragment/BlankFragment.java">
           <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+            <state relative-caret-position="402">
+              <caret line="87" column="0" lean-forward="true" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+=======
+>>>>>>> khinthuzin
             <state relative-caret-position="555">
 <<<<<<< HEAD
               <caret line="45" column="18" lean-forward="false" selection-start-line="45" selection-start-column="18" selection-end-line="45" selection-end-column="18" />
@@ -438,9 +552,13 @@
 =======
 >>>>>>> 21d413d27d53203779b2080733ad459e470af583
 >>>>>>> khinthuzin
+<<<<<<< HEAD
 =======
             <state relative-caret-position="402">
               <caret line="87" column="0" lean-forward="true" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+>>>>>>> khinthuzin
+=======
+>>>>>>> origin/KyawSoeLin
 >>>>>>> khinthuzin
               <folding />
             </state>
@@ -453,6 +571,14 @@
     <option name="RECENT_TEMPLATES">
       <list>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        <option value="valueResourceFile" />
+      </list>
+    </option>
+  </component>
+=======
+>>>>>>> khinthuzin
         <option value="Class" />
 <<<<<<< HEAD
         <option value="layoutResourceFile" />
@@ -475,11 +601,15 @@
 =======
 >>>>>>> 21d413d27d53203779b2080733ad459e470af583
 >>>>>>> khinthuzin
+<<<<<<< HEAD
 =======
         <option value="valueResourceFile" />
       </list>
     </option>
   </component>
+>>>>>>> khinthuzin
+=======
+>>>>>>> origin/KyawSoeLin
 >>>>>>> khinthuzin
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -2346,6 +2476,11 @@
       <list>
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+        <option value="$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/Business/ShowTransactionByFilter.java" />
+=======
+>>>>>>> khinthuzin
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/Adapter/CatIconAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/add_category.xml" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
@@ -2363,8 +2498,12 @@
         <option value="$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/ViewModel/AddTransactionViewModel.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/Activity/UpdateRecordActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/Data/DataBaseInOut.java" />
+<<<<<<< HEAD
 =======
         <option value="$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/Business/ShowTransactionByFilter.java" />
+>>>>>>> khinthuzin
+=======
+>>>>>>> origin/KyawSoeLin
 >>>>>>> khinthuzin
         <option value="$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/ViewModel/AddTransactionModel.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/Data/DataBaseHelper.java" />
@@ -2376,23 +2515,44 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/home_fragment.xml" />
 <<<<<<< HEAD
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/Activity/AddTransactionActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/Model/ExpenceTransation.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/Data/DataBaseHelper.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/Business/ShowTransactionByFilter.java" />
 >>>>>>> khinthuzin
 =======
+=======
+>>>>>>> khinthuzin
         <option value="$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/Adapter/AddTransactionAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/add_transaction_row.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/activity_main_drawer.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/Activity/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/Fragment/BlankFragment.java" />
+<<<<<<< HEAD
+>>>>>>> khinthuzin
+=======
+=======
+        <option value="$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/Activity/AddTransactionActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/Model/ExpenceTransation.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/Data/DataBaseHelper.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/Business/ShowTransactionByFilter.java" />
+>>>>>>> khinthuzin
+>>>>>>> origin/KyawSoeLin
 >>>>>>> khinthuzin
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    <option name="x" value="63" />
+    <option name="y" value="33" />
+    <option name="width" value="1634" />
+    <option name="height" value="966" />
+=======
+>>>>>>> khinthuzin
 <<<<<<< HEAD
     <option name="x" value="610" />
     <option name="y" value="25" />
@@ -2410,11 +2570,15 @@
     <option name="width" value="1310" />
     <option name="height" value="1000" />
 >>>>>>> 21d413d27d53203779b2080733ad459e470af583
+<<<<<<< HEAD
 =======
     <option name="x" value="63" />
     <option name="y" value="33" />
     <option name="width" value="1634" />
     <option name="height" value="966" />
+>>>>>>> khinthuzin
+=======
+>>>>>>> origin/KyawSoeLin
 >>>>>>> khinthuzin
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -2491,11 +2655,19 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> khinthuzin
+<<<<<<< HEAD
+=======
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="poketexpence" type="cbb59c9e:AndroidPsiDirectoryNode" />
 <<<<<<< HEAD
               <item name="Data" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
 =======
+>>>>>>> khinthuzin
+=======
+>>>>>>> origin/KyawSoeLin
 >>>>>>> khinthuzin
             </path>
             <path>
@@ -2525,12 +2697,21 @@
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="poketexpence" type="cbb59c9e:AndroidPsiDirectoryNode" />
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+              <item name="Fragment" type="462c0819:PsiDirectoryNode" />
+=======
+>>>>>>> khinthuzin
               <item name="ViewModel" type="462c0819:PsiDirectoryNode" />
 =======
 >>>>>>> khinthuzin
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
+<<<<<<< HEAD
 =======
               <item name="Fragment" type="462c0819:PsiDirectoryNode" />
+>>>>>>> khinthuzin
+=======
+>>>>>>> origin/KyawSoeLin
 >>>>>>> khinthuzin
             </path>
             <path>
@@ -2555,6 +2736,10 @@
       <recent name="digitalfusion.poketexpence.Fragment" />
     </key>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> khinthuzin
 =======
       <pane id="Scope" />
       <pane id="Scratches" />
@@ -2574,7 +2759,11 @@
 =======
 >>>>>>> 21d413d27d53203779b2080733ad459e470af583
 >>>>>>> khinthuzin
+<<<<<<< HEAD
 =======
+>>>>>>> khinthuzin
+=======
+>>>>>>> origin/KyawSoeLin
 >>>>>>> khinthuzin
   </component>
   <component name="RunDashboard">
@@ -2615,6 +2804,10 @@
     </configuration>
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> khinthuzin
 =======
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
 <<<<<<< HEAD
@@ -2622,7 +2815,11 @@
 =======
 >>>>>>> 21d413d27d53203779b2080733ad459e470af583
 >>>>>>> khinthuzin
+<<<<<<< HEAD
 =======
+>>>>>>> khinthuzin
+=======
+>>>>>>> origin/KyawSoeLin
 >>>>>>> khinthuzin
       <module name="app" />
       <option name="DEPLOY" value="true" />
@@ -2734,6 +2931,10 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> khinthuzin
+<<<<<<< HEAD
+=======
     <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="VM_PARAMETERS" />
@@ -2751,7 +2952,11 @@
 =======
 >>>>>>> 21d413d27d53203779b2080733ad459e470af583
 >>>>>>> khinthuzin
+<<<<<<< HEAD
 =======
+>>>>>>> khinthuzin
+=======
+>>>>>>> origin/KyawSoeLin
 >>>>>>> khinthuzin
     <configuration name="&lt;template&gt;" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" default="true" selected="false">
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
@@ -2766,6 +2971,15 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+      <changelist id="1869aef5-cafd-46f0-a0b1-411088be7adb" name="Default" comment="" />
+      <created>1526289846350</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1526289846350</updated>
+=======
+>>>>>>> khinthuzin
 <<<<<<< HEAD
       <changelist id="7c56fc99-f6e6-4081-8ffd-28bc16fc0a4b" name="Default" comment="" />
       <created>1526263489995</created>
@@ -2789,12 +3003,16 @@
 =======
 >>>>>>> 21d413d27d53203779b2080733ad459e470af583
 >>>>>>> khinthuzin
+<<<<<<< HEAD
 =======
       <changelist id="1869aef5-cafd-46f0-a0b1-411088be7adb" name="Default" comment="" />
       <created>1526289846350</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1526289846350</updated>
+>>>>>>> khinthuzin
+=======
+>>>>>>> origin/KyawSoeLin
 >>>>>>> khinthuzin
     </task>
     <servers />
@@ -2848,6 +3066,11 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+=======
+>>>>>>> khinthuzin
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32886437" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928178" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928178" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -2871,8 +3094,12 @@
 =======
 >>>>>>> 21d413d27d53203779b2080733ad459e470af583
 >>>>>>> khinthuzin
+<<<<<<< HEAD
 =======
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+>>>>>>> khinthuzin
+=======
+>>>>>>> origin/KyawSoeLin
 >>>>>>> khinthuzin
     </layout>
   </component>
@@ -2883,12 +3110,21 @@
     <breakpoint-manager>
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+      <option name="time" value="9" />
+=======
+>>>>>>> khinthuzin
+<<<<<<< HEAD
       <option name="time" value="9" />
 =======
       <option name="time" value="37" />
 >>>>>>> khinthuzin
+<<<<<<< HEAD
 =======
       <option name="time" value="9" />
+>>>>>>> khinthuzin
+=======
+>>>>>>> origin/KyawSoeLin
 >>>>>>> khinthuzin
     </breakpoint-manager>
     <watches-manager />
@@ -2897,6 +3133,11 @@
     <expressions id="evaluateExpression">
       <expression>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        <expression-string>viewModel.getTransactionListObservable().getValue()</expression-string>
+=======
+>>>>>>> khinthuzin
 <<<<<<< HEAD
         <expression-string>dbhelper.getAllCategories().size()</expression-string>
 =======
@@ -2921,8 +3162,12 @@
       </expression>
       <expression>
         <expression-string>loadRecyclerView(transactionFilter,dateFilter)</expression-string>
+<<<<<<< HEAD
 =======
         <expression-string>viewModel.getTransactionListObservable().getValue()</expression-string>
+>>>>>>> khinthuzin
+=======
+>>>>>>> origin/KyawSoeLin
 >>>>>>> khinthuzin
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
@@ -2939,6 +3184,11 @@
       </expression>
       <expression>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        <expression-string>dbHelper.getAllData(transactionFilter,dateFilter)</expression-string>
+=======
+>>>>>>> khinthuzin
         <expression-string>viewModel.getTransactionListObservable()</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
@@ -2946,8 +3196,12 @@
       <expression>
         <expression-string>viewModel.getTransactionListObservable().observe(getActivity(), new Observer&lt;List&lt;ExpenceTransation&gt;&gt;()</expression-string>
 >>>>>>> khinthuzin
+<<<<<<< HEAD
 =======
         <expression-string>dbHelper.getAllData(transactionFilter,dateFilter)</expression-string>
+>>>>>>> khinthuzin
+=======
+>>>>>>> origin/KyawSoeLin
 >>>>>>> khinthuzin
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
@@ -2956,6 +3210,14 @@
   </component>
   <component name="editorHistoryManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/Fragment/HomeFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+=======
+>>>>>>> khinthuzin
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/Adapter/CatIconAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -3028,11 +3290,15 @@
 =======
 =======
 >>>>>>> 21d413d27d53203779b2080733ad459e470af583
+<<<<<<< HEAD
 =======
     <entry file="file://$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/Fragment/HomeFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+>>>>>>> khinthuzin
+=======
+>>>>>>> origin/KyawSoeLin
 >>>>>>> khinthuzin
           <folding />
         </state>
@@ -3041,12 +3307,22 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/Adapter/AddTransactionAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <state relative-caret-position="135">
           <caret line="9" column="5" lean-forward="true" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
 >>>>>>> khinthuzin
 =======
         <state relative-caret-position="1275">
           <caret line="85" column="0" lean-forward="false" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+>>>>>>> khinthuzin
+=======
+        <state relative-caret-position="1275">
+          <caret line="85" column="0" lean-forward="false" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+=======
+        <state relative-caret-position="135">
+          <caret line="9" column="5" lean-forward="true" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+>>>>>>> khinthuzin
+>>>>>>> origin/KyawSoeLin
 >>>>>>> khinthuzin
           <folding />
 >>>>>>> khinthuzin
@@ -3064,6 +3340,12 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/Data/DataBaseHelper.java">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        <state relative-caret-position="1350">
+          <caret line="109" column="0" lean-forward="false" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+=======
+>>>>>>> khinthuzin
         <state relative-caret-position="675">
           <caret line="47" column="38" lean-forward="false" selection-start-line="47" selection-start-column="38" selection-end-line="47" selection-end-column="38" />
 <<<<<<< HEAD
@@ -3077,9 +3359,13 @@
 =======
 >>>>>>> 21d413d27d53203779b2080733ad459e470af583
 >>>>>>> khinthuzin
+<<<<<<< HEAD
 =======
         <state relative-caret-position="1350">
           <caret line="109" column="0" lean-forward="false" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+>>>>>>> khinthuzin
+=======
+>>>>>>> origin/KyawSoeLin
 >>>>>>> khinthuzin
           <folding />
 >>>>>>> khinthuzin
@@ -3091,6 +3377,11 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+          <folding />
+=======
+>>>>>>> khinthuzin
           <folding>
 <<<<<<< HEAD
             <marker date="1526272482000" expanded="true" signature="1188:1194" ph="..." />
@@ -3125,8 +3416,12 @@
             <marker date="1526270620000" expanded="true" signature="3100:3292" ph="{...}" />
 >>>>>>> khinthuzin
           </folding>
+<<<<<<< HEAD
 =======
           <folding />
+>>>>>>> khinthuzin
+=======
+>>>>>>> origin/KyawSoeLin
 >>>>>>> khinthuzin
         </state>
       </provider>
@@ -3134,6 +3429,20 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/ViewModel/AddTransactionModel.java">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        <state relative-caret-position="885">
+          <caret line="67" column="31" lean-forward="false" selection-start-line="67" selection-start-column="8" selection-end-line="67" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/Data/DataBaseHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1350">
+          <caret line="109" column="0" lean-forward="false" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+=======
+>>>>>>> khinthuzin
         <state relative-caret-position="810">
           <caret line="76" column="44" lean-forward="false" selection-start-line="76" selection-start-column="44" selection-end-line="76" selection-end-column="44" />
           <folding>
@@ -3170,6 +3479,7 @@
 =======
 >>>>>>> 21d413d27d53203779b2080733ad459e470af583
 >>>>>>> khinthuzin
+<<<<<<< HEAD
 =======
         <state relative-caret-position="885">
           <caret line="67" column="31" lean-forward="false" selection-start-line="67" selection-start-column="8" selection-end-line="67" selection-end-column="34" />
@@ -3182,6 +3492,9 @@
         <state relative-caret-position="1350">
           <caret line="109" column="0" lean-forward="false" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
 >>>>>>> khinthuzin
+=======
+>>>>>>> origin/KyawSoeLin
+>>>>>>> khinthuzin
           <folding />
 >>>>>>> khinthuzin
         </state>
@@ -3190,6 +3503,12 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/Activity/Category.java">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        <state relative-caret-position="37">
+          <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+=======
+>>>>>>> khinthuzin
         <state relative-caret-position="180">
           <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
 <<<<<<< HEAD
@@ -3203,9 +3522,13 @@
 >>>>>>> khinthuzin
           <folding />
 >>>>>>> khinthuzin
+<<<<<<< HEAD
 =======
         <state relative-caret-position="37">
           <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+>>>>>>> khinthuzin
+=======
+>>>>>>> origin/KyawSoeLin
 >>>>>>> khinthuzin
         </state>
       </provider>
@@ -3220,6 +3543,13 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/Activity/AddTransactionActivity.java">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        <state relative-caret-position="-1376">
+          <caret line="47" column="13" lean-forward="false" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
+          <folding />
+=======
+>>>>>>> khinthuzin
         <state relative-caret-position="1155">
           <caret line="77" column="0" lean-forward="false" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
           <folding>
@@ -3236,10 +3566,14 @@
 >>>>>>> 21d413d27d53203779b2080733ad459e470af583
 >>>>>>> khinthuzin
           </folding>
+<<<<<<< HEAD
 =======
         <state relative-caret-position="-1376">
           <caret line="47" column="13" lean-forward="false" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
           <folding />
+>>>>>>> khinthuzin
+=======
+>>>>>>> origin/KyawSoeLin
 >>>>>>> khinthuzin
         </state>
       </provider>
@@ -3249,6 +3583,10 @@
         <state relative-caret-position="345">
           <caret line="24" column="84" lean-forward="false" selection-start-line="24" selection-start-column="84" selection-end-line="24" selection-end-column="84" />
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> khinthuzin
 =======
     <entry file="file://$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/Util/AddCategory.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -3265,7 +3603,11 @@
 >>>>>>> khinthuzin
           <folding />
 >>>>>>> khinthuzin
+<<<<<<< HEAD
 =======
+>>>>>>> khinthuzin
+=======
+>>>>>>> origin/KyawSoeLin
 >>>>>>> khinthuzin
         </state>
       </provider>
@@ -3288,6 +3630,12 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/ViewModel/AddTransactionModel.java">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        <state relative-caret-position="600">
+          <caret line="48" column="56" lean-forward="false" selection-start-line="48" selection-start-column="56" selection-end-line="48" selection-end-column="56" />
+=======
+>>>>>>> khinthuzin
         <state relative-caret-position="1530">
           <caret line="141" column="86" lean-forward="false" selection-start-line="141" selection-start-column="86" selection-end-line="141" selection-end-column="86" />
 <<<<<<< HEAD
@@ -3303,9 +3651,13 @@
             <element signature="e#5950#5951#0" expanded="true" />
           </folding>
 =======
+<<<<<<< HEAD
 =======
         <state relative-caret-position="600">
           <caret line="48" column="56" lean-forward="false" selection-start-line="48" selection-start-column="56" selection-end-line="48" selection-end-column="56" />
+>>>>>>> khinthuzin
+=======
+>>>>>>> origin/KyawSoeLin
 >>>>>>> khinthuzin
           <folding />
 >>>>>>> khinthuzin
@@ -3321,6 +3673,11 @@
       </provider>
     </entry>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+=======
+>>>>>>> khinthuzin
 <<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/Adapter/CategorySelectAdapter.java">
@@ -3381,8 +3738,12 @@
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
+<<<<<<< HEAD
 =======
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
+>>>>>>> khinthuzin
+=======
+>>>>>>> origin/KyawSoeLin
 >>>>>>> khinthuzin
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -3463,6 +3824,11 @@
     </entry>
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+    <entry file="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/androidtoggleswitch-1.2.2.aar/f1a7459a616f6b8c0babe33eb7c5086b/res/values-w820dp-v13/values-w820dp-v13.xml">
+=======
+>>>>>>> khinthuzin
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/Adapter/CatIconAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -3527,8 +3893,12 @@
       <provider editor-type-id="android-manifest">
         <state />
       </provider>
+<<<<<<< HEAD
 =======
     <entry file="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/androidtoggleswitch-1.2.2.aar/f1a7459a616f6b8c0babe33eb7c5086b/res/values-w820dp-v13/values-w820dp-v13.xml">
+>>>>>>> khinthuzin
+=======
+>>>>>>> origin/KyawSoeLin
 >>>>>>> khinthuzin
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -3540,6 +3910,17 @@
     <entry file="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/androidtoggleswitch-1.2.2.aar/f1a7459a616f6b8c0babe33eb7c5086b/res/values/values.xml">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        <state relative-caret-position="105">
+          <caret line="7" column="48" lean-forward="false" selection-start-line="7" selection-start-column="48" selection-end-line="7" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+=======
+>>>>>>> khinthuzin
         <state relative-caret-position="313">
           <caret line="105" column="97" lean-forward="false" selection-start-line="105" selection-start-column="97" selection-end-line="105" selection-end-column="97" />
 =======
@@ -3585,6 +3966,7 @@
           <caret line="45" column="18" lean-forward="false" selection-start-line="45" selection-start-column="18" selection-end-line="45" selection-end-column="18" />
 =======
     <entry file="file://$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/Data/DataBaseHelper.java">
+<<<<<<< HEAD
 =======
         <state relative-caret-position="105">
           <caret line="7" column="48" lean-forward="false" selection-start-line="7" selection-start-column="48" selection-end-line="7" selection-end-column="48" />
@@ -3593,6 +3975,9 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+>>>>>>> khinthuzin
+=======
+>>>>>>> origin/KyawSoeLin
 >>>>>>> khinthuzin
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
@@ -3615,15 +4000,25 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/Fragment/HomeFragment.java">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        <state relative-caret-position="585">
+          <caret line="78" column="74" lean-forward="false" selection-start-line="78" selection-start-column="74" selection-end-line="78" selection-end-column="74" />
+=======
+>>>>>>> khinthuzin
         <state relative-caret-position="210">
           <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
 <<<<<<< HEAD
 >>>>>>> khinthuzin
 =======
 >>>>>>> 21d413d27d53203779b2080733ad459e470af583
+<<<<<<< HEAD
 =======
         <state relative-caret-position="585">
           <caret line="78" column="74" lean-forward="false" selection-start-line="78" selection-start-column="74" selection-end-line="78" selection-end-column="74" />
+>>>>>>> khinthuzin
+=======
+>>>>>>> origin/KyawSoeLin
 >>>>>>> khinthuzin
           <folding />
         </state>
@@ -3632,6 +4027,15 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/home_fragment.xml">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        <state relative-caret-position="1328">
+          <caret line="93" column="34" lean-forward="false" selection-start-line="93" selection-start-column="34" selection-end-line="93" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+=======
+>>>>>>> khinthuzin
         <state relative-caret-position="427">
           <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
 >>>>>>> khinthuzin
@@ -3681,12 +4085,16 @@
 >>>>>>> khinthuzin
 =======
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/category_fragment.xml">
+<<<<<<< HEAD
 =======
         <state relative-caret-position="1328">
           <caret line="93" column="34" lean-forward="false" selection-start-line="93" selection-start-column="34" selection-end-line="93" selection-end-column="34" />
           <folding />
         </state>
       </provider>
+>>>>>>> khinthuzin
+=======
+>>>>>>> origin/KyawSoeLin
 >>>>>>> khinthuzin
       <provider editor-type-id="android-designer2">
         <state />
@@ -3703,16 +4111,27 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/add_transaction_row.xml">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        <state relative-caret-position="285">
+          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+=======
+>>>>>>> khinthuzin
         <state relative-caret-position="990">
           <caret line="84" column="0" lean-forward="false" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
           <folding>
             <marker date="1526270620000" expanded="true" signature="3100:3292" ph="{...}" />
 >>>>>>> khinthuzin
           </folding>
+<<<<<<< HEAD
 =======
         <state relative-caret-position="285">
           <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding />
+>>>>>>> khinthuzin
+=======
+>>>>>>> origin/KyawSoeLin
 >>>>>>> khinthuzin
         </state>
       </provider>
@@ -3721,6 +4140,11 @@
       </provider>
     </entry>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/Fragment/ReportsFragment.java">
+=======
+>>>>>>> khinthuzin
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/Util/SelectCategory.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -3738,8 +4162,12 @@
           <caret line="6" column="39" lean-forward="false" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
 =======
     <entry file="file://$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/Fragment/HomeFragment.java">
+<<<<<<< HEAD
 =======
     <entry file="file://$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/Fragment/ReportsFragment.java">
+>>>>>>> khinthuzin
+=======
+>>>>>>> origin/KyawSoeLin
 >>>>>>> khinthuzin
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -3751,12 +4179,22 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_blank.xml">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <state relative-caret-position="90">
           <caret line="6" column="25" lean-forward="false" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
 >>>>>>> khinthuzin
 =======
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+>>>>>>> khinthuzin
+=======
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+=======
+        <state relative-caret-position="90">
+          <caret line="6" column="25" lean-forward="false" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
+>>>>>>> khinthuzin
+>>>>>>> origin/KyawSoeLin
 >>>>>>> khinthuzin
           <folding />
         </state>
@@ -3766,6 +4204,17 @@
       </provider>
     </entry>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/activity_main_drawer.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="46" lean-forward="false" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="46" />
+          <folding>
+            <element signature="e#888#910#0" expanded="true" />
+          </folding>
+=======
+>>>>>>> khinthuzin
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/select_category.xml">
       <provider editor-type-id="android-designer2">
@@ -3781,6 +4230,7 @@
           <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
 >>>>>>> khinthuzin
           <folding />
+<<<<<<< HEAD
 =======
     <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/activity_main_drawer.xml">
       <provider selected="true" editor-type-id="text-editor">
@@ -3790,6 +4240,9 @@
             <element signature="e#888#910#0" expanded="true" />
           </folding>
 >>>>>>> khinthuzin
+=======
+>>>>>>> origin/KyawSoeLin
+>>>>>>> khinthuzin
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
@@ -3797,6 +4250,14 @@
       </provider>
     </entry>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/Activity/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="117" column="40" lean-forward="false" selection-start-line="117" selection-start-column="40" selection-end-line="117" selection-end-column="40" />
+=======
+>>>>>>> khinthuzin
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/add_transaction.xml">
       <provider editor-type-id="android-designer2">
@@ -3811,17 +4272,29 @@
         <state relative-caret-position="330">
           <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
 >>>>>>> khinthuzin
+<<<<<<< HEAD
 =======
     <entry file="file://$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/Activity/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
           <caret line="117" column="40" lean-forward="false" selection-start-line="117" selection-start-column="40" selection-end-line="117" selection-end-column="40" />
 >>>>>>> khinthuzin
+=======
+>>>>>>> origin/KyawSoeLin
+>>>>>>> khinthuzin
           <folding />
         </state>
       </provider>
     </entry>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/Fragment/BlankFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="402">
+          <caret line="87" column="0" lean-forward="true" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+=======
+>>>>>>> khinthuzin
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/add_category.xml">
       <provider editor-type-id="android-designer2">
@@ -3836,17 +4309,25 @@
         <state relative-caret-position="540">
           <caret line="43" column="59" lean-forward="false" selection-start-line="43" selection-start-column="59" selection-end-line="43" selection-end-column="59" />
 >>>>>>> khinthuzin
+<<<<<<< HEAD
 =======
     <entry file="file://$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/Fragment/BlankFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="402">
           <caret line="87" column="0" lean-forward="true" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
 >>>>>>> khinthuzin
+=======
+>>>>>>> origin/KyawSoeLin
+>>>>>>> khinthuzin
           <folding />
         </state>
       </provider>
     </entry>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> khinthuzin
 <<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/java/digitalfusion/poketexpence/Data/DataBaseHelper.java">
@@ -3864,7 +4345,11 @@
 =======
 >>>>>>> 21d413d27d53203779b2080733ad459e470af583
 >>>>>>> khinthuzin
+<<<<<<< HEAD
 =======
+>>>>>>> khinthuzin
+=======
+>>>>>>> origin/KyawSoeLin
 >>>>>>> khinthuzin
   </component>
 </project>

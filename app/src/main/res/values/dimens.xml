@@ -9,4 +9,5 @@
     <dimen name="layout_margin">2dp</dimen>
     <dimen name="textview_padding">10dp</dimen>
     <dimen name="spinner_card_radius">15dp</dimen>
+    <dimen name="dimen_50dp">50dp</dimen>
 </resources>

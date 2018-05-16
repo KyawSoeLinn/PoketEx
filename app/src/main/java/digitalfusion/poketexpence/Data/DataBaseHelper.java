@@ -51,7 +51,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     //Create Table
 
     private static final String CREATE_TABLE_expence = "CREATE TABLE "
-            + ETTableName + "(" + ETId + " INTEGER PRIMARY KEY,"
+            + ETTableName + "(" + ETId + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + ETtype + " TEXT,"
             + ETamount + " REAL,"
             + ETcategoriesId + " INTEGER,"
@@ -60,7 +60,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             + ETcreated_at + " TEXT" + ")";
 
     private static final String CREATE_TABLE_categories = "CREATE TABLE "
-            + CTableName + "(" + CId + " INTEGER PRIMARY KEY,"
+            + CTableName + "(" + CId + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + CName + " TEXT,"
             + CIcon + " INTEGER" + ")";
 
@@ -115,10 +115,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     //Category CRUD
 
-    public boolean insertCategory (Integer id, String name, Integer icon){
+    public boolean insertCategory (String name, Integer icon){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(CId, id );
         contentValues.put(CName, name );
         contentValues.put(CIcon, icon);
         db.insert(CTableName, null, contentValues);
@@ -209,7 +208,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return amount;
     }
 
-    public List getAllCategories() {
+
+    public LiveData<List<ExpenceCategories>> getAllCategories() {
+
+        final MutableLiveData<List<ExpenceCategories>> allDataByCategories = new MutableLiveData<>();
         List CategoryList = new ArrayList();
         String getQuery = "SELECT * FROM Categories";
         SQLiteDatabase db = this.getReadableDatabase();
@@ -224,11 +226,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
 
                 CategoryList.add(expenceCategories);
+                allDataByCategories.setValue(CategoryList);
             } while (cursor.moveToNext());
         }
         db.close();
 
-        return CategoryList;
+        return allDataByCategories;
     }
 
 
