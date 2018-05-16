@@ -20,13 +20,7 @@
         android:id="@+id/lbl_reportsbyinex"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/reportByInEx"
-        android:layout_marginTop="8dp"/>
-    <TextView
-        android:id="@+id/lbl_reportbycategory"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/reportByMonth"
+        android:text="@string/reportByCategory"
         android:layout_marginTop="8dp"/>
 
 </LinearLayout>

@@ -19,7 +19,9 @@
     <string name="btn_save">Save</string>
     <string name="nav_report">Reports</string>
     <string name="reportByInEx">Report By Income/Expense</string>
-    <string name="reportByCategory">Report By Category</string>
+    <string name="reportByCategory">Report with Category</string>
+
+    <string name="reportByMonth">Report By Month</string>
     <string name="lbl_category">Cateogry</string>
     <string name="img_content">AddButton</string>
     <string name="input_amount">Amount</string>

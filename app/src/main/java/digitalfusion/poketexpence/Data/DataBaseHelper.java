@@ -175,9 +175,32 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return amount;
     }
 
+    public Integer getselectmonth (String InEx, String selectmonth) {
+        Integer amount;
+        String getquery = "SELECT SUM(amount) FROM Expence WHERE  type='" + InEx +"'"+ " AND strftime('%m', created_at) = '" + selectmonth +"'";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(getquery, null);
+        c.moveToFirst();
+        amount = c.getInt(0);
+        c.close();
+        return amount;
+    }
+
     public Integer getthisyear (String InEx) {
         Integer amount;
         String getquery = "SELECT SUM(amount) FROM Expence WHERE  type='" + InEx +"'"+ " AND created_at >= date ('now' ,'start of year')";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(getquery, null);
+        c.moveToFirst();
+        amount = c.getInt(0);
+        c.close();
+        return amount;
+    }
+
+    public Integer getTotalCategory (int Catid) {
+        Integer amount;
+        String getquery = "SELECT SUM(amount) FROM Expence WHERE type = 'Expense' AND  categoryId='" + Catid +"'"+ " AND created_at >= date ('now' ,'start of month')";
+
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = db.rawQuery(getquery, null);
         c.moveToFirst();
@@ -207,6 +230,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         return CategoryList;
     }
+
+
 
     public void deleteCategory (String id, Context context){
         SQLiteDatabase db = this.getWritableDatabase();
