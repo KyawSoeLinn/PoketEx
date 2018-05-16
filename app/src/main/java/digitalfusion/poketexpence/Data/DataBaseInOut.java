@@ -25,7 +25,7 @@ public class DataBaseInOut {
 
         while (c.moveToNext()){
             ExpenceTransation expenceTransation = new ExpenceTransation();
-            expenceTransation.setId((c.getLong(c.getColumnIndex("id"))));
+            expenceTransation.setId((c.getInt(c.getColumnIndex("id"))));
             expenceTransation.setAmount(c.getDouble(c.getColumnIndex("Amount")));
             expenceTransation.setCategoriesID(c.getInt(c.getColumnIndex("CategoriesID")));
             expenceTransation.setPayee(c.getString(c.getColumnIndex("Payee")));

@@ -2,35 +2,32 @@ package digitalfusion.poketexpence.Fragment;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import digitalfusion.poketexpence.Adapter.AddTransactionAdapter;
+import digitalfusion.poketexpence.Activity.MainActivity;
 import digitalfusion.poketexpence.Adapter.CategoryListAdapter;
-import digitalfusion.poketexpence.Data.DataBaseHelper;
 import digitalfusion.poketexpence.Model.ExpenceCategories;
 import digitalfusion.poketexpence.Model.ExpenceTransation;
 import digitalfusion.poketexpence.R;
-import digitalfusion.poketexpence.Util.AddCategory;
+import digitalfusion.poketexpence.Util.AddCategoryDialogFragment;
+import digitalfusion.poketexpence.Util.PassDataToActivity;
+import digitalfusion.poketexpence.Util.RecyclerViewClickListener;
 import digitalfusion.poketexpence.ViewModel.AddCategoriesModel;
-import digitalfusion.poketexpence.ViewModel.AddTransactionModel;
 
-public class CategoriesFragment extends Fragment {
+public class CategoriesFragment extends Fragment implements PassDataToActivity {
     private FloatingActionButton fab;
     RecyclerView mRecyclerView;
     LinearLayoutManager mLayoutManager;
@@ -87,12 +84,13 @@ public class CategoriesFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              /*  AddCategoriesFragment fragment = null;
-               Intent intent = new Intent(getActivity(), AddCategory.class);
+              /*Intent intent = new Intent(getActivity(), MainActivity.class);
                 String key = null;
                 intent.putExtra("key", key);
                 startActivity(intent);*/
 
+              AddCategoryDialogFragment fragment = new AddCategoryDialogFragment();
+               fragment.show(getActivity().getSupportFragmentManager(),"fragment");
 
 
 
@@ -134,7 +132,7 @@ public class CategoriesFragment extends Fragment {
     }
 
 
-    private void loadRecyclerView() {
+    public void loadRecyclerView() {
 
         viewModel.getAllCategories();
 
@@ -151,6 +149,18 @@ public class CategoriesFragment extends Fragment {
 
         });
 
+
+    }
+
+
+    @Override
+    public void passDataToActivity(String catName, Integer catID) {
+
+    }
+
+    @Override
+    public void loadNewData() {
+        Toast.makeText(getActivity(),"NAME",Toast.LENGTH_SHORT).show();
 
     }
 }

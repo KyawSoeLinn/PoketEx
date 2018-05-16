@@ -12,7 +12,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import digitalfusion.poketexpence.Fragment.AddCategoriesFragment;
 import digitalfusion.poketexpence.Fragment.CategoriesFragment;
 import digitalfusion.poketexpence.Fragment.HomeFragment;
 import digitalfusion.poketexpence.Fragment.QuickSummaryFragment;
