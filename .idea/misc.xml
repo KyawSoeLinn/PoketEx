@@ -27,10 +27,18 @@
   </component>
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+=======
+>>>>>>> khinthuzin
+<<<<<<< HEAD
 <<<<<<< HEAD
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="JDK" project-jdk-type="JavaSDK">
 =======
+<<<<<<< HEAD
 =======
+>>>>>>> khinthuzin
+=======
+>>>>>>> origin/KyawSoeLin
 >>>>>>> khinthuzin
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" project-jdk-name="1.8" project-jdk-type="JavaSDK">
 >>>>>>> khinthuzin
@@ -40,6 +48,10 @@
     <option name="id" value="Android" />
   </component>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> khinthuzin
 =======
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" project-jdk-name="JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
@@ -49,6 +61,10 @@
 =======
 >>>>>>> 21d413d27d53203779b2080733ad459e470af583
 >>>>>>> khinthuzin
+<<<<<<< HEAD
 =======
+>>>>>>> khinthuzin
+=======
+>>>>>>> origin/KyawSoeLin
 >>>>>>> khinthuzin
 </project>

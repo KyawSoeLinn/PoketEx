@@ -1,6 +1,8 @@
 package digitalfusion.poketexpence.Fragment;
 
 import android.app.Fragment;
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -21,9 +23,11 @@ import com.github.mikephil.charting.data.BarEntry;
 import java.util.ArrayList;
 import java.util.List;
 
+import digitalfusion.poketexpence.Adapter.CategoryListAdapter;
 import digitalfusion.poketexpence.Data.DataBaseHelper;
 import digitalfusion.poketexpence.Model.ExpenceCategories;
 import digitalfusion.poketexpence.R;
+import digitalfusion.poketexpence.ViewModel.AddCategoriesModel;
 
 public class ReportCategoryFragment extends android.support.v4.app.Fragment {
 
@@ -31,9 +35,10 @@ public class ReportCategoryFragment extends android.support.v4.app.Fragment {
 
     DataBaseHelper dataBaseHelper;
     Context context;
-    List<ExpenceCategories> expenceCategoriesList;
+    List<ExpenceCategories> expenceCategoriesList = new ArrayList<>();
     int catSize = 0;
     int total;
+    AddCategoriesModel viewmodel;
 
     @Nullable
     @Override
@@ -55,9 +60,24 @@ public class ReportCategoryFragment extends android.support.v4.app.Fragment {
         context = getActivity();
         dataBaseHelper = new DataBaseHelper(context);
 
-        expenceCategoriesList = dataBaseHelper.getAllCategories();
-
+        expenceCategoriesList = dataBaseHelper.getAllForRPCategories();
         catSize = expenceCategoriesList.size();
+
+       /* viewmodel.getAllCategories();
+       viewmodel = ViewModelProviders.of(getActivity()).get(AddCategoriesModel.class);
+        viewmodel.getCategoryListObservable().observe(this, new Observer<List<ExpenceCategories>>() {
+            @Override
+            public void onChanged(@Nullable List<ExpenceCategories> categories) {
+
+                expenceCategoriesList.add(categories);
+                catSize =  expenceCategoriesList.size();
+
+            }
+
+
+        });*/
+
+
 
         BarData data = new BarData(getXAxisValues(), getDataSet());
         chart.setData(data);
@@ -71,27 +91,20 @@ public class ReportCategoryFragment extends android.support.v4.app.Fragment {
         ArrayList<BarDataSet> dataSets=null;
 
         ArrayList<BarEntry> valueSet1 = new ArrayList<>();
-
-        if (catSize == 0) {
-            BarEntry vle1= new BarEntry(0.00f,0); //Jan
-            valueSet1.add(vle1);
-        }
-        else if (catSize >= 1) {
-
+        if (catSize >= 1) {
             for (int i = 1; i <= catSize; i++) {
                 BarEntry vle1= new BarEntry(dataBaseHelper.getTotalCategory(Integer.parseInt(expenceCategoriesList.get(i-1).getCategoriesID())) ,i-1);
                 valueSet1.add(vle1);
-
             }
 
-
+        }
+        else {
+            BarEntry vle1= new BarEntry(0.00f,0); //Jan
+            valueSet1.add(vle1);
         }
 
         BarDataSet barDataSet1 = new BarDataSet(valueSet1, "");
         barDataSet1.setColor(Color.rgb(0, 155, 0));
-
-        //barDataSet2.setColors(ColorTemplate.COLORFUL_COLORS);
-
         dataSets = new ArrayList<>();
         dataSets.add(barDataSet1);
 
@@ -99,15 +112,10 @@ public class ReportCategoryFragment extends android.support.v4.app.Fragment {
     }
     private ArrayList<String> getXAxisValues() {
         ArrayList<String> xAxis = new ArrayList<>();
-
-
         for (int i = 1; i <= catSize; i++) {
-
                 xAxis.add(expenceCategoriesList.get(i-1).getCategoriesName());
 
         }
-
-
         return xAxis;
     }
 

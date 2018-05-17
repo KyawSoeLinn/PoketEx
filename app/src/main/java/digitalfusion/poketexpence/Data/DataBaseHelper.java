@@ -34,7 +34,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     //ExpenceTransation
     private static final String ETTableName = "Expence";
-    private static final String ETId = "id";
+    private static final String ETId = "eid";
     private static final String ETtype = "type";
     private static final String ETamount = "amount";
     private static final String ETcategoriesId = "categoryId";
@@ -44,14 +44,14 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     //Categories
     private static final String CTableName = "Categories";
-    private static final String CId = "id";
+    private static final String CId = "cid";
     private static final String CName = "name";
     private static final String CIcon = "icon";
 
     //Create Table
 
     private static final String CREATE_TABLE_expence = "CREATE TABLE "
-            + ETTableName + "(" + ETId + " INTEGER PRIMARY KEY,"
+            + ETTableName + "(" + ETId + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + ETtype + " TEXT,"
             + ETamount + " REAL,"
             + ETcategoriesId + " INTEGER,"
@@ -60,7 +60,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             + ETcreated_at + " TEXT" + ")";
 
     private static final String CREATE_TABLE_categories = "CREATE TABLE "
-            + CTableName + "(" + CId + " INTEGER PRIMARY KEY,"
+            + CTableName + "(" + CId + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + CName + " TEXT,"
             + CIcon + " INTEGER" + ")";
 
@@ -94,14 +94,15 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do{
                 ExpenceTransation expenceTransation = new ExpenceTransation();
-                expenceTransation.setId(cursor.getLong(cursor.getColumnIndex("id")));
+                expenceTransation.setId(cursor.getInt(cursor.getColumnIndex("eid")));
                 expenceTransation.setExpencetype(cursor.getString(cursor.getColumnIndex("type")));
                 expenceTransation.setAmount(cursor.getDouble(cursor.getColumnIndex("amount")));
                 expenceTransation.setCategoriesID(cursor.getInt(cursor.getColumnIndex("categoryId")));
                 expenceTransation.setPayee(cursor.getString(cursor.getColumnIndex("payee")));
-                //expenceTransation.setCategoriesImg(cursor.getInt(cursor.getColumnIndex("icon")));
+                expenceTransation.setCategoriesImg(cursor.getInt(cursor.getColumnIndex("icon")));
                 expenceTransation.setDescription(cursor.getString(cursor.getColumnIndex("description")));
                 expenceTransation.setCreated_at(cursor.getString(cursor.getColumnIndex("created_at")));
+                expenceTransation.setCategoriesDesc(cursor.getString(cursor.getColumnIndex("name")));
 
                 detailist.add(expenceTransation);
                 allData.setValue(detailist);
@@ -115,10 +116,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     //Category CRUD
 
-    public boolean insertCategory (Integer id, String name, Integer icon){
+    public boolean insertCategory (String name, Integer icon){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(CId, id );
         contentValues.put(CName, name );
         contentValues.put(CIcon, icon);
         db.insert(CTableName, null, contentValues);
@@ -209,7 +209,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return amount;
     }
 
-    public List getAllCategories() {
+
+    public LiveData<List<ExpenceCategories>> getAllCategories() {
+
+        final MutableLiveData<List<ExpenceCategories>> allDataByCategories = new MutableLiveData<>();
         List CategoryList = new ArrayList();
         String getQuery = "SELECT * FROM Categories";
         SQLiteDatabase db = this.getReadableDatabase();
@@ -218,12 +221,62 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do{
                 ExpenceCategories expenceCategories = new ExpenceCategories();
-                expenceCategories.setCategoriesID(cursor.getString(cursor.getColumnIndex("id")));
+                expenceCategories.setCategoriesID(cursor.getString(cursor.getColumnIndex("cid")));
                 expenceCategories.setCategoriesName(cursor.getString(cursor.getColumnIndex(CName)));
                 expenceCategories.setCategoriesIcon(cursor.getInt(cursor.getColumnIndex(CIcon)));
 
 
                 CategoryList.add(expenceCategories);
+                allDataByCategories.setValue(CategoryList);
+            } while (cursor.moveToNext());
+        }
+        db.close();
+
+        return allDataByCategories;
+    }
+
+
+    public List<ExpenceCategories> getAllForRPCategories() {
+    List CategoryList = new ArrayList();
+    String getQuery = "SELECT * FROM Categories";
+    SQLiteDatabase db = this.getReadableDatabase();
+    Cursor cursor = db.rawQuery(getQuery, null);
+
+        if (cursor.moveToFirst()) {
+        do{
+            ExpenceCategories expenceCategories = new ExpenceCategories();
+            expenceCategories.setCategoriesID(cursor.getString(cursor.getColumnIndex("cid")));
+            expenceCategories.setCategoriesName(cursor.getString(cursor.getColumnIndex(CName)));
+            expenceCategories.setCategoriesIcon(cursor.getInt(cursor.getColumnIndex(CIcon)));
+
+
+            CategoryList.add(expenceCategories);
+
+        } while (cursor.moveToNext());
+    }
+        db.close();
+
+        return CategoryList;
+}
+
+ public List<ExpenceCategories> getAllCategory() {
+
+        final MutableLiveData<List<ExpenceCategories>> allDataByCategories = new MutableLiveData<>();
+        List CategoryList = new ArrayList();
+        String getQuery = "SELECT * FROM Categories";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(getQuery, null);
+
+        if (cursor.moveToFirst()) {
+            do{
+                ExpenceCategories expenceCategories = new ExpenceCategories();
+                expenceCategories.setCategoriesID(cursor.getString(cursor.getColumnIndex("cid")));
+                expenceCategories.setCategoriesName(cursor.getString(cursor.getColumnIndex(CName)));
+                expenceCategories.setCategoriesIcon(cursor.getInt(cursor.getColumnIndex(CIcon)));
+
+
+                CategoryList.add(expenceCategories);
+
             } while (cursor.moveToNext());
         }
         db.close();
@@ -231,11 +284,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return CategoryList;
     }
 
-
-
     public void deleteCategory (String id, Context context){
         SQLiteDatabase db = this.getWritableDatabase();
-        db.execSQL("DELETE FROM "+ CTableName +" WHERE id='"+id+"'");
+        db.execSQL("DELETE FROM "+ CTableName +" WHERE cid='"+id+"'");
         Toast.makeText(context, "deleted", Toast.LENGTH_SHORT).show();
     }
 
@@ -259,10 +310,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + CTableName);
     }
 
-    public void deleteExpenseRecord(Long id, Context mcontext) {
+    public void deleteExpenseRecord(Integer id, Context mcontext) {
         SQLiteDatabase db=this.getWritableDatabase();
 
-        db.execSQL("DELETE FROM "+ ETTableName + " WHERE id='"+id+"'");
+        db.execSQL("DELETE FROM "+ ETTableName + " WHERE eid='"+id+"'");
         Toast.makeText(mcontext, "Deleted Successfully", Toast.LENGTH_SHORT).show();
     }
 
@@ -271,17 +322,16 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getWritableDatabase();
         final MutableLiveData<ExpenceTransation> allDataById = new MutableLiveData<>();
-        String query = "SELECT  * FROM " + ETTableName + " WHERE id="+ receivedRecordId;
+        String query = "SELECT * from Expence WHERE  Expence.eid='"+receivedRecordId+"'";
         Cursor cursor = db.rawQuery(query, null);
         ExpenceTransation expenceTransation = new ExpenceTransation();
 
         if(cursor.getCount() > 0) {
             cursor.moveToFirst();
 
-            expenceTransation.setId(cursor.getLong(cursor.getColumnIndex("id")));
+            expenceTransation.setId(cursor.getInt(cursor.getColumnIndex("eid")));
             expenceTransation.setExpencetype(cursor.getString(cursor.getColumnIndex("type")));
             expenceTransation.setAmount(cursor.getDouble(cursor.getColumnIndex("amount")));
-
             expenceTransation.setCategoriesID(cursor.getInt(cursor.getColumnIndex("categoryId")));
             expenceTransation.setPayee(cursor.getString(cursor.getColumnIndex("payee")));
             expenceTransation.setDescription(cursor.getString(cursor.getColumnIndex("description")));
@@ -301,7 +351,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getWritableDatabase();
         //you can use the constants above instead of typing the column names
-        db.execSQL("UPDATE  "+ETTableName+" SET type ='"+ updateTransaction.getExpencetype() + "', amount ='" + updateTransaction.getAmount()+ "', categoryId ='"+ updateTransaction.getCategoriesID() + "', payee ='"+ updateTransaction.getPayee() + "', description ='"+ updateTransaction.getDescription() + "', created_at ='"+ updateTransaction.getCreated_at() +"'  WHERE id='" + receiveRecordId + "'");
+        db.execSQL("UPDATE  "+ETTableName+" SET type ='"+ updateTransaction.getExpencetype() + "', amount ='" + updateTransaction.getAmount()+ "', categoryId ='"+ updateTransaction.getCategoriesID() + "', payee ='"+ updateTransaction.getPayee() + "', description ='"+ updateTransaction.getDescription() + "', created_at ='"+ updateTransaction.getCreated_at() +"'  WHERE eid='" + receiveRecordId + "'");
 
     }
 
@@ -324,7 +374,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do{
                 ExpenceTransation expenceTransation = new ExpenceTransation();
-                expenceTransation.setId(cursor.getLong(cursor.getColumnIndex("id")));
+                expenceTransation.setId(cursor.getInt(cursor.getColumnIndex("id")));
                 expenceTransation.setExpencetype(cursor.getString(cursor.getColumnIndex("type")));
                 expenceTransation.setAmount(cursor.getDouble(cursor.getColumnIndex("amount")));
                 expenceTransation.setCategoriesID(cursor.getInt(cursor.getColumnIndex("categoryId")));

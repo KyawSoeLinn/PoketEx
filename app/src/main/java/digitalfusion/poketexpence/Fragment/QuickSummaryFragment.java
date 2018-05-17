@@ -69,5 +69,14 @@ public class QuickSummaryFragment extends Fragment {
         totalyear.setText(totalIyear + "MMK");
 
         getActivity().setTitle(R.string.quicksummary_fragment);
+
+        displaySelectedScreen(R.id.home_fragment);
+    }
+
+    private void displaySelectedScreen(int home_fragment) {
+
+
+
+
     }
 }

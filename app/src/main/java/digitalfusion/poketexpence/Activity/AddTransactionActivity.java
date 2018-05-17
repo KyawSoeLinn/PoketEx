@@ -1,73 +1,53 @@
 package digitalfusion.poketexpence.Activity;
 
-import android.app.AlertDialog;
-import android.app.DatePickerDialog;
-import android.content.Context;
+import android.app.Dialog;
+import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.text.Layout;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import belka.us.androidtoggleswitch.widgets.ToggleSwitch;
 
 import digitalfusion.poketexpence.Adapter.AddTransactionAdapter;
+import digitalfusion.poketexpence.Fragment.SelectCategoryFragment;
 import digitalfusion.poketexpence.R;
-import digitalfusion.poketexpence.Adapter.CategoryListAdapter;
 import digitalfusion.poketexpence.Data.DataBaseHelper;
-import digitalfusion.poketexpence.Fragment.HomeFragment;
-import digitalfusion.poketexpence.Fragment.QuickSummaryFragment;
 import digitalfusion.poketexpence.Model.ExpenceCategories;
 import digitalfusion.poketexpence.Model.ExpenceTransation;
 
-import digitalfusion.poketexpence.Util.AddCategory;
-import digitalfusion.poketexpence.Util.SelectCategory;
+import digitalfusion.poketexpence.Util.AddCategoryDialogFragment;
+import digitalfusion.poketexpence.Util.PassDataToActivity;
+import digitalfusion.poketexpence.Util.RecyclerViewClickListener;
 import digitalfusion.poketexpence.ViewModel.AddTransactionModel;
 
-import static digitalfusion.poketexpence.Adapter.CategorySelectAdapter.CatId;
-import static digitalfusion.poketexpence.Adapter.CategorySelectAdapter.CatName;
 
-public class AddTransactionActivity extends AppCompatActivity implements com.wdullaer.materialdatetimepicker.date.DatePickerDialog.OnDateSetListener {
+public class AddTransactionActivity extends AppCompatActivity implements com.wdullaer.materialdatetimepicker.date.DatePickerDialog.OnDateSetListener, PassDataToActivity {
     DataBaseHelper DBHelper;
     ToggleSwitch toggleSwitch;
     Button btnCancel, btnSave;
     String transactionType = "Income";
     TextView txtDate, txtCategory, txtdatepicker;
     EditText edtamount, edtpayee, edtnote;
-    RecyclerView mRecyclerview;
-    List<ExpenceCategories> mCategorieList;
-    private GridLayoutManager categoryLayout;
+    private Integer receiveRecordId;
+    FragmentManager fm = getSupportFragmentManager();
 
-
-    DataBaseHelper dbHelper;
     AddTransactionAdapter categoryListAdapter;
     Double amount = null;
     Integer CID;
@@ -108,9 +88,46 @@ public class AddTransactionActivity extends AppCompatActivity implements com.wdu
         Month = calendar.get(Calendar.MONTH);
         Day = calendar.get(Calendar.DAY_OF_MONTH);
 
-
         viewModel = ViewModelProviders.of(this).get(AddTransactionModel.class);
 
+        try {
+            receiveRecordId = getIntent().getIntExtra("TRANSACTION_ID", 0);
+            CID = getIntent().getIntExtra("CATEGORIES_ID", 1);
+            CName = getIntent().getStringExtra("CATEGORY_NAME");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        if (receiveRecordId != 0) {
+            viewModel = ViewModelProviders.of(this).get(AddTransactionModel.class);
+            //transaction data before update
+            viewModel.getTransactionById(receiveRecordId);
+            viewModel.getTransactionListByIdObservable().observe(this, new Observer<ExpenceTransation>() {
+                @Override
+                public void onChanged(ExpenceTransation transaction) {
+                    if (transaction != null) {
+                        edtamount.setText(transaction.getAmount().toString());
+                        txtdatepicker.setText(transaction.getCreated_at().toString());
+                        edtpayee.setText(transaction.getPayee().toString());
+                        edtnote.setText(transaction.getDescription().toString());
+                        transactionType = transaction.getExpencetype().toString();
+                        txtCategory.setText(CName);
+
+
+                        btnSave.setText("Update");
+
+                        if (transactionType.equals("Income")) {
+                            toggleSwitch.setCheckedTogglePosition(0);
+                        } else {
+                            toggleSwitch.setCheckedTogglePosition(1);
+                        }
+                    }
+                }
+
+            });
+        }
         //toggleSwitch function
 
         toggleSwitch.setOnToggleSwitchChangeListener(new ToggleSwitch.OnToggleSwitchChangeListener() {
@@ -129,20 +146,14 @@ public class AddTransactionActivity extends AppCompatActivity implements com.wdu
 
         //Show Category Dialog
 
-        txtCategory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-            }
-        });
-
-        btncatAdd.setOnClickListener(new View.OnClickListener() {
+      /*  btncatAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AddTransactionActivity.this, AddCategory.class);
                 startActivity(intent);
             }
-        });
+        });*/
 
 
         txtdatepicker.setOnClickListener(new View.OnClickListener() {
@@ -164,36 +175,32 @@ public class AddTransactionActivity extends AppCompatActivity implements com.wdu
             }
         });
 
+        txtCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
 
+                SelectCategoryFragment fragment = new SelectCategoryFragment();
+                fragment.show(getSupportFragmentManager(), "fragment");
 
 
-
-
-
-                txtCategory.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(AddTransactionActivity.this, SelectCategory.class);
-                        startActivity(intent);
-                    }
-                });
-                txtCategory.setText(CatName);
+            }
+        });
+        txtCategory.setText("Select Category");
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String btnStatus = btnSave.getText().toString();
                 amount = Double.parseDouble(edtamount.getText().toString());
-
-                CID = CatId;
-
                 txtNote = edtnote.getText().toString();
                 txtPayee = edtpayee.getText().toString();
                 ExpenceTransation expenceTransation = new ExpenceTransation(transactionType, amount, CID, txtPayee, txtNote, txtdatepicker.getText().toString());
 
-                viewModel.insertTransaction(expenceTransation);
-                String addTransaction = transactionType + " " + amount + " " + CID + " " + txtNote + " " + txtPayee;
-                Toast.makeText(AddTransactionActivity.this, "Transaction : " + addTransaction, Toast.LENGTH_LONG).show();
-
+                if (btnStatus.equals("Update")) {
+                    viewModel.updateTransaction(receiveRecordId, expenceTransation);
+                } else {
+                    viewModel.insertTransaction(expenceTransation);
+                }
                 Intent intent = new Intent(AddTransactionActivity.this, MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
@@ -204,12 +211,18 @@ public class AddTransactionActivity extends AppCompatActivity implements com.wdu
 
 
 
-      /*  button2.setOnClickListener(new View.OnClickListener() {
+        btncatAdd.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                DBHelper.getAllData();
+            public void onClick(View view) {
+                AddCategoryDialogFragment fragment = new AddCategoryDialogFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("BtnStatus","Add");
+                fragment.setArguments(bundle);
+                fragment.show(getSupportFragmentManager(),"SelectCategoryFragment");
+
+
             }
-        });*/
+        });
 
     }
 
@@ -246,18 +259,25 @@ public class AddTransactionActivity extends AppCompatActivity implements com.wdu
     public void onDateSet(com.wdullaer.materialdatetimepicker.date.DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
         Integer month = monthOfYear + 1;
         String date = null;
-        if(month < 10)
-        {
-            date = year + "-" + "0"+ month + "-" + dayOfMonth;
-        }
-        else
-        {
-            date = year + "-" +month + "-" + dayOfMonth;
+        if (month < 10) {
+            date = year + "-" + "0" + month + "-" + dayOfMonth;
+        } else {
+            date = year + "-" + month + "-" + dayOfMonth;
         }
         txtdatepicker.setText(date);
 
     }
 
 
+    @Override
+    public void passDataToActivity(String someValue, Integer CatID) {
+        txtCategory.setText(someValue);
+        CID = CatID;
 
+    }
+
+    @Override
+    public void loadNewData() {
+
+    }
 }

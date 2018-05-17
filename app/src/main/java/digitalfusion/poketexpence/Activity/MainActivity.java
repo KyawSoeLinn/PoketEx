@@ -1,12 +1,8 @@
 package digitalfusion.poketexpence.Activity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -16,11 +12,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import digitalfusion.poketexpence.Fragment.BlankFragment;
+import digitalfusion.poketexpence.Fragment.AllReport;
+import digitalfusion.poketexpence.Fragment.CategoriesFragment;
 import digitalfusion.poketexpence.Fragment.HomeFragment;
 import digitalfusion.poketexpence.Fragment.QuickSummaryFragment;
 import digitalfusion.poketexpence.Fragment.ReportCategoryFragment;
 import digitalfusion.poketexpence.Fragment.ReportsFragment;
+
 import digitalfusion.poketexpence.R;
 
 public class MainActivity extends AppCompatActivity
@@ -116,17 +114,14 @@ public class MainActivity extends AppCompatActivity
             case R.id.quicksummary_fragment:
                 fragment = new QuickSummaryFragment();
                 break;
-
-            case R.id.reports_fragment:
-                /*fragment = new ReportsFragment();*/
-                fragment = new ReportCategoryFragment();
-                /*Intent intent = new Intent(MainActivity.this, ReportCategoryFragment.class);
-                startActivity(intent);*/
+             case R.id.reports_fragment:
+                 fragment = new AllReport();
                 break;
             case R.id.settings_fragment:
-                 Intent intent = new Intent(MainActivity.this, Category.class);
-                startActivity(intent);
-
+                fragment=new CategoriesFragment();
+                break;
+            case R.id.add_category_fragment:
+                fragment= new Fragment();
                 break;
 
 

@@ -35,7 +35,7 @@ public class HomeFragment extends Fragment {
 
     DataBaseHelper dbHelper;
     AddTransactionAdapter addTransactionAdapter;
-    List<ExpenceTransation> transactionList=new ArrayList<>();
+    List<ExpenceTransation> transactionList = new ArrayList<>();
     MaterialSpinner transactionSpinner, dateFilterSpinner;
     String transactionFilter, dateFilter;
     AddTransactionModel viewModel;
@@ -68,12 +68,12 @@ public class HomeFragment extends Fragment {
 
         mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
-            public void onScrolled(RecyclerView recyclerView, int dx,int dy){
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
 
                 if (dy > 0 && fab.getVisibility() == View.VISIBLE) {
                     fab.hide();
-                } else if (dy < 0 && fab.getVisibility() !=View.VISIBLE) {
+                } else if (dy < 0 && fab.getVisibility() != View.VISIBLE) {
                     fab.show();
                 }
             }
@@ -81,11 +81,11 @@ public class HomeFragment extends Fragment {
 
         });
         dateFilterSpinner = (MaterialSpinner) view.findViewById(R.id.transaction_date_spinner);
-        dateFilterSpinner.setItems("Today", "Yesterday", "This Week", "Last Week","Last Month");
-        dateFilter="Today";
+        dateFilterSpinner.setItems("Today", "Yesterday", "This Week", "Last Week", "Last Month");
+        dateFilter = "Today";
         transactionSpinner = (MaterialSpinner) view.findViewById(R.id.transaction_spinner);
         transactionSpinner.setItems("All", "Income", "Expense");
-       transactionFilter="All";
+        transactionFilter = "All";
 
         loadRecyclerView(transactionFilter, dateFilter);
 
@@ -93,7 +93,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
                 dateFilter = item.toString();
-                loadRecyclerView(transactionFilter,dateFilter);
+                loadRecyclerView(transactionFilter, dateFilter);
 
             }
         });
@@ -104,12 +104,11 @@ public class HomeFragment extends Fragment {
             public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
 
                 transactionFilter = item.toString();
-                viewModel.getTransactionByType(transactionFilter,dateFilter);
+                viewModel.getTransactionByType(transactionFilter, dateFilter);
                 //loadRecyclerView(transactionFilter,dateFilter);
                 // Update the list when the data changes
 
-                if(viewModel.getTransactionListObservable().getValue() == null)
-                {
+                if (viewModel.getTransactionListObservable().getValue() == null) {
                     addTransactionAdapter = new AddTransactionAdapter(transactionList, getContext());
                     mRecyclerView.setAdapter(addTransactionAdapter);
                     addTransactionAdapter.notifyDataSetChanged();
@@ -117,18 +116,9 @@ public class HomeFragment extends Fragment {
                 viewModel.getTransactionListObservable().observe(getActivity(), new Observer<List<ExpenceTransation>>() {
                     @Override
                     public void onChanged(@Nullable List<ExpenceTransation> expenceTransations) {
-                        if(expenceTransations == null || expenceTransations.size() ==0)
-                        {
-
-                        }
-                        else
-                        {
-                            addTransactionAdapter = new AddTransactionAdapter(expenceTransations, getContext());
-                            mRecyclerView.setAdapter(addTransactionAdapter);
-                            addTransactionAdapter.notifyDataSetChanged();
-
-
-                        }
+                        addTransactionAdapter = new AddTransactionAdapter(expenceTransations, getContext());
+                        mRecyclerView.setAdapter(addTransactionAdapter);
+                        addTransactionAdapter.notifyDataSetChanged();
 
 
 
@@ -138,15 +128,12 @@ public class HomeFragment extends Fragment {
             }
         });
 
-
-
-
-
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), AddTransactionActivity.class);
                 getActivity().startActivity(intent);
+
             }
         });
 
@@ -187,25 +174,16 @@ public class HomeFragment extends Fragment {
 
     private void loadRecyclerView(String transactionFilter, String dateFilter) {
 
-        viewModel.getAllTransaction(transactionFilter,dateFilter);
+        viewModel.getAllTransaction(transactionFilter, dateFilter);
 
         // Update the list when the data changes
         viewModel.getTransactionListObservable().observe(this, new Observer<List<ExpenceTransation>>() {
             @Override
             public void onChanged(@Nullable List<ExpenceTransation> expenceTransations) {
-                if(expenceTransations == null || expenceTransations.size() ==0)
-                {
 
-                }
-                else
-                {
-                    addTransactionAdapter = new AddTransactionAdapter(expenceTransations, getContext());
-                    mRecyclerView.setAdapter(addTransactionAdapter);
-                    addTransactionAdapter.notifyDataSetChanged();
-
-
-                }
-
+                addTransactionAdapter = new AddTransactionAdapter(expenceTransations, getContext());
+                mRecyclerView.setAdapter(addTransactionAdapter);
+                addTransactionAdapter.notifyDataSetChanged();
 
             }
         });

@@ -14,12 +14,12 @@ public class ShowTransactionByFilter {
             {
                 if(transactionFilter.equals("All"))
                 {
-                    //getQuery = "SELECT * from Expence JOIN Categories ON Expence.categoryId=Categories.id WHERE   created_at = date ('now') ";
-                    getQuery = "SELECT * from Expence  WHERE created_at = date ('now') ";
+                    getQuery = "SELECT * from Expence JOIN Categories ON Expence.categoryId=Categories.cid WHERE   created_at = date ('now') ";
+                    //getQuery = "SELECT * from Expence  WHERE created_at = date ('now') ";
                 }
                 else
                 {
-                    getQuery = "SELECT  * FROM Expence WHERE  type='" + transactionFilter +"'"+ " AND created_at = date ('now') ";
+                    getQuery = "SELECT  * FROM Expence JOIN Categories ON Expence.categoryId=Categories.cid WHERE  type='" + transactionFilter +"'"+ " AND created_at = date ('now') ";
                 }
             }
            else if(dateFilter.equals("Yesterday"))
