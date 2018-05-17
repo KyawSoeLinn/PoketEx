@@ -11,7 +11,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import digitalfusion.poketexpence.Fragment.AddCategoriesFragment;
+
+import digitalfusion.poketexpence.Fragment.AllReport;
 import digitalfusion.poketexpence.Fragment.CategoriesFragment;
 import digitalfusion.poketexpence.Fragment.HomeFragment;
 import digitalfusion.poketexpence.Fragment.QuickSummaryFragment;
@@ -114,7 +115,7 @@ public class MainActivity extends AppCompatActivity
                 fragment = new QuickSummaryFragment();
                 break;
              case R.id.reports_fragment:
-                 fragment = new ReportCategoryFragment();
+                 fragment = new AllReport();
                 break;
             case R.id.settings_fragment:
                 fragment=new CategoriesFragment();

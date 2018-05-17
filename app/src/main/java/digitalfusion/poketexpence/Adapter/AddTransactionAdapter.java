@@ -87,11 +87,12 @@ public class AddTransactionAdapter extends RecyclerView.Adapter<AddTransactionAd
     @Override
     public void onBindViewHolder(AddTransactionAdapter.ViewHolder holder, final int position) {
 
-        final ExpenceTransation transaction = mTransactionList.get(position);
+      final ExpenceTransation transaction = mTransactionList.get(position);
         String transactionType;
         holder.txtamount.setText(transaction.getAmount().toString()+ " MMK");
         holder.txtDate.setText(transaction.getCreated_at().toString());
         holder.txtPayee.setText(transaction.getPayee().toString());
+        holder.imgCategory.setImageResource(transaction.getCategoriesImg());
         transactionType = transaction.getExpencetype().toString();
 
         holder.txtTransactionType.setText(transactionType);
@@ -106,7 +107,12 @@ public class AddTransactionAdapter extends RecyclerView.Adapter<AddTransactionAd
         holder.txtEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                goToUpdateActivity(transaction.getId());
+                Intent intent = new Intent(mcontext, AddTransactionActivity.class);
+                intent.putExtra("TRANSACTION_ID", transaction.getId());
+                intent.putExtra("CATEGORIES_ID",transaction.getCategoriesID());
+                intent.putExtra("CATEGORY_NAME",transaction.getCategoriesDesc());
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                mcontext.startActivity(intent);
 
             }
         });
@@ -124,11 +130,8 @@ public class AddTransactionAdapter extends RecyclerView.Adapter<AddTransactionAd
         });
     }
 
-    private void goToUpdateActivity(Long id) {
-        Intent intent = new Intent(mcontext, UpdateRecordActivity.class);
-        intent.putExtra("TRANSACTION_ID", id);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        mcontext.startActivity(intent);
+    private void goToUpdateActivity(Long id, Integer categoriesID, String categoriesDesc) {
+
 
 
     }

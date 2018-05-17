@@ -9,7 +9,15 @@ import java.util.SimpleTimeZone;
 
 public class ExpenceTransation {
 
-    private Long Id;
+    public Integer getId() {
+        return Id;
+    }
+
+    public void setId(Integer id) {
+        Id = id;
+    }
+
+    private Integer Id;
 
     public Integer getCategoriesImg() {
         return CategoriesImg;
@@ -26,6 +34,16 @@ public class ExpenceTransation {
     private String Description;
     private String Created_at;
     private Integer CategoriesImg;
+
+    public String getCategoriesDesc() {
+        return CategoriesDesc;
+    }
+
+    public void setCategoriesDesc(String categoriesDesc) {
+        CategoriesDesc = categoriesDesc;
+    }
+
+    private String CategoriesDesc;
 
 
     public ExpenceTransation()
@@ -50,13 +68,6 @@ public class ExpenceTransation {
 
 
 
-    public Long getId() {
-        return Id;
-    }
-
-    public void setId(Long id) {
-        this.Id = id;
-    }
 
     public Double getAmount() {
         return Amount;
