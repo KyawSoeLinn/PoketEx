@@ -17,20 +17,15 @@ import digitalfusion.poketexpence.Model.ExpenceTransation;
 public class AddCategoriesModel extends AndroidViewModel {
     DataBaseHelper dbHelper;
     private LiveData<List<ExpenceCategories>> categoryListObservable;
-
     private LiveData<ExpenceTransation> transactionListByIdObservable;
-
     public AddCategoriesModel(Application application) {
         super(application);
-
-
     }
 
     /**
      * Expose the LiveData Projects query so the UI can observe it.
      */
    public LiveData<List<ExpenceCategories>> getCategoryListObservable() {
-
        return categoryListObservable;
 
     }
@@ -38,16 +33,12 @@ public class AddCategoriesModel extends AndroidViewModel {
         return transactionListByIdObservable;
     }
     public void insertTransaction(ExpenceTransation expenceTransation) {
-
         dbHelper=new DataBaseHelper(this.getApplication());
         dbHelper.insertcontat(expenceTransation);
     }
 
-
-
     public void getTransactionById(long receiveRecordId) {
         dbHelper=new DataBaseHelper(this.getApplication());
-
         transactionListByIdObservable = dbHelper.getAllDataById(receiveRecordId);
 
     }
@@ -57,22 +48,13 @@ public class AddCategoriesModel extends AndroidViewModel {
         dbHelper.updateTransactionRecord(receiveRecordId,updateTransaction);
     }
 
-  /*  public void getTransactionByType(String transactionFilter, String dateFilter) {
-
-        dbHelper=new DataBaseHelper(this.getApplication());
-
-        transactionListObservable = dbHelper.getAllData(transactionFilter,dateFilter);
-    }*/
-
     public void getAllCategories() {
         dbHelper=new DataBaseHelper(this.getApplication());
-
         categoryListObservable = dbHelper.getAllCategories();
 
     }
 
     public void insertCategory(String cattxt, Integer iconID) {
-
         dbHelper=new DataBaseHelper(this.getApplication());
        dbHelper.insertCategory(cattxt,iconID);
     }
