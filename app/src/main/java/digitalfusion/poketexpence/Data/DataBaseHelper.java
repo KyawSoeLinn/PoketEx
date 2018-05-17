@@ -107,6 +107,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 expenceTransation.setCategoriesImg(cursor.getInt(cursor.getColumnIndex("icon")));
                 expenceTransation.setDescription(cursor.getString(cursor.getColumnIndex("description")));
                 expenceTransation.setCreated_at(cursor.getString(cursor.getColumnIndex("created_at")));
+                expenceTransation.setCategoriesDesc(cursor.getString(cursor.getColumnIndex("name")));
 
                 detailist.add(expenceTransation);
                 allData.setValue(detailist);
@@ -197,7 +198,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
     public void deleteCategory (String id, Context context){
         SQLiteDatabase db = this.getWritableDatabase();
-        db.execSQL("DELETE FROM "+ CTableName +" WHERE id='"+id+"'");
+        db.execSQL("DELETE FROM "+ CTableName +" WHERE cid='"+id+"'");
         Toast.makeText(context, "deleted", Toast.LENGTH_SHORT).show();
     }
 
@@ -224,7 +225,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public void deleteExpenseRecord(Integer id, Context mcontext) {
         SQLiteDatabase db=this.getWritableDatabase();
 
-        db.execSQL("DELETE FROM "+ ETTableName + " WHERE id='"+id+"'");
+        db.execSQL("DELETE FROM "+ ETTableName + " WHERE eid='"+id+"'");
         Toast.makeText(mcontext, "Deleted Successfully", Toast.LENGTH_SHORT).show();
     }
 

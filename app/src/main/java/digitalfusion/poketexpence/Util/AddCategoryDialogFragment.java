@@ -43,11 +43,11 @@ public class AddCategoryDialogFragment extends AppCompatDialogFragment {
     String Cattxt;
     private CategoryIconSelectAdapter iconadapter;
     private List<IconList> iconlist;
-    private  Integer iconID;
+    private Integer iconID;
     AddCategoriesModel viewModel;
     private PassDataToActivity passData;
-   RecyclerViewClickListener mListener;
-
+    RecyclerViewClickListener mListener;
+     String btnStatus;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -65,6 +65,10 @@ public class AddCategoryDialogFragment extends AppCompatDialogFragment {
                 passData.passDataToActivity(catName, catId);
                 dismiss();*/
 
+        Bundle bundle = getArguments();
+        btnStatus = bundle.getString("BtnStatus","");
+
+
 
 
         CatEdittxt = (EditText) rootView.findViewById(R.id.catNameedttxt);
@@ -80,7 +84,7 @@ public class AddCategoryDialogFragment extends AppCompatDialogFragment {
         RecyclerView.LayoutManager iconLayoutmanger = new GridLayoutManager(getActivity(), 2);
         recyclerView.setLayoutManager(iconLayoutmanger);
 
-        mListener= new RecyclerViewClickListener() {
+        mListener = new RecyclerViewClickListener() {
             @Override
             public void onClick(View view, int adapterPosition) {
                 iconview.setImageResource(adapterPosition);
@@ -110,17 +114,23 @@ public class AddCategoryDialogFragment extends AppCompatDialogFragment {
 
 
                 Cattxt = CatEdittxt.getText().toString();
-
                 viewModel.insertCategory(Cattxt, iconID);
                 Toast.makeText(getContext(), Cattxt, Toast.LENGTH_SHORT).show();
-                FragmentManager fm = getFragmentManager();
-                FragmentTransaction ft = fm.beginTransaction();
-                 CategoriesFragment parent = (CategoriesFragment) fm.findFragmentByTag("SampleFragment");
-               parent.loadRecyclerView();
-
-                dismiss();
-
+                if(!btnStatus.equals("homeCategoryFragment"))
+                {
+                     dismiss();
                 }
+                else{
+                    FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                    CategoriesFragment categoriesFragment = new CategoriesFragment();
+                    ft.replace(R.id.content_frame, categoriesFragment);
+                    ft.commit();
+                    dismiss();
+                }
+
+
+
+            }
         });
 
         btncatCancel.setOnClickListener(new View.OnClickListener() {
@@ -131,7 +141,7 @@ public class AddCategoryDialogFragment extends AppCompatDialogFragment {
                 dismiss();
             }
         });
-return rootView;
+        return rootView;
 
     }
 

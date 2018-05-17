@@ -27,7 +27,7 @@ import digitalfusion.poketexpence.Util.PassDataToActivity;
 import digitalfusion.poketexpence.Util.RecyclerViewClickListener;
 import digitalfusion.poketexpence.ViewModel.AddCategoriesModel;
 
-public class CategoriesFragment extends Fragment implements PassDataToActivity {
+public class CategoriesFragment extends Fragment  implements RecyclerViewClickListener{
     private FloatingActionButton fab;
     RecyclerView mRecyclerView;
     LinearLayoutManager mLayoutManager;
@@ -89,7 +89,10 @@ public class CategoriesFragment extends Fragment implements PassDataToActivity {
                 intent.putExtra("key", key);
                 startActivity(intent);*/
 
-              AddCategoryDialogFragment fragment = new AddCategoryDialogFragment();
+               AddCategoryDialogFragment fragment = new AddCategoryDialogFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("BtnStatus","homeCategoryFragment");
+                fragment.setArguments(bundle);
                fragment.show(getActivity().getSupportFragmentManager(),"fragment");
 
 
@@ -153,14 +156,28 @@ public class CategoriesFragment extends Fragment implements PassDataToActivity {
     }
 
 
-    @Override
-    public void passDataToActivity(String catName, Integer catID) {
 
+
+    @Override
+    public void onClick(View view, int adapterPosition) {
+        viewModel.getAllCategories();
+
+        // Update the list when the data changes
+        viewModel.getCategoryListObservable().observe(this, new Observer<List<ExpenceCategories>>() {
+            @Override
+            public void onChanged(@Nullable List<ExpenceCategories> categories) {
+                categoriesAdapter = new CategoryListAdapter(categories, getContext());
+                mRecyclerView.setAdapter(categoriesAdapter);
+                categoriesAdapter.notifyDataSetChanged();
+
+            }
+
+
+        });
     }
 
     @Override
-    public void loadNewData() {
-        Toast.makeText(getActivity(),"NAME",Toast.LENGTH_SHORT).show();
+    public void onSendData(String catName, Integer catId) {
 
     }
 }

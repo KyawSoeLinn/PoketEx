@@ -1,5 +1,6 @@
 package digitalfusion.poketexpence.Activity;
 
+import android.app.Dialog;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
@@ -31,12 +32,11 @@ import digitalfusion.poketexpence.Data.DataBaseHelper;
 import digitalfusion.poketexpence.Model.ExpenceCategories;
 import digitalfusion.poketexpence.Model.ExpenceTransation;
 
+import digitalfusion.poketexpence.Util.AddCategoryDialogFragment;
 import digitalfusion.poketexpence.Util.PassDataToActivity;
 import digitalfusion.poketexpence.Util.RecyclerViewClickListener;
 import digitalfusion.poketexpence.ViewModel.AddTransactionModel;
 
-import static digitalfusion.poketexpence.Adapter.CategorySelectAdapter.CatId;
-import static digitalfusion.poketexpence.Adapter.CategorySelectAdapter.CatName;
 
 public class AddTransactionActivity extends AppCompatActivity implements com.wdullaer.materialdatetimepicker.date.DatePickerDialog.OnDateSetListener, PassDataToActivity {
     DataBaseHelper DBHelper;
@@ -87,7 +87,6 @@ public class AddTransactionActivity extends AppCompatActivity implements com.wdu
         Year = calendar.get(Calendar.YEAR);
         Month = calendar.get(Calendar.MONTH);
         Day = calendar.get(Calendar.DAY_OF_MONTH);
-
 
         viewModel = ViewModelProviders.of(this).get(AddTransactionModel.class);
 
@@ -187,7 +186,7 @@ public class AddTransactionActivity extends AppCompatActivity implements com.wdu
 
             }
         });
-        txtCategory.setText(CatName);
+        txtCategory.setText("Select Category");
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -212,12 +211,18 @@ public class AddTransactionActivity extends AppCompatActivity implements com.wdu
 
 
 
-      /*  button2.setOnClickListener(new View.OnClickListener() {
+        btncatAdd.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                DBHelper.getAllData();
+            public void onClick(View view) {
+                AddCategoryDialogFragment fragment = new AddCategoryDialogFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("BtnStatus","Add");
+                fragment.setArguments(bundle);
+                fragment.show(getSupportFragmentManager(),"SelectCategoryFragment");
+
+
             }
-        });*/
+        });
 
     }
 
