@@ -40,14 +40,12 @@ public class AddCategoryDialogFragment extends AppCompatDialogFragment {
     ImageView iconview;
     private RecyclerView recyclerView;
     DataBaseHelper dbhelper;
-    String Cattxt;
     private CategoryIconSelectAdapter iconadapter;
     private List<IconList> iconlist;
-    private Integer iconID;
+    private Integer iconID,CategoryIcon,CategoryID,CatID;
     AddCategoriesModel viewModel;
-    private PassDataToActivity passData;
     RecyclerViewClickListener mListener;
-     String btnStatus;
+    String btnStatus,CategoryName,Cattxt;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -65,11 +63,6 @@ public class AddCategoryDialogFragment extends AppCompatDialogFragment {
                 passData.passDataToActivity(catName, catId);
                 dismiss();*/
 
-        Bundle bundle = getArguments();
-        btnStatus = bundle.getString("BtnStatus","");
-
-
-
 
         CatEdittxt = (EditText) rootView.findViewById(R.id.catNameedttxt);
         btncatAdd = (Button) rootView.findViewById(R.id.catAdd);
@@ -80,6 +73,20 @@ public class AddCategoryDialogFragment extends AppCompatDialogFragment {
         iconlist = new ArrayList<>();
 
         viewModel = ViewModelProviders.of(getActivity()).get(AddCategoriesModel.class);
+
+
+        Bundle bundle = getArguments();
+        btnStatus = bundle.getString("BtnStatus","");
+        CategoryID=bundle.getInt("CategoryID",1);
+        CategoryName=bundle.getString("CategoryName","");
+        CategoryIcon=bundle.getInt("CategoryIcon",1);
+
+        if(btnStatus.equals("EditCategory"))
+        {
+            iconview.setImageResource(CategoryIcon);
+            CatEdittxt.setText(CategoryName);
+            iconID=CategoryIcon;
+        }
 
         RecyclerView.LayoutManager iconLayoutmanger = new GridLayoutManager(getActivity(), 2);
         recyclerView.setLayoutManager(iconLayoutmanger);
@@ -94,6 +101,11 @@ public class AddCategoryDialogFragment extends AppCompatDialogFragment {
 
             @Override
             public void onSendData(String catName, Integer catId) {
+
+            }
+
+            @Override
+            public void onSendCategoryData(Integer categoriesID, Integer categoriesIcon, String categoriesName) {
 
             }
 
@@ -114,19 +126,35 @@ public class AddCategoryDialogFragment extends AppCompatDialogFragment {
 
 
                 Cattxt = CatEdittxt.getText().toString();
-                viewModel.insertCategory(Cattxt, iconID);
+
                 Toast.makeText(getContext(), Cattxt, Toast.LENGTH_SHORT).show();
-                if(!btnStatus.equals("homeCategoryFragment"))
+
+                 if(btnStatus.equals("EditCategory"))
                 {
-                     dismiss();
-                }
-                else{
+                    viewModel.updateCategories(CategoryID,Cattxt,iconID);
+                    dismiss();
                     FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
                     CategoriesFragment categoriesFragment = new CategoriesFragment();
-                    ft.replace(R.id.content_frame, categoriesFragment);
+                    ft.replace(R.id.settings_frame, categoriesFragment);
                     ft.commit();
-                    dismiss();
+
                 }
+                else{
+                     viewModel.insertCategory(Cattxt, iconID);
+
+                     if(!btnStatus.equals("homeCategoryFragment"))
+                     {
+                         dismiss();
+                     }
+                     else{
+                         FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                         CategoriesFragment categoriesFragment = new CategoriesFragment();
+                         ft.replace(R.id.settings_frame, categoriesFragment);
+                         ft.commit();
+                         dismiss();
+                     }
+
+                 }
 
 
 

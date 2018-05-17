@@ -44,6 +44,7 @@ public class CategorySelectAdapter extends RecyclerView.Adapter<CategorySelectAd
         this.expenceCategories = expenceCategories;
         this.sContext = context;
         this.mListener = listener;
+
     }
 
 

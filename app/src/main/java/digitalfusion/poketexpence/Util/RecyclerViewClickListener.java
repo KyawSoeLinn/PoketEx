@@ -8,4 +8,5 @@ public interface RecyclerViewClickListener {
     void onSendData(String catName, Integer catId);
 
 
+    void onSendCategoryData(Integer categoriesID, Integer categoriesIcon, String categoriesName);
 }

@@ -52,18 +52,23 @@ public class SelectCategoryFragment extends AppCompatDialogFragment {
 
             }
 
+            @Override
+            public void onSendCategoryData(Integer categoriesID, Integer categoriesIcon, String categoriesName) {
+
+
+            }
+
         };
 
         CategorySelectAdapter CatSelectAdapter;
         DataBaseHelper dataBaseHelper=new DataBaseHelper(getContext());
         CatSelectAdapter = new CategorySelectAdapter(dataBaseHelper.getAllCategory(), getActivity(),listener);
 
-        categoryLayout=new GridLayoutManager(getContext(),3);
-        RecyclerView mRecylcerView=(RecyclerView) rootView.findViewById(R.id.selectCatRV);
-        mRecylcerView.setHasFixedSize(true);
-        mRecylcerView.setLayoutManager(categoryLayout);
-        mRecylcerView.setAdapter(CatSelectAdapter);
-
+          categoryLayout=new GridLayoutManager(getContext(),3);
+          RecyclerView mRecylcerView=(RecyclerView) rootView.findViewById(R.id.selectCatRV);
+          mRecylcerView.setHasFixedSize(true);
+          mRecylcerView.setLayoutManager(categoryLayout);
+          mRecylcerView.setAdapter(CatSelectAdapter);
 
         return rootView;
     }

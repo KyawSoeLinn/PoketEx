@@ -6,7 +6,7 @@
 
     <string name="action_settings">Settings</string>
 
-    <string name="home_fragment">Home</string>
+    <string name="home_fragment">ပင္မစာမ်က္နွာ</string>
     <string name="quicksummary_fragment">QuickSummary</string>
     <string name="textViewDate">Date:</string>
     <string name="toggle_income">Income</string>
@@ -37,4 +37,5 @@
     <string name="categories_fragment">Categories</string>
     <string name="btn_add">Add</string>
     <string name="addCategories">Add New Category</string>
+    <string name="txt_settings">Settings</string>
 </resources>

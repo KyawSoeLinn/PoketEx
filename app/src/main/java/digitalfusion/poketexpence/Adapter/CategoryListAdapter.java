@@ -18,6 +18,7 @@ import digitalfusion.poketexpence.Data.DataBaseHelper;
 import digitalfusion.poketexpence.Model.ExpenceCategories;
 import digitalfusion.poketexpence.R;
 import digitalfusion.poketexpence.Util.AddCategoryDialogFragment;
+import digitalfusion.poketexpence.Util.RecyclerViewClickListener;
 
 public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapter.CategoriesViewHolder> {
 
@@ -25,8 +26,9 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
     public List<ExpenceCategories> expenceCategoriesList;
     private Context cContext;
     DataBaseHelper dbhelper;
-
+   private  RecyclerViewClickListener mListener;
     public Activity activity;
+
 
 
 
@@ -46,9 +48,10 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
 
     }
 
-    public CategoryListAdapter(List<ExpenceCategories> expenceCategoriesList,  Context context){
+    public CategoryListAdapter(List<ExpenceCategories> expenceCategoriesList,  RecyclerViewClickListener mListener,Context context){
         this.expenceCategoriesList = expenceCategoriesList;
         this.cContext = context;
+        this.mListener=mListener;
     }
 
     @Override
@@ -86,11 +89,7 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
         holder.edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AddCategoryDialogFragment fragment = new AddCategoryDialogFragment();
-                Bundle bundle = new Bundle();
-                bundle.putString("BtnStatus","homeCategoryFragment");
-                fragment.setArguments(bundle);
-                //fragment.show(getSupportFragmentManager(),"fragment");
+                mListener.onSendCategoryData(Integer.parseInt(expenceCategories.getCategoriesID()),expenceCategories.getCategoriesIcon(),expenceCategories.getCategoriesName());
 
             }
         });

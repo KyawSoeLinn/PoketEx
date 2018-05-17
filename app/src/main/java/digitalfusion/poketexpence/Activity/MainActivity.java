@@ -1,5 +1,6 @@
 package digitalfusion.poketexpence.Activity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -9,12 +10,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.AttributeSet;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import digitalfusion.poketexpence.Fragment.CategoriesFragment;
 import digitalfusion.poketexpence.Fragment.HomeFragment;
 import digitalfusion.poketexpence.Fragment.QuickSummaryFragment;
+import digitalfusion.poketexpence.Fragment.SettingsFragment;
 import digitalfusion.poketexpence.R;
 
 public class MainActivity extends AppCompatActivity
@@ -97,6 +100,7 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+
     private void displaySelectedScreen(int itemId) {
 
         //creating fragment object
@@ -115,7 +119,7 @@ public class MainActivity extends AppCompatActivity
               fragment= new Fragment();
                 break;
             case R.id.settings_fragment:
-                fragment=new CategoriesFragment();
+                fragment=new SettingsFragment();
                 break;
             case R.id.add_category_fragment:
                 fragment= new Fragment();

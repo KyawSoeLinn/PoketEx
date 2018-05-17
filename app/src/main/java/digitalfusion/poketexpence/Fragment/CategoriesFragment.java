@@ -27,14 +27,14 @@ import digitalfusion.poketexpence.Util.PassDataToActivity;
 import digitalfusion.poketexpence.Util.RecyclerViewClickListener;
 import digitalfusion.poketexpence.ViewModel.AddCategoriesModel;
 
-public class CategoriesFragment extends Fragment  implements RecyclerViewClickListener{
+public class CategoriesFragment extends Fragment {
     private FloatingActionButton fab;
     RecyclerView mRecyclerView;
     LinearLayoutManager mLayoutManager;
     CategoryListAdapter categoriesAdapter;
-    List<ExpenceTransation> transactionList=new ArrayList<>();
+    List<ExpenceTransation> transactionList = new ArrayList<>();
     AddCategoriesModel viewModel;
-
+    RecyclerViewClickListener mListener;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -65,20 +65,18 @@ public class CategoriesFragment extends Fragment  implements RecyclerViewClickLi
 
         mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
-            public void onScrolled(RecyclerView recyclerView, int dx,int dy){
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
 
                 if (dy > 0 && fab.getVisibility() == View.VISIBLE) {
                     fab.hide();
-                } else if (dy < 0 && fab.getVisibility() !=View.VISIBLE) {
+                } else if (dy < 0 && fab.getVisibility() != View.VISIBLE) {
                     fab.show();
                 }
             }
 
 
         });
-
-
 
 
         fab.setOnClickListener(new View.OnClickListener() {
@@ -89,16 +87,39 @@ public class CategoriesFragment extends Fragment  implements RecyclerViewClickLi
                 intent.putExtra("key", key);
                 startActivity(intent);*/
 
-               AddCategoryDialogFragment fragment = new AddCategoryDialogFragment();
+                AddCategoryDialogFragment fragment = new AddCategoryDialogFragment();
                 Bundle bundle = new Bundle();
-                bundle.putString("BtnStatus","homeCategoryFragment");
+                bundle.putString("BtnStatus", "homeCategoryFragment");
                 fragment.setArguments(bundle);
-               fragment.show(getActivity().getSupportFragmentManager(),"fragment");
-
+                fragment.show(getActivity().getSupportFragmentManager(), "fragment");
 
 
             }
         });
+
+        mListener = new RecyclerViewClickListener() {
+            @Override
+            public void onClick(View view, int adapterPosition) {
+
+            }
+
+            @Override
+            public void onSendData(String catName, Integer catId) {
+
+            }
+
+            @Override
+            public void onSendCategoryData(Integer categoriesID, Integer categoriesIcon, String categoriesName) {
+                AddCategoryDialogFragment fragment = new AddCategoryDialogFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("BtnStatus", "EditCategory");
+                bundle.putInt("CategoryID", categoriesID);
+                bundle.putInt("CategoryIcon", categoriesIcon);
+                bundle.putString("CategoryName", categoriesName);
+                fragment.setArguments(bundle);
+                fragment.show(getActivity().getSupportFragmentManager(), "fragment");
+            }
+        };
 
        /* //set load more listener for the RecyclerView adapter
         addTransactionAdapter.setOnLoadMoreListener(new OnLoadMoreListener() {
@@ -143,7 +164,7 @@ public class CategoriesFragment extends Fragment  implements RecyclerViewClickLi
         viewModel.getCategoryListObservable().observe(this, new Observer<List<ExpenceCategories>>() {
             @Override
             public void onChanged(@Nullable List<ExpenceCategories> categories) {
-                categoriesAdapter = new CategoryListAdapter(categories, getContext());
+                categoriesAdapter = new CategoryListAdapter(categories, mListener, getContext());
                 mRecyclerView.setAdapter(categoriesAdapter);
                 categoriesAdapter.notifyDataSetChanged();
 
@@ -156,28 +177,4 @@ public class CategoriesFragment extends Fragment  implements RecyclerViewClickLi
     }
 
 
-
-
-    @Override
-    public void onClick(View view, int adapterPosition) {
-        viewModel.getAllCategories();
-
-        // Update the list when the data changes
-        viewModel.getCategoryListObservable().observe(this, new Observer<List<ExpenceCategories>>() {
-            @Override
-            public void onChanged(@Nullable List<ExpenceCategories> categories) {
-                categoriesAdapter = new CategoryListAdapter(categories, getContext());
-                mRecyclerView.setAdapter(categoriesAdapter);
-                categoriesAdapter.notifyDataSetChanged();
-
-            }
-
-
-        });
-    }
-
-    @Override
-    public void onSendData(String catName, Integer catId) {
-
-    }
 }

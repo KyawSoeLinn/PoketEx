@@ -76,4 +76,10 @@ public class AddCategoriesModel extends AndroidViewModel {
         dbHelper=new DataBaseHelper(this.getApplication());
        dbHelper.insertCategory(cattxt,iconID);
     }
+
+    public void updateCategories(Integer categoryID, String cattxt, Integer iconID) {
+        dbHelper=new DataBaseHelper(this.getApplication());
+        dbHelper.updateCategory(categoryID,cattxt,iconID);
+
+    }
 }

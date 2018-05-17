@@ -135,16 +135,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO Categories (id, name, icon) VALUES ("+getAllCategories().size()+" +1, "+name +" , "+icon+")");
     }*/
 
-    public boolean updateCategory (Integer id, String name, int icon){
+    public void updateCategory (Integer id, String name, int icon) {
         SQLiteDatabase db = this.getWritableDatabase();
 
 
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(CId,id);
-        contentValues.put(CName, name );
-        contentValues.put(CIcon, icon);
-        db.update(CTableName, contentValues, "id ="+id , null);
-        return true;
+        db.execSQL("UPDATE  "+CTableName+" SET name ='"+ name + "',icon =" + icon +"  WHERE cid=" + id + "");
+
     }
 
     public LiveData<List<ExpenceCategories>> getAllCategories() {
